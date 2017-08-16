@@ -1,0 +1,11 @@
+.side-div{
+  width:15%;
+  /*margin-top:50px;*/
+  /*padding-top: 50px;*/
+  height:588px;
+  background-color: #f8f8f8;
+  float: left;
+}
+span{
+  font-size:14px;
+}
