@@ -17,15 +17,20 @@ class DelandAdd extends Component{
   //   }
   // }
   render(){
-  // console.log(this.state)
+  // console.log(this.props.addText)
     return (
       <div className="DelandAdd">
         <button className="first_child"><Icon type="delete" />  批量删除</button>
-        <button
+         <Link to="/image"><button
           className="last_child"
           onClick= {this.add}
-          ><Icon type="edit" /> <Link to="/image"> 添加咨询</Link></button>
-          <Route path="/image" component={Addcontent}/>
+          ><Icon type="edit" /> 添加咨询</button></Link>
+
+          <switch>
+            <Route path="/image" render={()=>{
+              return <Addcontent addText ={this.props.addText} maxId={this.props.maxId} />
+            }}/>
+          </switch>
       </div>
     )
   }

@@ -65,6 +65,29 @@ class Consult extends Component{
       data:data1
     })
   }
+  //添加数据
+  addText= (newTxt) =>{
+    // console.log(newTxt)
+    let {data} = this.state;
+    let data1 = Object.assign(data);
+    data1.push(newTxt);
+    this.setState({
+      data:data1
+    })
+    // console.log(this.maxId())
+  }
+  //最大id
+  maxId = ()=>{
+    let {data} = this.state;
+    let data1 = Object.assign(data);
+    let num = 0;
+    data1.map((e,i)=>{
+      if(e.id > num){
+        num = e.id;
+      }
+    })
+    return num+1;
+  }
   render(){
     let {data,title} = this.state;
     let data1 = Object.assign(data);
@@ -97,7 +120,7 @@ class Consult extends Component{
     return (
       <div>
         <PickerSizesDemo />
-        <DelandAdd />
+        <DelandAdd addText = {this.addText} maxId={this.maxId} />
         <table>
           <thead>
             <tr>
