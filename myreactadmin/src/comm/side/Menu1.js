@@ -1,7 +1,8 @@
 import React,{Component} from 'react';
 import  { Menu, Icon } from 'antd';
 import 'antd/dist/antd.css';
-import './side.css'
+import './side.css';
+import {Link} from 'react-router-dom';
 const SubMenu = Menu.SubMenu;
 // const MenuItemGroup = Menu.ItemGroup;
 
@@ -11,10 +12,10 @@ class Menu1 extends Component{
       <div>
         <Menu className="side-div" mode="vertical">
           <SubMenu key="sub1" title={<span><Icon type="mail" /><span>咨询管理</span></span>}>
-            <Menu.Item key="1">咨询管理</Menu.Item>
+            <Menu.Item key="1"><Link to="/content">咨询管理</Link></Menu.Item>
           </SubMenu>
           <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>图片管理</span></span>}>
-            <Menu.Item key="2">图片管理</Menu.Item>
+            <Menu.Item key="2"><Link to="/image">图片管理</Link></Menu.Item>
           </SubMenu>
           <SubMenu key="sub3" title={<span><Icon type="desktop" /><span>产品管理</span></span>}>
             <Menu.Item key="3">品牌管理</Menu.Item>

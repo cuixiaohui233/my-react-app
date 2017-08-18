@@ -1,7 +1,17 @@
 .App {
   text-align: center;
 }
-
+body{
+  position: relative;
+}
+#app{
+  position: absolute;
+  top:0;
+  left:0;
+  width:100%;
+  height:auto;
+  z-index: 9999;
+}
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;

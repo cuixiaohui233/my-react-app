@@ -20,6 +20,16 @@ class Tr extends Component{
 
   }
   render(){
+    let h = null;
+    if(this.props.动作){
+      h = <td><a href="javascript:;"
+        onClick = {this.click1}
+      >{this.props.动作}</a><a href="javascript:;"
+        onClick = {this.changeVal}
+      >修改</a><a href="javascript:;"
+        onClick = {this.delVal}
+        >删除</a></td>
+    }
     return(
 
         <tr>
@@ -41,13 +51,7 @@ class Tr extends Component{
           <td>{this.props.更新时间}</td>
           <td>{this.props.浏览次数}</td>
           <td>{this.props.发布状态}</td>
-          <td><a href="javascript:;"
-            onClick = {this.click1}
-          >{this.props.动作}</a><a href="javascript:;"
-            onClick = {this.changeVal}
-          >修改</a><a href="javascript:;"
-            onClick = {this.delVal}
-            >删除</a></td>
+          {h}
         </tr>
     )
   }

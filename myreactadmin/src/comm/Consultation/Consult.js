@@ -4,6 +4,7 @@ import Tr from './Tr';
 import './table.css';
 import DelandAdd from './DelandAdd';
 import Page from '../page/page';
+import './consult.css'
 class Consult extends Component{
   constructor(){
     super();
@@ -36,7 +37,11 @@ class Consult extends Component{
         发布状态:'草稿',
         动作:'审核',
         checked:true
-      }]
+      }],
+      power:[
+        {name:'admin',type:'admin'},
+        {name:'tourist',type:'tourist'}
+      ],
     }
   }
   delete = (newID)=>{
@@ -92,35 +97,68 @@ class Consult extends Component{
     let {data,title} = this.state;
     let data1 = Object.assign(data);
     let list = null;
-    list = data1.map((e,i)=>{
-      let data = {
-        id:e.id,
-        item:e.分类,
-        标题:e.标题,
-        更新时间:e.更新时间,
-        浏览次数:e.浏览次数,
-        发布状态:e.发布状态,
-        动作:e.动作,
-        key:i+new Date,
-        checked:e.checked,
-        delete:this.delete,
-        change:this.change
-      }
-      return <Tr {...data} title={title}/>
-    });
-    // let {title} = this.props.data;
     let title1 = Object.assign(title);
     let item = null;
-    item = title1.map((e,i)=>{
-      let data = {
-        key:i
-      }
-      return <th {...data}>{e}</th>
-    })
+    let addanddel = null;
+    if(this.props.power == 'admin'){
+      item = title1.map((e,i)=>{
+        let data = {
+          key:i
+        }
+        return <th {...data}>{e}</th>
+      })
+      list = data1.map((e,i)=>{
+        let data = {
+          id:e.id,
+          item:e.分类,
+          标题:e.标题,
+          更新时间:e.更新时间,
+          浏览次数:e.浏览次数,
+          发布状态:e.发布状态,
+          动作:e.动作,
+          key:i+new Date,
+          checked:e.checked,
+          delete:this.delete,
+          change:this.change
+        }
+        return <Tr {...data} title={title}/>
+      });
+      addanddel = <DelandAdd addText = {this.addText} maxId={this.maxId} />;
+    }else{
+      // let title2 = Object.assign(title);
+      title1.map((e,i)=>{
+        if(e == '操作'){
+          title1.splice(i,1);
+        }
+      })
+      item = title1.map((e,i)=>{
+        let data = {
+          key:i
+        }
+        return <th {...data}>{e}</th>
+      })
+      list = data1.map((e,i)=>{
+        let data = {
+          id:e.id,
+          item:e.分类,
+          标题:e.标题,
+          更新时间:e.更新时间,
+          浏览次数:e.浏览次数,
+          发布状态:e.发布状态,
+          动作:'',
+          key:i+new Date,
+          checked:e.checked,
+          delete:this.delete,
+          change:this.change
+        }
+        return <Tr {...data} title={title}/>
+      });
+      // addanddel = <div>欢迎光临</div>
+    }
     return (
-      <div>
+      <div className="consult">
         <PickerSizesDemo />
-        <DelandAdd addText = {this.addText} maxId={this.maxId} />
+        {addanddel}
         <table>
           <thead>
             <tr>

@@ -13,7 +13,7 @@ class Addcontent extends Component{
       textarea:'',
       changewriter:'',
       summary:'',
-      tool:false
+      bool:false
     }
   }
   change = (ev)=>{
@@ -39,9 +39,6 @@ class Addcontent extends Component{
   //保存并发布
   submin = () =>{
     let {title,textarea,changewriter,summary} = this.state;
-    this.setState({
-      bool:true
-    })
     if(title && textarea && changewriter && summary){
       this.props.addText({
         id:this.props.maxId(),
@@ -71,9 +68,8 @@ class Addcontent extends Component{
     }
   }
   render(){
-    // console.log(this.props.addText)
-      let {title,textarea,changewriter,summary} = this.state;
-      console.log(title,textarea,changewriter,summary)
+    console.log(2222);
+    console.log(this.state.title);
     return(
       <div className="addContent">
           <from>
@@ -126,24 +122,15 @@ class Addcontent extends Component{
           <button
             className="button1"
             onClick = {this.submin}
-            ><Link to="/img">保存并提交</Link>
+            ><Link to="/content">保存并提交</Link>
           </button>
           <button
             className="button2"
             onClick = {this.draft}
-            ><Link to="/">保存草稿</Link>
+            >保存草稿
           </button>
-          <Link to="/"><button className="button3">取消</button></Link>
+          <button className="button3">取消</button>
         </p>
-        <Route path="/img" render={()=>{
-          let {title,textarea,changewriter,summary} = this.state;
-          if(this.state.bool){
-            return <Redirect to ="/Nologin" />
-          }else{
-            return <Addcontent />
-          }
-        }}/>
-        <Route path="/img" component={Nologin} />
       </div>
     )
   }
