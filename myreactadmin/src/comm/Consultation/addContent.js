@@ -55,8 +55,6 @@ class Addcontent extends Component{
   //保存草稿
   draft = () =>{
     let {title,textarea,changewriter,summary} = this.state;
-    console.log(title);
-    console.log(textarea);
     if(title && textarea && changewriter && summary){
       this.props.addText({
         id:this.props.maxId(),
@@ -68,8 +66,6 @@ class Addcontent extends Component{
     }
   }
   render(){
-    console.log(2222);
-    console.log(this.state.title);
     return(
       <div className="addContent">
           <from>

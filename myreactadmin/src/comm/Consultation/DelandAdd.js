@@ -28,7 +28,9 @@ class DelandAdd extends Component{
           <button className="last_child"><Icon type="edit" />添加咨询</button>
         </Link>
         <Switch>
-          <Route path="/addcontent" component={Addcontent} />
+          <Route path="/addcontent" render={()=>{
+            return <Addcontent addText={this.props.addText} maxId={this.props.maxId} />
+          }} />
         </Switch>
       </div>
     </Router>

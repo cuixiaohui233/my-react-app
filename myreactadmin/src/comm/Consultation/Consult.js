@@ -10,39 +10,18 @@ class Consult extends Component{
     super();
     this.state = {
       title:['','id','分类','标题','更新时间','浏览次数','发布状态','操作'],
-      data:[{
-        id:1,
-        分类:'行业行情',
-        标题:'咨询标题',
-        更新时间:'2017-8-13',
-        浏览次数:'11234',
-        发布状态:'草稿',
-        动作:'审核',
-        checked:false
-      },{
-        id:2,
-        分类:'行业行情',
-        标题:'咨询标题',
-        更新时间:'2017-8-13',
-        浏览次数:'11234',
-        发布状态:'已发布',
-        动作:'下架',
-        checked:false
-      }, {
-        id:3,
-        分类:'行业行情',
-        标题:'咨询标题',
-        更新时间:'2017-8-13',
-        浏览次数:'11234',
-        发布状态:'草稿',
-        动作:'审核',
-        checked:true
-      }],
+      data:[],
       power:[
         {name:'admin',type:'admin'},
         {name:'tourist',type:'tourist'}
       ],
     }
+  }
+  componentDidMount(){
+    this.setState({
+      data:getItem('data')
+    });
+    console.log('挂载之后');
   }
   delete = (newID)=>{
     // console.log(newID)
@@ -107,22 +86,27 @@ class Consult extends Component{
         }
         return <th {...data}>{e}</th>
       })
-      list = data1.map((e,i)=>{
-        let data = {
-          id:e.id,
-          item:e.分类,
-          标题:e.标题,
-          更新时间:e.更新时间,
-          浏览次数:e.浏览次数,
-          发布状态:e.发布状态,
-          动作:e.动作,
-          key:i+new Date,
-          checked:e.checked,
-          delete:this.delete,
-          change:this.change
-        }
-        return <Tr {...data} title={title}/>
-      });
+
+      if(data1.length){
+        list = data1.map((e,i)=>{
+          let data = {
+            id:e.id,
+            item:e.分类,
+            标题:e.标题,
+            更新时间:e.更新时间,
+            浏览次数:e.浏览次数,
+            发布状态:e.发布状态,
+            动作:e.动作,
+            key:i+new Date,
+            checked:e.checked,
+            delete:this.delete,
+            change:this.change
+          }
+          return <Tr {...data} title={title}/>
+        });
+        console.log(111);
+        localStorage.setItem('data',JSON.stringify(data));
+      }
       addanddel = <DelandAdd addText = {this.addText} maxId={this.maxId} />;
     }else{
       // let title2 = Object.assign(title);
@@ -173,5 +157,17 @@ class Consult extends Component{
       </div>
     )
   }
+}
+function getItem(data){
+  return JSON.parse(localStorage.getItem(data)) || [{
+    id:1,
+    分类:'行业行情',
+    标题:'咨询标题',
+    更新时间:'2017-8-13',
+    浏览次数:'11234',
+    发布状态:'草稿',
+    动作:'审核',
+    checked:false
+  }]
 }
 export default Consult;
