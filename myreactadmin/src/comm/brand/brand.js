@@ -1,15 +1,20 @@
 import React,{Component} from 'react';
-import PickerSizesDemo from '../Data/Date';
-import Tr from './Tr';
-import './table.css';
+import PickerSizesDemo1 from '../Data/Dateimage';
 import DelandAdd from './DelandAdd';
+import Tr from '../image/Tr';
+import '../table/table.css';
 import Page from '../page/page';
-import './consult.css'
-class Consult extends Component{
+
+let img1 = require('../img/img1.jpg');
+let img2 = require('../img/img2.gif');
+let img3 = require('../img/img3.jpg');
+let img4 = require('../img/img4.png');
+
+class Brand extends Component{
   constructor(){
     super();
     this.state = {
-      title:['','id','标题','分类','更新时间','作者','内容','发布状态','操作'],
+      title:['','id','标题','封面','图片名称','更新时间','发布状态','操作'],
       data:[],
       power:[
         {name:'admin',type:'admin'},
@@ -21,7 +26,7 @@ class Consult extends Component{
   }
   componentDidMount(){
     this.setState({
-      data:getItem('data')
+      data:getItem('image')
     });
   }
   delete = (newID)=>{
@@ -109,7 +114,6 @@ class Consult extends Component{
     let {data,title} = this.state;
     let data1 = Object.assign(data);
     let list = null;
-    let title1 = Object.assign(title);
     let item = null;
     let addanddel = null;
     let filterview = null;
@@ -122,34 +126,28 @@ class Consult extends Component{
         break;
     }
     if(this.props.power === 'admin'){
-      item = title1.map((e,i)=>{
-        let data = {
-          key:i
-        }
-        return <th {...data}>{e}</th>
-      })
-
       if(filterview.length){
-        console.log(filterview)
         list = filterview.map((e,i)=>{
           let data = {
             id:e.id,
-            item:e.分类,
             标题:e.标题,
-            作者:e.作者,
+            封面:e.封面,
+            图片名称:e.图片名称,
+            Tags:e.Tags,
             更新时间:e.更新时间,
-            内容:e.内容,
             发布状态:e.发布状态,
             动作:e.动作,
-            key:(i+new Date),
+            操作:e.操作,
+            key:i+new Date,
             checked:e.checked,
             delete:this.delete,
             change:this.change
           }
           return <Tr {...data} title={title}/>
         });
-        localStorage.setItem('data',JSON.stringify(data));
+        localStorage.setItem('image',JSON.stringify(data));
       }
+
       let shuju = {
         addText:this.addText,
         maxId:this.maxId,
@@ -157,8 +155,17 @@ class Consult extends Component{
         alldel:this.alldel
       }
       addanddel = <DelandAdd {...shuju}/>;
+
+      // let {title} = this.props.data;
+      let title1 = Object.assign(title);
+      item = title1.map((e,i)=>{
+        let data = {
+          key:i
+        }
+        return <th {...data}>{e}</th>
+      })
     }else{
-      // let title2 = Object.assign(title);
+      let title1 = Object.assign(title);
       title1.map((e,i)=>{
         if(e === '操作'){
           title1.splice(i,1);
@@ -173,13 +180,13 @@ class Consult extends Component{
       list = filterview.map((e,i)=>{
         let data = {
           id:e.id,
-          item:e.分类,
           标题:e.标题,
-          作者:e.作者,
+          封面:e.封面,
+          图片名称:e.图片名称,
+          Tags:e.Tags,
           更新时间:e.更新时间,
-          内容:e.内容,
           发布状态:e.发布状态,
-          动作:'',
+          操作:e.操作,
           key:i+new Date,
           checked:e.checked,
           delete:this.delete,
@@ -187,15 +194,15 @@ class Consult extends Component{
         }
         return <Tr {...data} title={title}/>
       });
-      // addanddel = <div>欢迎光临</div>
     }
-    return (
-      <div className="consult">
-        <PickerSizesDemo
+
+    return(
+      <div>
+        <PickerSizesDemo1
           changeView={this.changeView}
           view={this.state.view}
           data={this.state.data}
-        />
+         />
         {addanddel}
         <table>
           <thead>
@@ -215,14 +222,24 @@ class Consult extends Component{
 function getItem(data){
   return JSON.parse(localStorage.getItem(data)) || [{
     id:1,
-    分类:'行业行情',
-    标题:'咨询标题',
-    作者:'王泽慧',
-    更新时间:'2017-8-13',
-    内容:'哈哈哈哈',
-    发布状态:'草稿',
+    标题:'戳爷',
+    封面:img1,
+    图片名称:'现代简约 白色 餐厅',
+    更新时间:'2017-8-15',
+    发布状态:'已发布',
+    操作:'jj',
+    动作:'审核',
+    checked:false
+  },{
+    id:2,
+    标题:'国哥',
+    封面:img2,
+    图片名称:'现代简约 白色 餐厅',
+    更新时间:'2017-8-15',
+    发布状态:'已发布',
+    操作:'jj',
     动作:'审核',
     checked:false
   }]
 }
-export default Consult;
+export default Brand;

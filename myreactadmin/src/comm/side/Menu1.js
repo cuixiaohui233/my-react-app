@@ -18,12 +18,11 @@ class Menu1 extends Component{
             <Menu.Item key="2"><Link to="/image">图片管理</Link></Menu.Item>
           </SubMenu>
           <SubMenu key="sub3" title={<span><Icon type="desktop" /><span>产品管理</span></span>}>
-            <Menu.Item key="3">品牌管理</Menu.Item>
-            <Menu.Item key="4">分类管理</Menu.Item>
-            <Menu.Item key="5">产品管理</Menu.Item>
+            <Menu.Item key="3"><Link to="/brand">品牌管理</Link></Menu.Item>
+            <Menu.Item key="5"><Link to="/product">产品管理</Link></Menu.Item>
           </SubMenu>
           <SubMenu key="sub4" title={<span><Icon type="notification" /><span>评论管理</span></span>}>
-            <Menu.Item key="6">评论列表</Menu.Item>
+            <Menu.Item key="6"><Link to="/discuss">评论列表</Link></Menu.Item>
             <Menu.Item key="7">意见反馈</Menu.Item>
           </SubMenu>
           <SubMenu key="sub5" title={<span><Icon type="usergroup-add" /><span>会员管理</span></span>}>

@@ -4,10 +4,10 @@ import './page.css';
 class Page extends Component{
   render(){
     let page = Math.ceil(this.props.data.length/5)*10
-      console.log(page);
+      // console.log(page);
     return (
       <div className="page_parent">
-        <span>显示1-2条 共2条</span><Pagination defaultCurrent={0} total={page} />
+        <span>显示1-2条 共{this.props.data.length}条</span><Pagination defaultCurrent={0} total={page} />
       </div>
     )
   }

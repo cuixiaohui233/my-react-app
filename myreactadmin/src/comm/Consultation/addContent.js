@@ -46,7 +46,9 @@ class Addcontent extends Component{
         标题:title,
         发布状态:'已发布',
         动作:'下架',
-        更新时间:this.props.changeTime()
+        作者:changewriter,
+        更新时间:this.props.changeTime(),
+        内容:this.state.textarea
       });
     }
     this.setState({
@@ -63,11 +65,21 @@ class Addcontent extends Component{
         标题:title,
         发布状态:'草稿',
         动作:'审核',
-        更新时间:this.props.changeTime()
+        作者:changewriter,
+        更新时间:this.props.changeTime(),
+        内容:textarea
       });
     }
   }
   render(){
+    // <p className="title_short"><span><i>*</i>分类栏目：</span><select ref = {(elem)=>{this.column = elem}} name="" className="select">
+    //           <option value="全部栏目">全部栏目</option>
+    //           <option value="新闻资讯">新闻资讯</option>
+    //           <option value="行业动态">行业动态</option>
+    //           <option value="行业资讯">行业资讯</option>
+    //           <option value="行业新闻">行业新闻</option>
+    //         </select>
+    // </p>
     return(
       <div className="addContent">
           <from>
@@ -76,14 +88,7 @@ class Addcontent extends Component{
               onChange={this.change}
               value={this.state.title}
             /></p>
-            <p className="title_short"><span><i>*</i>分类栏目：</span><select ref = {(elem)=>{this.column = elem}} name="" className="select">
-            					<option value="全部栏目">全部栏目</option>
-            					<option value="新闻资讯">新闻资讯</option>
-            					<option value="行业动态">行业动态</option>
-            					<option value="行业资讯">行业资讯</option>
-            					<option value="行业新闻">行业新闻</option>
-            				</select>
-            </p>
+
             <p className="title_short"><span>文章分类：</span><select ref = {(elem)=>{this.classify = elem}} name="" className="select">
                 					<option value="全部类型">全部类型</option>
                 					<option value="帮助说明">帮助说明</option>
@@ -115,23 +120,25 @@ class Addcontent extends Component{
               value={this.state.summary}
             /></p>
           </from>
-        <span className="off"><Link to="/"><Icon type="close" /></Link></span>
+        <span className="off"><Link to="/image"><Icon type="close" /></Link></span>
         <p className="button_short">
-          <Link to="/content">
+          <Link to="/image">
             <button
               className="button1"
               onClick = {this.submin}
               >保存并提交
             </button>
           </Link>
-          <Link to="/content">
+          <Link to="/image">
             <button
               className="button2"
               onClick = {this.draft}
               >保存草稿
             </button>
           </Link>
-          <button className="button3">取消</button>
+          <Link to="/image">
+            <button className="button3">取消</button>
+          </Link>
         </p>
       </div>
     )

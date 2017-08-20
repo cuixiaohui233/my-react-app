@@ -37,10 +37,12 @@ class Tr extends Component{
       </a>
     </td>
     }
+    console.log(this.props.内容);
+    let item = this.props.内容.slice(0, 11)+'...';
     return(
         <tr>
           <td
-  className = "changeitem"
+            className = "changeitem"
             ><input
             type="type"
             onChange={this.changeitem}
@@ -52,10 +54,11 @@ class Tr extends Component{
             onChange = {this.change}
            /></td>
           <td>{this.props.id}</td>
-          <td>{this.props.item}</td>
           <td>{this.props.标题}</td>
+          <td>{this.props.item}</td>
           <td>{this.props.更新时间}</td>
-          <td>{this.props.浏览次数}</td>
+          <td>{this.props.作者}</td>
+          <td>{item}</td>
           <td>{this.props.发布状态}</td>
           {h}
         </tr>

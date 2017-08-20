@@ -15,6 +15,15 @@ import Consult from './comm/Consultation/Consult';
 //图片管理
 import Image  from './comm/image/Image';
 
+//品牌管理
+import Brand from './comm/brand/brand';
+
+//品牌管理
+import Product from './comm/product/product';
+
+//评论管理
+import Discuss from './comm/discuss/discuss';
+
 class App extends Component {
   render() {
     return (
@@ -25,10 +34,19 @@ class App extends Component {
           <Nav />
           <Switch>
             <Route path="/image" render={()=>{
-              return <Image />
+              return <Image power={this.props.power}/>
             }} />
             <Route path="/content" render={()=>{
               return <Consult power={this.props.power} />
+            }} />
+            <Route path="/brand" render={()=>{
+              return <Brand power={this.props.power} />
+            }} />
+            <Route path="/product" render={()=>{
+              return <Product power={this.props.power} />
+            }} />
+            <Route path="/discuss" render={()=>{
+              return <Discuss power={this.props.power} />
             }} />
           </Switch>
         </div>
