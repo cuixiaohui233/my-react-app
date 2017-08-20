@@ -4,7 +4,7 @@ import './DelandAdd.css';
 import {BrowserRouter as Router,
   Route,
   Link,
-  Redirect,
+  // Redirect,
   Switch
 } from 'react-router-dom';
 import Addcontent from './addContent';
@@ -17,20 +17,28 @@ class DelandAdd extends Component{
       item:false
     }
   }
+  alldel = ()=>{
+    this.props.alldel();
+  }
   render(){
-  // console.log(this.props.addText)
-  // console.log(1111);
     return (
       <Router>
       <div className="DelandAdd">
-        <button className="first_child"><Icon type="delete" />  批量删除</button>
+        <button
+          className="first_child"
+          onClick={this.alldel}
+          ><Icon type="delete" />批量删除</button>
         <Link to="/addcontent">
           <button className="last_child"><Icon type="edit" />添加咨询</button>
         </Link>
         <Switch>
           <Route path="/addcontent" render={()=>{
-            return <Addcontent addText={this.props.addText} maxId={this.props.maxId} />
-          }} />
+            return <Addcontent
+              addText={this.props.addText}
+              maxId={this.props.maxId}
+              changeTime={this.props.changeTime}
+             />
+          }}/>
         </Switch>
       </div>
     </Router>

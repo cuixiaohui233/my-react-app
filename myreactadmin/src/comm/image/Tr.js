@@ -13,7 +13,7 @@ class Tr extends Component{
           <td>{this.props.发布状态}</td>
           <td>{this.props.操作}</td>
           <td><a href="javascript:;"
-            
+
           >{this.props.动作}</a><a href="javascript:;">修改</a><a href="javascript:;">删除</a></td>
         </tr>
     )

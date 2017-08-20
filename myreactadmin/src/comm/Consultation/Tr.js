@@ -19,6 +19,10 @@ class Tr extends Component{
   changeitem = () =>{
 
   }
+  //批量删除
+  alldel = ()=>{
+    this.props.alldel();
+  }
   render(){
     let h = null;
     if(this.props.动作){
@@ -26,12 +30,14 @@ class Tr extends Component{
         onClick = {this.click1}
       >{this.props.动作}</a><a href="javascript:;"
         onClick = {this.changeVal}
-      >修改</a><a href="javascript:;"
+      >修改</a>
+      <a href="javascript:;"
         onClick = {this.delVal}
-        >删除</a></td>
+        >删除
+      </a>
+    </td>
     }
     return(
-
         <tr>
           <td
   className = "changeitem"

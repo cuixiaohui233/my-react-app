@@ -1,12 +1,13 @@
 import React,{Component} from 'react';
-import { Form, Icon, Input, Button, Checkbox } from 'antd';import App from '../../App';
+// import { Form, Icon, Input, Button, Checkbox } from 'antd';
+// import App from '../../App';
 import {
-  BrowserRouter as Router,
-  Route,
+  // BrowserRouter as Router,
+  // Route,
   Link,
-  Redirect,
-  withRouter,
-  Switch
+  // Redirect,
+  // withRouter,
+  // Switch
 
 } from 'react-router-dom';
 import './error.css';

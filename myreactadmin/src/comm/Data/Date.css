@@ -5,11 +5,11 @@
 .fanwei{
   display: inline-block;
   float: left;
-  margin-left: 15%;
+  margin-left: 6%;
 }
 .input-ziji{
   width:300px;
-  margin-left: 10px;
+  margin-left: 60px;
 }
 .date-input{
   float: left;
@@ -22,4 +22,15 @@
 }
 .ant-calendar-picker{
   margin-left:10px;
+}
+#search,#all{
+  line-height:26px;
+  width: 90px;
+  margin-left:20px;
+  background:#108ee9;
+  border:1px solid #108ee9;
+  border-radius: 4px;
+  color:#fff;
+  font-size: 14px;
+  font-weight: bold;
 }

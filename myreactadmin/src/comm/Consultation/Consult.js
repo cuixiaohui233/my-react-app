@@ -15,20 +15,21 @@ class Consult extends Component{
         {name:'admin',type:'admin'},
         {name:'tourist',type:'tourist'}
       ],
+      view:'all',
+      info:[]
     }
   }
   componentDidMount(){
     this.setState({
       data:getItem('data')
     });
-    console.log('挂载之后');
   }
   delete = (newID)=>{
     // console.log(newID)
     let {data} = this.state;
     let data1 = Object.assign(data);
     let list = data1.filter((e,i)=>{
-      return e.id != newID;
+      return e.id !== newID;
     });
     // console.log(list);
     this.setState({
@@ -72,6 +73,38 @@ class Consult extends Component{
     })
     return num+1;
   }
+  //更新时间
+  changeTime = ()=>{
+    let date = new Date();
+    let date1 = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+    return date1;
+  }
+  //批量删除
+  alldel = ()=>{
+    let {data} = this.state;
+    let data1 = Object.assign(data);
+    let list = null;
+    list = data1.filter((e,i)=>!e.checked);
+    console.log(data1);
+    this.setState({
+      data:list
+    })
+  }
+  //检索
+  changeView = (newView,id)=>{
+    // console.log(newView,id);
+    if(id === 'search'){
+      this.setState({
+        view:'search',
+        info:newView
+      })
+    }else {
+      this.setState({
+        view:'all',
+        info:this.state.data
+      })
+    }
+  }
   render(){
     let {data,title} = this.state;
     let data1 = Object.assign(data);
@@ -79,16 +112,24 @@ class Consult extends Component{
     let title1 = Object.assign(title);
     let item = null;
     let addanddel = null;
-    if(this.props.power == 'admin'){
+    if(this.props.power === 'admin'){
       item = title1.map((e,i)=>{
         let data = {
           key:i
         }
         return <th {...data}>{e}</th>
       })
-
-      if(data1.length){
-        list = data1.map((e,i)=>{
+      let filterview = null;
+      switch (this.state.view) {
+        case 'search':
+          filterview = this.state.info
+          break;
+        case 'all':
+          filterview = this.state.data
+          break;
+      }
+      if(filterview.length){
+        list = filterview.map((e,i)=>{
           let data = {
             id:e.id,
             item:e.分类,
@@ -97,21 +138,26 @@ class Consult extends Component{
             浏览次数:e.浏览次数,
             发布状态:e.发布状态,
             动作:e.动作,
-            key:i+new Date,
+            key:(i+new Date),
             checked:e.checked,
             delete:this.delete,
             change:this.change
           }
           return <Tr {...data} title={title}/>
         });
-        console.log(111);
         localStorage.setItem('data',JSON.stringify(data));
       }
-      addanddel = <DelandAdd addText = {this.addText} maxId={this.maxId} />;
+      let shuju = {
+        addText:this.addText,
+        maxId:this.maxId,
+        changeTime:this.changeTime,
+        alldel:this.alldel
+      }
+      addanddel = <DelandAdd {...shuju}/>;
     }else{
       // let title2 = Object.assign(title);
       title1.map((e,i)=>{
-        if(e == '操作'){
+        if(e === '操作'){
           title1.splice(i,1);
         }
       })
@@ -141,7 +187,11 @@ class Consult extends Component{
     }
     return (
       <div className="consult">
-        <PickerSizesDemo />
+        <PickerSizesDemo
+          changeView={this.changeView}
+          view={this.state.view}
+          data={this.state.data}
+        />
         {addanddel}
         <table>
           <thead>
@@ -153,7 +203,7 @@ class Consult extends Component{
             {list}
           </tbody>
         </table>
-        <Page />
+        <Page data={this.state.data}/>
       </div>
     )
   }

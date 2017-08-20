@@ -45,7 +45,8 @@ class Addcontent extends Component{
         分类:this.classify.value,
         标题:title,
         发布状态:'已发布',
-        动作:'下架'
+        动作:'下架',
+        更新时间:this.props.changeTime()
       });
     }
     this.setState({
@@ -61,7 +62,8 @@ class Addcontent extends Component{
         分类:this.classify.value,
         标题:title,
         发布状态:'草稿',
-        动作:'审核'
+        动作:'审核',
+        更新时间:this.props.changeTime()
       });
     }
   }
@@ -115,16 +117,20 @@ class Addcontent extends Component{
           </from>
         <span className="off"><Link to="/"><Icon type="close" /></Link></span>
         <p className="button_short">
-          <button
-            className="button1"
-            onClick = {this.submin}
-            ><Link to="/content">保存并提交</Link>
-          </button>
-          <button
-            className="button2"
-            onClick = {this.draft}
-            >保存草稿
-          </button>
+          <Link to="/content">
+            <button
+              className="button1"
+              onClick = {this.submin}
+              >保存并提交
+            </button>
+          </Link>
+          <Link to="/content">
+            <button
+              className="button2"
+              onClick = {this.draft}
+              >保存草稿
+            </button>
+          </Link>
           <button className="button3">取消</button>
         </p>
       </div>

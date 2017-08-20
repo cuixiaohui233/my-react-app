@@ -5,9 +5,6 @@ import Nav from './comm/navigation/nav';
 import {
   BrowserRouter as Router,
   Route,
-  Link,
-  Redirect,
-  withRouter,
   Switch
 
 } from 'react-router-dom';
@@ -20,7 +17,6 @@ import Image  from './comm/image/Image';
 
 class App extends Component {
   render() {
-    console.log('哈哈哈哈');
     return (
       <Router>
         <div id="app">
