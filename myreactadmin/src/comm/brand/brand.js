@@ -1,7 +1,7 @@
 import React,{Component} from 'react';
 import PickerSizesDemo1 from '../Data/Dateimage';
 import DelandAdd from './DelandAdd';
-import Tr from '../image/Tr';
+import Tr from './Tr';
 import '../table/table.css';
 import Page from '../page/page';
 
@@ -14,19 +14,20 @@ class Brand extends Component{
   constructor(){
     super();
     this.state = {
-      title:['','id','标题','封面','图片名称','更新时间','发布状态','操作'],
+      title:['','id','品牌名称','LOGO','具体描述','更新时间','发布状态','操作'],
       data:[],
       power:[
         {name:'admin',type:'admin'},
         {name:'tourist',type:'tourist'}
       ],
       view:'all',
-      info:[]
+      info:[],
+      page:1
     }
   }
   componentDidMount(){
     this.setState({
-      data:getItem('image')
+      data:getItem('brand')
     });
   }
   delete = (newID)=>{
@@ -57,7 +58,7 @@ class Brand extends Component{
   }
   //添加数据
   addText= (newTxt) =>{
-    // console.log(newTxt)
+    console.log(newTxt)
     let {data} = this.state;
     let data1 = Object.assign(data);
     data1.push(newTxt);
@@ -110,6 +111,12 @@ class Brand extends Component{
       })
     }
   }
+  //页码切换
+  changepage = (newpage)=>{
+    this.setState({
+      page:newpage
+    })
+  }
   render(){
     let {data,title} = this.state;
     let data1 = Object.assign(data);
@@ -143,9 +150,11 @@ class Brand extends Component{
             delete:this.delete,
             change:this.change
           }
-          return <Tr {...data} title={title}/>
+          if(i>(this.state.page-1)*3-1 && i<=this.state.page*3-1){
+            return <Tr {...data} title={title}/>
+          }
         });
-        localStorage.setItem('image',JSON.stringify(data));
+        localStorage.setItem('brand',JSON.stringify(data));
       }
 
       let shuju = {
@@ -183,7 +192,6 @@ class Brand extends Component{
           标题:e.标题,
           封面:e.封面,
           图片名称:e.图片名称,
-          Tags:e.Tags,
           更新时间:e.更新时间,
           发布状态:e.发布状态,
           操作:e.操作,
@@ -192,7 +200,9 @@ class Brand extends Component{
           delete:this.delete,
           change:this.change
         }
-        return <Tr {...data} title={title}/>
+        if(i>(this.state.page-1)*3-1 && i<=this.state.page*3-1){
+          return <Tr {...data} title={title}/>
+        }
       });
     }
 
@@ -214,7 +224,10 @@ class Brand extends Component{
             {list}
           </tbody>
         </table>
-        <Page data={this.state.data}/>
+        <Page
+          data={this.state.data}
+          changepage={this.changepage}
+        />
       </div>
     )
   }
@@ -222,7 +235,7 @@ class Brand extends Component{
 function getItem(data){
   return JSON.parse(localStorage.getItem(data)) || [{
     id:1,
-    标题:'戳爷',
+    标题:'东鹏特饮',
     封面:img1,
     图片名称:'现代简约 白色 餐厅',
     更新时间:'2017-8-15',
@@ -232,7 +245,7 @@ function getItem(data){
     checked:false
   },{
     id:2,
-    标题:'国哥',
+    标题:'ggg',
     封面:img2,
     图片名称:'现代简约 白色 餐厅',
     更新时间:'2017-8-15',

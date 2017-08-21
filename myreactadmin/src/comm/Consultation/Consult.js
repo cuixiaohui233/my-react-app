@@ -16,7 +16,8 @@ class Consult extends Component{
         {name:'tourist',type:'tourist'}
       ],
       view:'all',
-      info:[]
+      info:[],
+      page:1
     }
   }
   componentDidMount(){
@@ -85,7 +86,6 @@ class Consult extends Component{
     let data1 = Object.assign(data);
     let list = null;
     list = data1.filter((e,i)=>!e.checked);
-    console.log(data1);
     this.setState({
       data:list
     })
@@ -93,7 +93,7 @@ class Consult extends Component{
   //检索
   changeView = (newView,id)=>{
     // console.log(newView,id);
-    if(id === 'search'){
+    if(id === 'search' || id==='keyup'){
       this.setState({
         view:'search',
         info:newView
@@ -104,6 +104,13 @@ class Consult extends Component{
         info:this.state.data
       })
     }
+  }
+  //改变页码
+  changepage = (newpage)=>{
+    console.log(newpage);
+    this.setState({
+      page:newpage
+    })
   }
   render(){
     let {data,title} = this.state;
@@ -130,7 +137,6 @@ class Consult extends Component{
       })
 
       if(filterview.length){
-        console.log(filterview)
         list = filterview.map((e,i)=>{
           let data = {
             id:e.id,
@@ -146,7 +152,9 @@ class Consult extends Component{
             delete:this.delete,
             change:this.change
           }
-          return <Tr {...data} title={title}/>
+          if(i>(this.state.page-1)*5-1 && i<=this.state.page*5-1){
+            return <Tr {...data} title={title}/>
+          }
         });
         localStorage.setItem('data',JSON.stringify(data));
       }
@@ -185,7 +193,9 @@ class Consult extends Component{
           delete:this.delete,
           change:this.change
         }
-        return <Tr {...data} title={title}/>
+        if(i>(this.state.page-1)*5-1 && i<=this.state.page*5-1){
+          return <Tr {...data} title={title}/>
+        }
       });
       // addanddel = <div>欢迎光临</div>
     }
@@ -207,7 +217,10 @@ class Consult extends Component{
             {list}
           </tbody>
         </table>
-        <Page data={this.state.data}/>
+        <Page
+          data={this.state.data}
+          changepage={this.changepage}
+        />
       </div>
     )
   }

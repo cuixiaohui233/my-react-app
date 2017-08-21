@@ -21,7 +21,8 @@ class Image extends Component{
         {name:'tourist',type:'tourist'}
       ],
       view:'all',
-      info:[]
+      info:[],
+      page:1
     }
   }
   componentDidMount(){
@@ -110,6 +111,12 @@ class Image extends Component{
       })
     }
   }
+  //页码切换
+  changepage = (newpage)=>{
+    this.setState({
+      page:newpage
+    })
+  }
   render(){
     let {data,title} = this.state;
     let data1 = Object.assign(data);
@@ -143,7 +150,9 @@ class Image extends Component{
             delete:this.delete,
             change:this.change
           }
-          return <Tr {...data} title={title}/>
+          if(i>(this.state.page-1)*3-1 && i<=this.state.page*3-1){
+            return <Tr {...data} title={title}/>
+          }
         });
         localStorage.setItem('image',JSON.stringify(data));
       }
@@ -192,7 +201,9 @@ class Image extends Component{
           delete:this.delete,
           change:this.change
         }
-        return <Tr {...data} title={title}/>
+        if(i>(this.state.page-1)*3-1 && i<=this.state.page*3-1){
+          return <Tr {...data} title={title}/>
+        }
       });
     }
 
@@ -214,7 +225,10 @@ class Image extends Component{
             {list}
           </tbody>
         </table>
-        <Page data={this.state.data}/>
+        <Page
+          data={this.state.data}
+          changepage={this.changepage}
+        />
       </div>
     )
   }
@@ -232,6 +246,46 @@ function getItem(data){
     checked:false
   },{
     id:2,
+    标题:'国哥',
+    封面:img2,
+    图片名称:'现代简约 白色 餐厅',
+    更新时间:'2017-8-15',
+    发布状态:'已发布',
+    操作:'jj',
+    动作:'审核',
+    checked:false
+  },{
+    id:3,
+    标题:'国哥',
+    封面:img2,
+    图片名称:'现代简约 白色 餐厅',
+    更新时间:'2017-8-15',
+    发布状态:'已发布',
+    操作:'jj',
+    动作:'审核',
+    checked:false
+  },{
+    id:4,
+    标题:'国哥',
+    封面:img2,
+    图片名称:'现代简约 白色 餐厅',
+    更新时间:'2017-8-15',
+    发布状态:'已发布',
+    操作:'jj',
+    动作:'审核',
+    checked:false
+  },{
+    id:5,
+    标题:'国哥',
+    封面:img2,
+    图片名称:'现代简约 白色 餐厅',
+    更新时间:'2017-8-15',
+    发布状态:'已发布',
+    操作:'jj',
+    动作:'审核',
+    checked:false
+  },{
+    id:6,
     标题:'国哥',
     封面:img2,
     图片名称:'现代简约 白色 餐厅',

@@ -63,6 +63,16 @@ class Addcontent extends Component{
       });
     }
   }
+  //上传图片
+  uplode = ()=>{
+    const ajax = new XMLHttpRequest;
+		ajax.open('post','./post_file.php');
+    const ff = this.file.files[0];
+    console.log(ff);
+		const formData = new FormData;
+		formData.append('file',ff);
+    ajax.send( formData );
+  }
   render(){
     return(
       <div className="addContent">

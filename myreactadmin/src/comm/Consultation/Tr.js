@@ -37,8 +37,9 @@ class Tr extends Component{
       </a>
     </td>
     }
-    console.log(this.props.内容);
-    let item = this.props.内容.slice(0, 11)+'...';
+    let item = this.props.内容.slice(0, 4)+'...';
+    let title = this.props.标题.slice(0,4)+'...';
+    let writer = this.props.作者.slice(0,3)+'...';
     return(
         <tr>
           <td
@@ -54,11 +55,11 @@ class Tr extends Component{
             onChange = {this.change}
            /></td>
           <td>{this.props.id}</td>
-          <td>{this.props.标题}</td>
+          <td title={this.props.标题}>{title}</td>
           <td>{this.props.item}</td>
           <td>{this.props.更新时间}</td>
-          <td>{this.props.作者}</td>
-          <td>{item}</td>
+          <td title={this.props.作者}>{writer}</td>
+          <td title={this.props.内容}>{item}</td>
           <td>{this.props.发布状态}</td>
           {h}
         </tr>

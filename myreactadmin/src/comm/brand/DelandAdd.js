@@ -22,11 +22,11 @@ class DelandAdd extends Component{
           className="first_child"
           onClick={this.alldel}
           ><Icon type="delete" />批量删除</button>
-        <Link to="/addimage">
+        <Link to="/addbrand">
           <button className="last_child"><Icon type="edit" />添加图片</button>
         </Link>
         <Switch>
-          <Route path="/addimage" render={()=>{
+          <Route path="/addbrand" render={()=>{
             return <Addcontent
               addText={this.props.addText}
               maxId={this.props.maxId}
