@@ -19,7 +19,6 @@ class DelandAdd extends Component{
   }
   alldel = ()=>{
     this.props.alldel();
-    this.props.openNotificationWithIcon1('success')
   }
   // alert = ()=>{
   //   this.props.openNotificationWithIcon('success');

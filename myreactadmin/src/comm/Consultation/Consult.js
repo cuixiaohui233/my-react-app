@@ -105,6 +105,7 @@ class Consult extends Component{
     this.setState({
       data:list
     })
+    openNotificationWithIcon1('success')
   }
   //检索
   changeView = (newView,id)=>{
@@ -180,7 +181,6 @@ class Consult extends Component{
         maxId:this.maxId,
         changeTime:this.changeTime,
         alldel:this.alldel,
-        openNotificationWithIcon1:openNotificationWithIcon1,
       }
       addanddel = <DelandAdd {...shuju}/>;
     }else{
