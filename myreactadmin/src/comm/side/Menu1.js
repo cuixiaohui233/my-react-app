@@ -23,7 +23,6 @@ class Menu1 extends Component{
           </SubMenu>
           <SubMenu key="sub4" title={<span><Icon type="notification" /><span>评论管理</span></span>}>
             <Menu.Item key="6"><Link to="/discuss">评论列表</Link></Menu.Item>
-            <Menu.Item key="7">意见反馈</Menu.Item>
           </SubMenu>
           <SubMenu key="sub5" title={<span><Icon type="usergroup-add" /><span>会员管理</span></span>}>
             <Menu.Item key="8">会员列表</Menu.Item>

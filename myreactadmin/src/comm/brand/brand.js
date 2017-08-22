@@ -243,16 +243,6 @@ function getItem(data){
     操作:'jj',
     动作:'审核',
     checked:false
-  },{
-    id:2,
-    标题:'ggg',
-    封面:img2,
-    图片名称:'现代简约 白色 餐厅',
-    更新时间:'2017-8-15',
-    发布状态:'已发布',
-    操作:'jj',
-    动作:'审核',
-    checked:false
   }]
 }
 export default Brand;

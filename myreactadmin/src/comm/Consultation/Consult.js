@@ -1,10 +1,20 @@
 import React,{Component} from 'react';
 import PickerSizesDemo from '../Data/Date';
+// import { Alert } from 'antd';
+import { Button, notification } from 'antd'
 import Tr from './Tr';
 import './table.css';
 import DelandAdd from './DelandAdd';
 import Page from '../page/page';
 import './consult.css'
+
+  const openNotificationWithIcon1 = (type) => {
+    console.log(type);
+      notification[type]({
+        message: '删除成功',
+        description: '成功删除数据',
+      });
+    };
 class Consult extends Component{
   constructor(){
     super();
@@ -17,7 +27,8 @@ class Consult extends Component{
       ],
       view:'all',
       info:[],
-      page:1
+      page:1,
+      // class:'active_none'
     }
   }
   componentDidMount(){
@@ -58,9 +69,14 @@ class Consult extends Component{
     let data1 = Object.assign(data);
     data1.push(newTxt);
     this.setState({
-      data:data1
+      data:data1,
+      // class:'alert_del'
     })
-    // console.log(this.maxId())
+    // setTimeout(()=>{
+    //   this.setState({
+    //     class:'active_none'
+    //   })
+    // },3000)
   }
   //最大id
   maxId = ()=>{
@@ -112,6 +128,7 @@ class Consult extends Component{
       page:newpage
     })
   }
+
   render(){
     let {data,title} = this.state;
     let data1 = Object.assign(data);
@@ -152,7 +169,7 @@ class Consult extends Component{
             delete:this.delete,
             change:this.change
           }
-          if(i>(this.state.page-1)*5-1 && i<=this.state.page*5-1){
+          if(i>(this.state.page-1)*3-1 && i<=this.state.page*3-1){
             return <Tr {...data} title={title}/>
           }
         });
@@ -162,7 +179,8 @@ class Consult extends Component{
         addText:this.addText,
         maxId:this.maxId,
         changeTime:this.changeTime,
-        alldel:this.alldel
+        alldel:this.alldel,
+        openNotificationWithIcon1:openNotificationWithIcon1,
       }
       addanddel = <DelandAdd {...shuju}/>;
     }else{
@@ -199,9 +217,11 @@ class Consult extends Component{
       });
       // addanddel = <div>欢迎光临</div>
     }
+    // <Alert message="Success Tips" type="success" showIcon className={this.state.class}/>
+
     return (
       <div className="consult">
-        <PickerSizesDemo
+      <PickerSizesDemo
           changeView={this.changeView}
           view={this.state.view}
           data={this.state.data}

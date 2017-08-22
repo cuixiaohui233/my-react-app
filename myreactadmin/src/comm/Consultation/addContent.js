@@ -1,10 +1,16 @@
 import React,{Component} from 'react';
 import './addContent.css';
-import { Icon }from 'antd';
+import { Icon,Button, notification }from 'antd';
 import Consult from './Consult';
 import {BrowserRouter as Router,Route,Link,Redirect} from 'react-router-dom';
 import Nologin from './no_login';
-
+const openNotificationWithIcon = (type) => {
+  console.log(type);
+    notification[type]({
+      message: '添加成功',
+      description: '成功添加一条数据',
+    });
+  };
 class Addcontent extends Component{
   constructor(){
     super();
@@ -50,6 +56,7 @@ class Addcontent extends Component{
         更新时间:this.props.changeTime(),
         内容:this.state.textarea
       });
+      openNotificationWithIcon('success');
     }
     this.setState({
       bool:true

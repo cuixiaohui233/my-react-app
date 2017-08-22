@@ -19,7 +19,11 @@ class DelandAdd extends Component{
   }
   alldel = ()=>{
     this.props.alldel();
+    this.props.openNotificationWithIcon1('success')
   }
+  // alert = ()=>{
+  //   this.props.openNotificationWithIcon('success');
+  // }
   render(){
     return (
       <Router>
@@ -29,14 +33,19 @@ class DelandAdd extends Component{
           onClick={this.alldel}
           ><Icon type="delete" />批量删除</button>
         <Link to="/addcontent">
-          <button className="last_child"><Icon type="edit" />添加咨询</button>
+          <button
+            className="last_child"
+            ><Icon type="edit" />添加咨询</button>
         </Link>
         <Switch>
           <Route path="/addcontent" render={()=>{
+            let data = {
+              addText:this.props.addText,
+              maxId:this.props.maxId,
+              changeTime:this.props.changeTime,
+            }
             return <Addcontent
-              addText={this.props.addText}
-              maxId={this.props.maxId}
-              changeTime={this.props.changeTime}
+              {...data}
              />
           }}/>
         </Switch>
