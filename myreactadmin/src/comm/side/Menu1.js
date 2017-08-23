@@ -39,7 +39,7 @@ class Menu1 extends Component{
             <Menu.Item key="17">管理员列表</Menu.Item>
           </SubMenu>
           <SubMenu key="sub7" title={<span><Icon type="hdd" /><span>系统统计</span></span>}>
-            <Menu.Item key="18">折线图</Menu.Item>
+            <Menu.Item key="18"><Link to="/linechart">折线图</Link></Menu.Item>
             <Menu.Item key="19">时间轴折线图</Menu.Item>
             <Menu.Item key="20">区域图</Menu.Item>
             <Menu.Item key="21">柱状图</Menu.Item>

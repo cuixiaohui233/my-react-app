@@ -24,10 +24,24 @@ class PickerSizesDemo1 extends Component {
   click = (ev)=>{
     let data1 = Object.assign(this.props.data);
     data1 = data1.filter((e,i)=>{
-      return e.封面 === this.state.val;
+      if(e.标题.includes(this.state.val)){
+        return e;
+      }
     })
-    // console.log(data1);
+    console.log(data1);
     this.props.changeView(data1,ev.target.id);
+  }
+  keyupchange = (ev)=>{
+    if(ev.keyCode === 13){
+      let data1 = Object.assign(this.props.data);
+      data1 = data1.filter((e,i)=>{
+        if(e.标题.includes(this.state.val)){
+          return e;
+        }
+      })
+      console.log(ev.target.id);
+      this.props.changeView(data1,ev.target.id);
+    }
   }
   render() {
     const { size } = this.state;

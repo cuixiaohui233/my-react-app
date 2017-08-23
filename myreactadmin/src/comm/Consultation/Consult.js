@@ -9,12 +9,19 @@ import Page from '../page/page';
 import './consult.css'
 
   const openNotificationWithIcon1 = (type) => {
-    console.log(type);
+    // console.log(type);
       notification[type]({
         message: '删除成功',
         description: '成功删除数据',
       });
     };
+    const openNotificationWithIcon2 = (type) => {
+      // console.log(type);
+        notification[type]({
+          message: '修改成功',
+          description: '成功修改数据',
+        });
+      };
 class Consult extends Component{
   constructor(){
     super();
@@ -64,7 +71,6 @@ class Consult extends Component{
   }
   //添加数据
   addText= (newTxt) =>{
-    // console.log(newTxt)
     let {data} = this.state;
     let data1 = Object.assign(data);
     data1.push(newTxt);
@@ -72,11 +78,25 @@ class Consult extends Component{
       data:data1,
       // class:'alert_del'
     })
-    // setTimeout(()=>{
-    //   this.setState({
-    //     class:'active_none'
-    //   })
-    // },3000)
+  }
+  //修改数据
+  changedata = (newData)=>{
+    // console.log(newData);
+    let {data} = this.state;
+    let data1 = Object.assign(data);
+    data1.map((e,i)=>{
+      if(e.id === newData.id){
+        e.分类 = newData.分类
+        e.标题 = newData.标题
+        e.作者 = newData.作者
+        e.内容 = newData.内容
+      }      
+    })
+    console.log(data1);
+    this.setState({
+      data:data1
+    })
+    openNotificationWithIcon2('success');
   }
   //最大id
   maxId = ()=>{
@@ -168,7 +188,8 @@ class Consult extends Component{
             key:(i+new Date),
             checked:e.checked,
             delete:this.delete,
-            change:this.change
+            change:this.change,
+            changedata:this.changedata
           }
           if(i>(this.state.page-1)*3-1 && i<=this.state.page*3-1){
             return <Tr {...data} title={title}/>

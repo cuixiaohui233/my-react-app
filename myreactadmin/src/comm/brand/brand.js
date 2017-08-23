@@ -1,15 +1,29 @@
 import React,{Component} from 'react';
-import PickerSizesDemo1 from '../Data/Dateimage';
+import PickerSizesDemo2 from '../Data/Datebrand';
 import DelandAdd from './DelandAdd';
 import Tr from './Tr';
 import '../table/table.css';
 import Page from '../page/page';
+import { Button, notification } from 'antd'
 
 let img1 = require('../img/img1.jpg');
 let img2 = require('../img/img2.gif');
 let img3 = require('../img/img3.jpg');
 let img4 = require('../img/img4.png');
-
+const openNotificationWithIcon1 = (type) => {
+  // console.log(type);
+    notification[type]({
+      message: '删除成功',
+      description: '成功删除数据',
+    });
+  };
+  const openNotificationWithIcon2 = (type) => {
+    // console.log(type);
+      notification[type]({
+        message: '修改成功',
+        description: '成功修改数据',
+      });
+    };
 class Brand extends Component{
   constructor(){
     super();
@@ -117,6 +131,23 @@ class Brand extends Component{
       page:newpage
     })
   }
+  //修改数据
+  changedata = (newData)=>{
+    // console.log(newData);
+    let {data} = this.state;
+    let data1 = Object.assign(data);
+    data1.map((e,i)=>{
+      e.分类 = newData.分类
+      e.标题 = newData.标题
+      e.作者 = newData.作者
+      e.内容 = newData.内容
+    })
+    console.log(data1);
+    this.setState({
+      data:data1
+    })
+    openNotificationWithIcon2('success');
+  }
   render(){
     let {data,title} = this.state;
     let data1 = Object.assign(data);
@@ -148,7 +179,8 @@ class Brand extends Component{
             key:i+new Date,
             checked:e.checked,
             delete:this.delete,
-            change:this.change
+            change:this.change,
+            changedata:this.changedata
           }
           if(i>(this.state.page-1)*3-1 && i<=this.state.page*3-1){
             return <Tr {...data} title={title}/>
@@ -208,7 +240,7 @@ class Brand extends Component{
 
     return(
       <div>
-        <PickerSizesDemo1
+        <PickerSizesDemo2
           changeView={this.changeView}
           view={this.state.view}
           data={this.state.data}
@@ -237,7 +269,17 @@ function getItem(data){
     id:1,
     标题:'东鹏特饮',
     封面:img1,
-    图片名称:'现代简约 白色 餐厅',
+    图片名称:'超级好喝',
+    更新时间:'2017-8-15',
+    发布状态:'已发布',
+    操作:'jj',
+    动作:'审核',
+    checked:false
+  },{
+    id:2,
+    标题:'酸梅汤',
+    封面:img3,
+    图片名称:'超级好喝',
     更新时间:'2017-8-15',
     发布状态:'已发布',
     操作:'jj',

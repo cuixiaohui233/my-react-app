@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import PickerSizesDemo1 from '../Data/Dateimage';
+import PickerSizesDemo2 from '../Data/Datebrand';
 import DelandAdd from './DelandAdd';
 import Tr from './Tr';
 import '../table/table.css';
@@ -14,7 +14,7 @@ class Discuss extends Component{
   constructor(){
     super();
     this.state = {
-      title:['','id','评论内容','LOGO','具体描述','更新时间','发布状态','操作'],
+      title:['','id','评论内容','更新时间','操作'],
       data:[],
       power:[
         {name:'admin',type:'admin'},
@@ -55,35 +55,6 @@ class Discuss extends Component{
     this.setState({
       data:data1
     })
-  }
-  //添加数据
-  addText= (newTxt) =>{
-    console.log(newTxt)
-    let {data} = this.state;
-    let data1 = Object.assign(data);
-    data1.push(newTxt);
-    this.setState({
-      data:data1
-    })
-    // console.log(this.maxId())
-  }
-  //最大id
-  maxId = ()=>{
-    let {data} = this.state;
-    let data1 = Object.assign(data);
-    let num = 0;
-    data1.map((e,i)=>{
-      if(e.id > num){
-        num = e.id;
-      }
-    })
-    return num+1;
-  }
-  //更新时间
-  changeTime = ()=>{
-    let date = new Date();
-    let date1 = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
-    return date1;
   }
   //批量删除
   alldel = ()=>{
@@ -164,7 +135,6 @@ class Discuss extends Component{
         alldel:this.alldel
       }
       addanddel = <DelandAdd {...shuju}/>;
-
       // let {title} = this.props.data;
       let title1 = Object.assign(title);
       item = title1.map((e,i)=>{
@@ -208,12 +178,12 @@ class Discuss extends Component{
 
     return(
       <div>
-        <PickerSizesDemo1
+        <PickerSizesDemo2
           changeView={this.changeView}
           view={this.state.view}
           data={this.state.data}
          />
-        {addanddel}
+         {addanddel}
         <table>
           <thead>
             <tr>
@@ -236,7 +206,14 @@ function getItem(data){
   return JSON.parse(localStorage.getItem(data)) || [{
     id:1,
     标题:'办的真不错！',
-    封面:img4,
+    更新时间:'2017-8-15',
+    发布状态:'已发布',
+    checked:false
+  },
+  {
+    id:2,
+    标题:'简直太喜欢啦！',
+    封面:img2,
     图片名称:'现代简约 白色 餐厅',
     更新时间:'2017-8-15',
     发布状态:'已发布',

@@ -1,6 +1,12 @@
 import React,{Component} from 'react';
+import Changecontent from './changeval';
 import './tr.css';
-
+import {BrowserRouter as Router,
+  Route,
+  Link,
+  // Redirect,
+  Switch
+} from 'react-router-dom';
 class Tr extends Component{
   constructor(){
     super();
@@ -17,29 +23,42 @@ class Tr extends Component{
   change = (ev) =>{
     this.props.change(this.props.id)
   }
-  //修改内容
-  changeitem = () =>{
-
-  }
   //批量删除
   alldel = ()=>{
     this.props.alldel();
   }
   render(){
+    let data = {
+      id:this.props.id,
+      item:this.props.item,
+      标题:this.props.标题,
+      作者:this.props.作者,
+      更新时间:this.props.更新时间,
+      内容:this.props.内容,
+      发布状态:this.props.发布状态,
+      动作:this.props.动作,
+      checked:this.props.checked,
+      changedata:this.props.changedata,
+    }
     let h = null;
     if(this.props.动作){
       h = <td><a href="javascript:;"
         onClick = {this.click1}
-      >{this.props.动作}</a><a href="javascript:;"
-        onClick = {this.changeVal}
-      >修改</a>
+      >{this.props.动作}</a><span>
+        <Link to="/changeval">修改</Link></span>
       <a href="javascript:;"
         onClick = {this.delVal}
         >删除
       </a>
+      <Switch>
+        <Route path="/changeval" render={()=>{
+          return <Changecontent {...data}/>
+        }}/>
+      </Switch>
     </td>
     }
     return(
+      <Router>
         <tr>
           <td><input type="checkbox"
             checked={this.props.checked}
@@ -53,6 +72,7 @@ class Tr extends Component{
           <td>{this.props.发布状态}</td>
           {h}
         </tr>
+      </Router>
     )
   }
 }

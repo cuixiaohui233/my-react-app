@@ -67,6 +67,7 @@ from{
   position: absolute;
   /*float: left;*/
   top:0;
+  left:0;
 }
 .textarea{
   display: inline-block;

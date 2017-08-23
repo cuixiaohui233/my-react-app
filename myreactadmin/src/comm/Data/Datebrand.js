@@ -4,7 +4,7 @@ import { Input } from 'antd';
 import './Date.css'
 // const { MonthPicker, RangePicker } = DatePicker;
 
-class PickerSizesDemo extends Component {
+class PickerSizesDemo2 extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -28,6 +28,7 @@ class PickerSizesDemo extends Component {
         return e;
       }
     })
+    console.log(data1);
     this.props.changeView(data1,ev.target.id);
   }
   keyupchange = (ev)=>{
@@ -60,9 +61,7 @@ class PickerSizesDemo extends Component {
           size={size}
           value={this.state.val}
           onChange={this.handleNumberChange}
-          onKeyUp={this.keyupchange}
           className="input-ziji"
-          id="keyup"
         />
         <button
           id="search"
@@ -78,4 +77,4 @@ class PickerSizesDemo extends Component {
     );
   }
 }
-export default PickerSizesDemo
+export default PickerSizesDemo2;

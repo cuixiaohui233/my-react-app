@@ -15,7 +15,7 @@ from{
   height:100%;
   background:#fff;
   position: absolute;
-  z-index: 99999;
+  /*z-index: 99999;*/
   left:0;
   top:0;
 }
@@ -67,6 +67,7 @@ from{
   position: absolute;
   /*float: left;*/
   top:0;
+  left:0;
 }
 .textarea{
   display: inline-block;
@@ -122,22 +123,4 @@ from i{
   width:200px;
   height:500px;
   background: red;
-}
-.avatar-uploader,
-.avatar-uploader-trigger,
-.avatar {
-  width: 150px;
-  height: 150px;
-}
-.avatar-uploader {
-  display: block;
-  border: 1px dashed #d9d9d9;
-  border-radius: 6px;
-  cursor: pointer;
-}
-.avatar-uploader-trigger {
-  display: table-cell;
-  vertical-align: middle;
-  font-size: 28px;
-  color: #999;
 }

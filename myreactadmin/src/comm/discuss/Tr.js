@@ -28,11 +28,7 @@ class Tr extends Component{
   render(){
     let h = null;
     if(this.props.动作){
-      h = <td><a href="javascript:;"
-        onClick = {this.click1}
-      >{this.props.动作}</a><a href="javascript:;"
-        onClick = {this.changeVal}
-      >修改</a>
+      h = <td>
       <a href="javascript:;"
         onClick = {this.delVal}
         >删除
@@ -47,10 +43,7 @@ class Tr extends Component{
           /></td>
           <td>{this.props.id}</td>
           <td>{this.props.标题}</td>
-          <td className="img_tr"><img src={this.props.封面} className="imgW"/></td>
-          <td>{this.props.图片名称}</td>
           <td>{this.props.更新时间}</td>
-          <td>{this.props.发布状态}</td>
           {h}
         </tr>
     )

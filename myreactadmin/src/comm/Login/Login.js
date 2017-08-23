@@ -7,7 +7,8 @@ import {
 
 } from 'react-router-dom';
 import './Login.css';
-import Error from '../Consultation/error'
+import Error from '../Consultation/error';
+import Add from '../add/add';
 // const FormItem = Form.Item;
 
 
@@ -68,6 +69,13 @@ class NormalLoginForm extends Component {
         />
         </p>
         {login}
+      <Link to="/add">
+        <button
+          className="add"
+          onClick={this.click}
+          >立即注册
+        </button>
+      </Link>
       </form>
       <Switch>
         <Route  path="/app" render = {()=>{
@@ -75,6 +83,9 @@ class NormalLoginForm extends Component {
         }} />
         <Route  path="/error" render = {()=>{
           return <Error />
+        }} />
+        <Route  path="/add" render = {()=>{
+          return <Add />
         }} />
     </Switch>
     </div>
