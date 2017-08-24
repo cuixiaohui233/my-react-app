@@ -11,11 +11,18 @@ class Menu1 extends Component{
     return(
       <div>
         <Menu className="side-div" mode="vertical">
-          <SubMenu key="sub1" title={<span><Icon type="mail" /><span>咨询管理</span></span>}>
-            <Menu.Item key="1"><Link to="/content">咨询管理</Link></Menu.Item>
+          <SubMenu key="sub1" title={
+            <span>
+              <Icon type="mail" />
+              <span><Link to="/content">文章管理</Link></span>
+            </span>}>
           </SubMenu>
-          <SubMenu key="sub2" title={<span><Icon type="appstore" /><span>图片管理</span></span>}>
-            <Menu.Item key="2"><Link to="/image">图片管理</Link></Menu.Item>
+          <SubMenu key="sub2" title={
+            <span>
+              <Icon type="appstore" />
+              <span><Link to="/image">图片管理</Link></span>
+            </span>
+          }>
           </SubMenu>
           <SubMenu key="sub3" title={<span><Icon type="desktop" /><span>产品管理</span></span>}>
             <Menu.Item key="3"><Link to="/brand">品牌管理</Link></Menu.Item>

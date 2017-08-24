@@ -90,7 +90,7 @@ class Consult extends Component{
         e.标题 = newData.标题
         e.作者 = newData.作者
         e.内容 = newData.内容
-      }      
+      }
     })
     console.log(data1);
     this.setState({
