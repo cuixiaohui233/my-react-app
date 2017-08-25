@@ -3,8 +3,8 @@ import { Form, Icon } from 'antd';import App from '../../App';
 import {
   Route,
   Link,
-  Switch
-
+  Switch,
+  Redirect,
 } from 'react-router-dom';
 import './Login.css';
 import Error from '../Consultation/error';
@@ -19,7 +19,21 @@ class NormalLoginForm extends Component {
     this.state={
       val:'',
       val1:'',
-      class:'login-form'
+      class:'login-form',
+      arr:[
+        {
+        id:1,
+        username:'aaa',
+        password:'aaa',
+        bool:true,
+        states:'admin',
+        sex:'女',
+        phone:'12312312334',
+        email:'',
+        address:'',
+        checked:false,
+      }
+      ]
     }
   }
   change1 = (ev)=>{
@@ -32,17 +46,17 @@ class NormalLoginForm extends Component {
       val1:ev.target.value
     })
   }
-  click = ()=>{
-    this.setState({
-      class:'form_none login-form'
-    })
-  }
+  // click = ()=>{
+  //   this.setState({
+  //     class:'form_none login-form'
+  //   })
+  // }
   render() {
     let login = null;
     if(this.state.val && this.state.val1){
-      login = <Link exact to="/app"><button
-        onClick={this.click}
-        >登录</button></Link>
+        login = <Link to="/app"><button
+          onClick={this.click}
+          >登录</button></Link>
     }else{
       login = <Link to="/error"><button>登录</button></Link>
     }
@@ -79,7 +93,23 @@ class NormalLoginForm extends Component {
       </form>
       <Switch>
         <Route  path="/app" render = {()=>{
-          return <App power={this.state.val}/>
+        let arr2 = JSON.parse(localStorage.getItem('users')) || this.state.arr;
+        let arr = arr2.find(e=>e.username === this.state.val);
+        // console.log(arr,this.state.val1);
+          if(arr2.find(e=>e.username === this.state.val)){
+            // console.log(arr.password,this.state.val1);
+            if(arr.password+'' === this.state.val1){
+              if(arr.bool){
+                  return <App power={arr.states}/>
+              }
+            }else{
+              alert('密码错误');
+              return <Redirect to="/" />
+            }
+          }else{
+            alert('对不起没有此用户');
+            return <Redirect to="/" />
+          }
         }} />
         <Route  path="/error" render = {()=>{
           return <Error />

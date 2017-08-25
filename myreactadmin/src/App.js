@@ -24,6 +24,9 @@ import Product from './comm/product/product';
 //评论管理
 import Discuss from './comm/discuss/discuss';
 
+//会员列表
+import Member from './comm/member/member';
+
 //折线图
 import EchartsTest from './comm/echarts/lineChart/line';
 
@@ -54,6 +57,9 @@ class App extends Component {
             }} />
             <Route path="/linechart" render={()=>{
               return <EchartsTest power={this.props.power} />
+            }} />
+            <Route path="/member" render={()=>{
+              return <Member power={this.props.power} />
             }} />
           </Switch>
         </div>

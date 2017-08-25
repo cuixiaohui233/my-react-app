@@ -166,6 +166,7 @@ class Consult extends Component{
         filterview = this.state.data
         break;
     }
+    // console.log(this.props.power)
     if(this.props.power === 'admin'){
       item = title1.map((e,i)=>{
         let data = {

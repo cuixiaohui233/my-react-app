@@ -32,7 +32,7 @@ class Menu1 extends Component{
             <Menu.Item key="6"><Link to="/discuss">评论列表</Link></Menu.Item>
           </SubMenu>
           <SubMenu key="sub5" title={<span><Icon type="usergroup-add" /><span>会员管理</span></span>}>
-            <Menu.Item key="8">会员列表</Menu.Item>
+            <Menu.Item key="8"><Link to="/member">会员列表</Link></Menu.Item>
             <Menu.Item key="9">删除的会员</Menu.Item>
             <Menu.Item key="10">等级管理</Menu.Item>
             <Menu.Item key="11">积分管理</Menu.Item>
