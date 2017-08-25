@@ -40,7 +40,7 @@ class NormalLoginForm extends Component {
   render() {
     let login = null;
     if(this.state.val && this.state.val1){
-      login = <Link to="/app"><button
+      login = <Link exact to="/app"><button
         onClick={this.click}
         >登录</button></Link>
     }else{

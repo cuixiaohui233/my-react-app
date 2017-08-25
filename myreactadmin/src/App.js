@@ -35,6 +35,7 @@ class App extends Component {
           <Header />
           <Menu1 />
           <Nav />
+          <div className="none">欢迎</div>
           <Switch>
             <Route path="/image" render={()=>{
               return <Image power={this.props.power}/>
