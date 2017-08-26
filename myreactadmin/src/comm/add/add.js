@@ -77,7 +77,16 @@ class Add extends Component{
     if(arr2.find(e => e.username === this.state.name)){
       alert('换个名字吧！');
     }else{
-      arr1.push({username:this.state.name,password:this.state.pass,bool:true,states:'member'});
+      arr1.push({
+          username:this.state.name,
+          password:this.state.pass,
+          sex:this.state.sex,
+          phone:this.state.phone,
+          email:this.state.email,
+          address:this.state.address,
+          checked:false,
+          bool:true,
+          states:'member'});
       localStorage.setItem('users',JSON.stringify(arr1));
     }
   }
@@ -89,7 +98,16 @@ class Add extends Component{
     if(arr2.find(e => e.username === this.state.name)){
       alert('换个名字吧！');
     }else{
-      arr1.push({username:this.state.name,password:this.state.pass,bool:true,states:'admin'});
+      arr1.push({
+        username:this.state.name,
+        password:this.state.pass,
+        sex:this.state.sex,
+        phone:this.state.phone,
+        email:this.state.email,
+        address:this.state.address,
+        checked:false,
+        bool:true,
+        states:'admin'});
       localStorage.setItem('users',JSON.stringify(arr1));
     }
   }
@@ -110,6 +128,38 @@ class Add extends Component{
             type="password"
             onChange={this.changepass}
             value={this.state.pass}
+          />
+        </p>
+        <p className="title_short" >
+          <span>性别：</span>
+          <input
+            type="text"
+            onChange={this.changesex}
+            value={this.state.sex}
+          />
+        </p>
+        <p className="title_short" >
+          <span>联系电话：</span>
+          <input
+            type="text"
+            onChange={this.changephone}
+            value={this.state.phone}
+          />
+        </p>
+        <p className="title_short" >
+          <span>电子邮件：</span>
+          <input
+            type="text"
+            onChange={this.changeemail}
+            value={this.state.email}
+          />
+        </p>
+        <p className="title_short" >
+          <span>地址：</span>
+          <input
+            type="text"
+            onChange={this.changeaddress}
+            value={this.state.address}
           />
         </p>
         <button

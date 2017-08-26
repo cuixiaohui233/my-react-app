@@ -62,7 +62,7 @@ class Tr extends Component{
     return(
       <Router>
         <tr>
-           <td>{this.props.checked}</td>
+           <td><input type="checkbox" checked={this.props.checked} /></td>
            <td>{this.props.id}</td>
            <td>{this.props.姓名}</td>
            <td>{this.props.sex}</td>

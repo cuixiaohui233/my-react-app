@@ -30,7 +30,6 @@ class Member extends Component{
     let data1 = Object.assign(data);
     let item = null;
     let list = null;
-    console.log(data,title);
     if(this.props.power === 'admin'){
       //表头
       item = title1.map((e,i)=>{
@@ -47,8 +46,36 @@ class Member extends Component{
           联系电话:e.phone,
           电子邮件:e.email,
           地址:e.address,
-          身份:e.bool,
-          操作:e.states,
+          身份:e.states,
+          操作:e.bool,
+          key:(i+new Date),
+          checked:e.checked
+        }
+        return <Tr {...data} title={title}/>
+      });
+    }else{
+      //表头
+      title1.map((e,i)=>{
+        if(e === '操作'){
+          title1.splice(i,1);
+        }
+      })
+      item = title1.map((e,i)=>{
+        let data = {
+          key:i
+        }
+        return <th {...data}>{e}</th>
+      })
+      list = data1.map((e,i)=>{
+        let data = {
+          id:e.id,
+          姓名:e.username,
+          性别:e.sex,
+          联系电话:e.phone,
+          电子邮件:e.email,
+          地址:e.address,
+          身份:e.states,
+          操作:e.bool,
           key:(i+new Date),
           checked:e.checked
         }

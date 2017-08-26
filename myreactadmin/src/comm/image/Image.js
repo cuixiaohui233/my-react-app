@@ -4,7 +4,8 @@ import DelandAdd from './DelandAdd';
 import Tr from '../image/Tr';
 import '../table/table.css';
 import Page from '../page/page';
-import { Button, notification } from 'antd'
+import { Button, notification } from 'antd';
+import $ from 'jquery';
 
 let img1 = require('../img/img1.jpg');
 let img2 = require('../img/img2.gif');
@@ -45,6 +46,30 @@ class Image extends Component{
     this.setState({
       data:getItem('image')
     });
+    // let that = this;
+    // $.ajax({
+          //文章：https://api.douban.com/v2/note/633196260
+          // 632385296,634702061,633983893,634075881
+    //   // 1650813162,1650417319,1623545509,109319721,65512298,73998172
+    //   url:'https://api.douban.com/v2/album/74539453/photos?callback=?',
+    //   dataType:'jsonp',
+    //   success:function(jsonp){
+    //     console.log(jsonp);
+    //     that.setState({
+    //       data:[{
+    //         id:1,
+    //         标题:'data',
+    //         封面:img2,
+    //         图片名称:'现代简约 白色 餐厅',
+    //         更新时间:'2017-8-15',
+    //         发布状态:'已发布',
+    //         操作:'jj',
+    //         动作:'审核',
+    //         checked:false
+    //       }]
+    //     });
+    //   }
+    // })
   }
   delete = (newID)=>{
     // console.log(newID)
