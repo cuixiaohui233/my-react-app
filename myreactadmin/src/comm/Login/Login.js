@@ -46,11 +46,11 @@ class NormalLoginForm extends Component {
       val1:ev.target.value
     })
   }
-  // click = ()=>{
-  //   this.setState({
-  //     class:'form_none login-form'
-  //   })
-  // }
+  click = ()=>{
+    this.setState({
+      class:'form_none login-form'
+    })
+  }
   render() {
     let login = null;
     if(this.state.val && this.state.val1){
@@ -92,7 +92,7 @@ class NormalLoginForm extends Component {
       </Link>
       </form>
       <Switch>
-        <Route  path="/app" render = {()=>{
+        <Route exact path="/app" render = {()=>{
         let arr2 = JSON.parse(localStorage.getItem('users')) || this.state.arr;
         let arr = arr2.find(e=>e.username === this.state.val);
         // console.log(arr,this.state.val1);

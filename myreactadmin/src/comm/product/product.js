@@ -5,16 +5,16 @@ import Tr from './Tr';
 import '../table/table.css';
 import Page from '../page/page';
 
-let img1 = require('../img/img1.jpg');
-let img2 = require('../img/img2.gif');
-let img3 = require('../img/img3.jpg');
-let img4 = require('../img/img4.png');
+let img1 = require('../img/1.webp');
+let img2 = require('../img/2.webp');
+let img3 = require('../img/3.webp');
+let img4 = require('../img/4.webp');
 
 class Product extends Component{
   constructor(){
     super();
     this.state = {
-      title:['','id','品牌名称','LOGO','具体描述','更新时间','发布状态','操作'],
+      title:['','id','产品名称','LOGO','具体描述','价格','发布状态','操作'],
       data:[],
       power:[
         {name:'admin',type:'admin'},
@@ -235,20 +235,66 @@ class Product extends Component{
 function getItem(data){
   return JSON.parse(localStorage.getItem(data)) || [{
     id:1,
-    标题:'热风',
-    封面:img1,
-    图片名称:'现代简约 白色 餐厅',
-    更新时间:'2017-8-15',
+    标题:'悦诗风吟',
+    封面:'https://img1.doubanio.com/view/dianpu_product_item/large/public/p1974318.jpg',
+    图片名称:'innisfree 悦诗风吟 绿茶籽精萃水分菁露 80ml/瓶',
+    href:'https://market.douban.com/item/207844/?r=5&index=1&category=index',
+    更新时间:'139.00',
     发布状态:'已发布',
     操作:'jj',
     动作:'审核',
     checked:false
   },{
     id:2,
-    标题:'啥啥',
-    封面:img2,
-    图片名称:'现代简约 白色 餐厅',
-    更新时间:'2017-8-15',
+    标题:'ERICD',
+    封面:'https://img3.doubanio.com/view/dianpu_product_item/large/public/p1964580.jpg',
+    图片名称:'ERICD2017新版型新面料爆款T恤99元3件装',
+    更新时间:'99.00',
+    href:'https://market.douban.com/item/204712/?r=5&index=2&category=index',
+    发布状态:'已发布',
+    操作:'jj',
+    动作:'审核',
+    checked:false
+  },{
+    id:3,
+    标题:'hanalice',
+    封面:'https://img1.doubanio.com/view/dianpu_product_item/large/public/p1985219.jpg',
+    图片名称:'hanalice彩虹糖系列蝴蝶芭蕾平底鞋（十五色）',
+    更新时间:'139.00',
+    href:'https://market.douban.com/item/213750/?r=5&index=3&category=index',
+    发布状态:'已发布',
+    操作:'jj',
+    动作:'审核',
+    checked:false
+  },{
+    id:4,
+    标题:'觅潮记',
+    封面:'https://img1.doubanio.com/view/dianpu_product_item/large/public/p1985709.jpg',
+    图片名称:'潮汕中秋月饼朥饼',
+    更新时间:'139.00',
+    href:'https://market.douban.com/item/213933/?r=5&index=4&category=index',
+    发布状态:'已发布',
+    操作:'jj',
+    动作:'审核',
+    checked:false
+  },{
+    id:5,
+    标题:'macbook',
+    封面:'https://img3.doubanio.com/view/dianpu_product_item/large/public/p1971660.jpg',
+    图片名称:'macbook支架',
+    更新时间:'149.00',
+    href:'https://market.douban.com/item/90190/?r=5&index=6&category=index',
+    发布状态:'已发布',
+    操作:'jj',
+    动作:'审核',
+    checked:false
+  },{
+    id:6,
+    标题:'小巨蛋',
+    封面:'https://img1.doubanio.com/view/dianpu_product_item/large/public/p449949.jpg',
+    图片名称:'小巨蛋T1便携式茶具礼品套装砂岩釉茶盒版（极客黑）',
+    更新时间:'139.00',
+    href:'https://market.douban.com/item/90190/?r=5&index=6&category=index',
     发布状态:'已发布',
     操作:'jj',
     动作:'审核',

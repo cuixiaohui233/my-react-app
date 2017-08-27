@@ -7,10 +7,14 @@ import Page from '../page/page';
 import { Button, notification } from 'antd';
 import $ from 'jquery';
 
-let img1 = require('../img/img1.jpg');
-let img2 = require('../img/img2.gif');
-let img3 = require('../img/img3.jpg');
-let img4 = require('../img/img4.png');
+let img1 = require('../img/1.webp');
+let img2 = require('../img/2.webp');
+let img3 = require('../img/3.webp');
+let img4 = require('../img/4.webp');
+let img5 = require('../img/5.webp');
+let img6 = require('../img/6.webp');
+let img7 = require('../img/7.webp');
+let img8 = require('../img/8.webp');
 
 const openNotificationWithIcon1 = (type) => {
   // console.log(type);
@@ -291,67 +295,92 @@ class Image extends Component{
     )
   }
 }
+// {
+//   id:1,
+//   标题:'戳爷',
+//   封面:img1,
+//   图片名称:'现代简约 白色 餐厅',
+//   更新时间:'2017-8-15',
+//   发布状态:'已发布',
+//   操作:'jj',
+//   动作:'审核',
+//   checked:false
+// }
 function getItem(data){
-  return JSON.parse(localStorage.getItem(data)) || [{
-    id:1,
-    标题:'戳爷',
-    封面:img1,
-    图片名称:'现代简约 白色 餐厅',
-    更新时间:'2017-8-15',
-    发布状态:'已发布',
-    操作:'jj',
-    动作:'审核',
-    checked:false
-  },{
-    id:2,
-    标题:'国哥',
-    封面:img2,
-    图片名称:'现代简约 白色 餐厅',
-    更新时间:'2017-8-15',
-    发布状态:'已发布',
-    操作:'jj',
-    动作:'审核',
-    checked:false
-  },{
-    id:3,
-    标题:'国哥',
-    封面:img2,
-    图片名称:'现代简约 白色 餐厅',
-    更新时间:'2017-8-15',
-    发布状态:'已发布',
-    操作:'jj',
-    动作:'审核',
-    checked:false
-  },{
-    id:4,
-    标题:'国哥',
-    封面:img2,
-    图片名称:'现代简约 白色 餐厅',
-    更新时间:'2017-8-15',
-    发布状态:'已发布',
-    操作:'jj',
-    动作:'审核',
-    checked:false
-  },{
-    id:5,
-    标题:'国哥',
-    封面:img2,
-    图片名称:'现代简约 白色 餐厅',
-    更新时间:'2017-8-15',
-    发布状态:'已发布',
-    操作:'jj',
-    动作:'审核',
-    checked:false
-  },{
-    id:6,
-    标题:'国哥',
-    封面:img2,
-    图片名称:'现代简约 白色 餐厅',
-    更新时间:'2017-8-15',
-    发布状态:'已发布',
-    操作:'jj',
-    动作:'审核',
-    checked:false
-  }]
+  return JSON.parse(localStorage.getItem(data)) || [
+    {
+      标题:'没有青海湖和茶卡的青海',
+      id:1651058003,
+      封面:'https://img3.doubanio.com/view/photo/albumcover/public/p2496090164.webp',
+      更新时间:'2017-8-15',
+      发布状态:'已发布',
+      操作:'jj',
+      动作:'审核',
+      checked:false
+    },{
+      标题:'「人们」',
+      id:1638051845,
+      封面:'https://img3.doubanio.com/view/photo/albumcover/public/p2495967745.webp',
+      更新时间:'2017-8-15',
+      发布状态:'已发布',
+      操作:'jj',
+      动作:'审核',
+      checked:false
+    },{
+     标题:'湿湿的梦',
+     id:1651158281,
+     封面:'https://img3.doubanio.com/view/photo/albumcover/public/p2496300741.webp',
+     更新时间:'2017-8-15',
+     发布状态:'已发布',
+     操作:'jj',
+     动作:'审核',
+     checked:false
+    },{
+      标题:'即时乐树',
+      id:1647018236,
+      封面:'https://img1.doubanio.com/view/photo/albumcover/public/p2458889137.webp',
+      更新时间:'2017-8-15',
+      发布状态:'已发布',
+      操作:'jj',
+      动作:'审核',
+      checked:false
+    },{
+      标题:'在商业社会做个堂堂正正的废物会死吗？',
+      id:1651117401,
+      封面:'https://img3.doubanio.com/view/photo/albumcover/public/p2496206512.webp',
+      更新时间:'2017-8-15',
+      发布状态:'已发布',
+      操作:'jj',
+      动作:'审核',
+      checked:false
+    },{
+      标题:'萨尔兹卡默古特',
+      id:1649846355,
+      封面:'https://img3.doubanio.com/view/photo/albumcover/public/p2493323083.webp',
+      更新时间:'2017-8-15',
+      发布状态:'已发布',
+      操作:'jj',
+      动作:'审核',
+      checked:false
+    },{
+      标题:'夏天去香港看海',
+      id:1650648598,
+      封面:'https://img3.doubanio.com/view/photo/albumcover/public/p2495070565.webp',
+      更新时间:'2017-8-15',
+      发布状态:'已发布',
+      操作:'jj',
+      动作:'审核',
+      checked:false
+    },{
+      标题:'北京红冶钢厂',
+      id:1651038482,
+      封面:'https://img3.doubanio.com/view/photo/albumcover/public/p2496039272.webp',
+      更新时间:'2017-8-15',
+      发布状态:'已发布',
+      操作:'jj',
+      动作:'审核',
+      checked:false
+    }
+  ]
 }
 export default Image;

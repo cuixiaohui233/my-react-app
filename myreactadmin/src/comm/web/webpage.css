@@ -173,6 +173,33 @@ nav{
   float: left;
   margin-top:10px;
 }
+.hot_article_item{
+  width:100%;
+  height:auto;
+  margin-top:20px;
+}
+#author{
+  width:100%;
+  height:110px;
+}
+.art_img{
+  display: inline-block;
+  width:17px;
+  height:17px;
+  margin-right:10px;
+}
+.art_item p{
+  color:#37a;
+  font-size:14px;
+}
+.art_author span{
+  font-size:12px;
+  color:#aaa;
+}
+.art_item .art_txt{
+  color:#666;
+  font-size:12px;
+}
 /*图集*/
 #image{
   width:949px;
@@ -185,10 +212,19 @@ nav{
   float: left;
   margin-top:10px;
 }
+.img_item{
+  width:100%;
+  height:400px;
+  margin-top:20px;
+}
+.img_item dl{
+  margin: 0 20px 20px 0;
+}
+
 /*市集*/
 #margit{
   width:949px;
-  height:534px;
+  height:780px;
   margin:0 auto;
 }
 #hot_margit{
@@ -196,6 +232,18 @@ nav{
   height:100%;
   float: left;
   margin-top:10px;
+}
+.grid-item{
+  width:250px;
+  height:360px;
+  float:left;
+  margin-right:10px;
+  margin-bottom:10px;
+}
+.market_img{
+  display: inline-block;
+  width:250px;
+  height:280px;
 }
 /*.hot_item_add:visited {
   color: #669;

@@ -6,10 +6,10 @@ import '../table/table.css';
 import Page from '../page/page';
 import { Button, notification } from 'antd'
 
-let img1 = require('../img/img1.jpg');
-let img2 = require('../img/img2.gif');
-let img3 = require('../img/img3.jpg');
-let img4 = require('../img/img4.png');
+let img1 = require('../img/1.webp');
+let img2 = require('../img/2.webp');
+let img3 = require('../img/3.webp');
+let img4 = require('../img/4.webp');
 const openNotificationWithIcon1 = (type) => {
   // console.log(type);
     notification[type]({
