@@ -1,5 +1,7 @@
 import React,{Component} from 'react';
 import Changecontent from './changeval';
+import { Icon } from 'antd';
+import './table.css';
 import {BrowserRouter as Router,
   Route,
   Link,
@@ -20,9 +22,15 @@ class Tr extends Component{
     this.props.delete(this.props.id);
   }
   //受控表单
-  change = (ev) =>{
-    this.props.change(this.props.id)
+  check_box = ()=>{
+    // console.log(this.props.checked);
+    // !this.props.checked;
+    this.props.changecheckbox(this.props.id);
   }
+  // change = (ev) =>{
+  //   this.props.change(this.props.id)
+  // }
+
   //批量删除
   alldel = ()=>{
     this.props.alldel();
@@ -42,24 +50,30 @@ class Tr extends Component{
     }
     let h = null;
     if(this.props.动作){
-      h = <td><a href="javascript:;"
-        onClick = {this.click1}
-      >{this.props.动作}</a><span>
-        <Link to="/changeval">修改</Link></span>
-      <a href="javascript:;"
-        onClick = {this.delVal}
-        >删除
-      </a>
-      <Switch>
-        <Route path="/changeval" render={()=>{
-          return <Changecontent {...data}/>
-        }}/>
-      </Switch>
-    </td>
+      h = <td>
+            <span className="change_val"><Link to="/changeval"><Icon type="edit" /></Link></span>
+            <a href="javascript:;"
+              onClick = {this.delVal}
+              ><Icon type="delete" />
+            </a>
+            <Switch>
+              <Route path="/changeval" render={()=>{
+                return <Changecontent {...data}/>
+              }}/>
+            </Switch>
+          </td>
     }
     let item = this.props.内容.slice(0, 4)+'...';
     let title = this.props.标题.slice(0,4)+'...';
     let writer = this.props.作者.slice(0,3)+'...';
+    let icon = null;
+    if(this.props.checked){
+      icon = <Icon type="check-square" />
+    }else{
+      icon = <Icon type="check-square-o" />
+    }
+    // let icon1 = <Icon type="check-square-o" />
+    // let icon2 = <Icon type="check-square" />
     return(
       <Router>
         <tr>
@@ -69,11 +83,10 @@ class Tr extends Component{
             type="type"
             onChange={this.changeitem}
            /></td>
-          <td><input
-            type="checkbox"
-            checked={this.props.checked}
-            onChange = {this.change}
-           /></td>
+          <td
+            onClick={this.check_box}
+            >
+          {icon}</td>
           <td>{this.props.id}</td>
           <td title={this.props.标题}>{title}</td>
           <td>{this.props.item}</td>

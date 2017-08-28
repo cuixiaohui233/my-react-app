@@ -26,6 +26,14 @@ class PickerSizesDemo extends Component {
     data1 = data1.filter((e,i)=>{
       if(e.标题.includes(this.state.val)){
         return e;
+      }else if(e.id == this.state.val){
+        return e;
+      }else if(e.更新时间.includes(this.state.val)){
+        return e;
+      }else if(e.作者 === this.state.val){
+        return e;
+      }else if(e.发布状态 === this.state.val){
+        return e;
       }
     })
     this.props.changeView(data1,ev.target.id);
@@ -36,9 +44,16 @@ class PickerSizesDemo extends Component {
       data1 = data1.filter((e,i)=>{
         if(e.标题.includes(this.state.val)){
           return e;
+        }else if(e.id == this.state.val){
+          return e;
+        }else if(e.更新时间.includes(this.state.val)){
+          return e;
+        }else if(e.作者 === this.state.val){
+          return e;
+        }else if(e.发布状态 === this.state.val){
+          return e;
         }
       })
-      console.log(ev.target.id);
       this.props.changeView(data1,ev.target.id);
     }
 
@@ -61,6 +76,7 @@ class PickerSizesDemo extends Component {
           value={this.state.val}
           onChange={this.handleNumberChange}
           onKeyUp={this.keyupchange}
+          placeholder="请输入ID、标题、更新时间进行查询"
           className="input-ziji"
           id="keyup"
         />

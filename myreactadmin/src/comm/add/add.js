@@ -164,6 +164,7 @@ class Add extends Component{
         </p>
         <button
           onClick = {this.add}
+          className=""
           >注册会员
         </button>
         <button

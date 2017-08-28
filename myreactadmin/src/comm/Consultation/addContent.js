@@ -95,7 +95,6 @@ class Addcontent extends Component{
               onChange={this.change}
               value={this.state.title}
             /></p>
-
             <p className="title_short"><span>文章分类：</span><select ref = {(elem)=>{this.classify = elem}} name="" className="select">
                 					<option value="全部类型">全部类型</option>
                 					<option value="帮助说明">帮助说明</option>

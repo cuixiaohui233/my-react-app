@@ -3,10 +3,10 @@ import PickerSizesDemo from '../Data/Date';
 // import { Alert } from 'antd';
 import { Button, notification } from 'antd'
 import Tr from './Tr';
-import './table.css';
 import DelandAdd from './DelandAdd';
 import Page from '../page/page';
 import './consult.css'
+import './table.css';
 
   const openNotificationWithIcon1 = (type) => {
     // console.log(type);
@@ -149,7 +149,18 @@ class Consult extends Component{
       page:newpage
     })
   }
-
+changecheckbox =(check)=>{
+  let {data} = this.state;
+  let data1 = Object.assign(data);
+  data1.map((e,i)=>{
+    if(e.id == check){
+      e.checked = !e.checked;
+    }
+  })
+  this.setState({
+    data:data1
+  })
+}
   render(){
     let {data,title} = this.state;
     let data1 = Object.assign(data);
@@ -190,7 +201,8 @@ class Consult extends Component{
             checked:e.checked,
             delete:this.delete,
             change:this.change,
-            changedata:this.changedata
+            changedata:this.changedata,
+            changecheckbox:this.changecheckbox
           }
           if(i>(this.state.page-1)*3-1 && i<=this.state.page*3-1){
             return <Tr {...data} title={title}/>
@@ -249,16 +261,18 @@ class Consult extends Component{
           data={this.state.data}
         />
         {addanddel}
-        <table>
-          <thead>
-            <tr>
-              {item}
-            </tr>
-          </thead>
-          <tbody>
-            {list}
-          </tbody>
-        </table>
+        <div id="table_data">
+          <table id="table">
+            <thead>
+              <tr>
+                {item}
+              </tr>
+            </thead>
+            <tbody>
+              {list}
+            </tbody>
+          </table>
+        </div>
         <Page
           data={this.state.data}
           changepage={this.changepage}
