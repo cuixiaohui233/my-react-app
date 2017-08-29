@@ -19,7 +19,7 @@ class Read extends Component{
     list = data1.map((e,i)=>{
       return <div className="webpage_read">
         <p><img src={e.avatar} /><span>{e.作者}</span></p>
-        <Link to="/" className="read_title">{e.标题}</Link>
+        <Link to={'/web/read/'+e.id} className="read_title" >{e.标题}</Link>
         <p>{e.内容}</p>
       </div>
     })

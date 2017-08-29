@@ -246,8 +246,13 @@ nav{
   height:280px;
 }
 /*input*/
-#webfrom{
-  
+.webfrom{
+  width:270px;
+  height:130px;
+  position: absolute;
+  left:1000px;
+  top:80px;
+  margin:0;
 }
 /*.hot_item_add:visited {
   color: #669;

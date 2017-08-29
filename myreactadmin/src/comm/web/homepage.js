@@ -152,7 +152,7 @@ class Homepage extends Component{
       <div className="webpage">
         <div id="web_banner">
           <img src={banner} className="banner_img" />
-          <from id="webfrom">
+          <from className="webfrom">
             <input type="text" />
             <input type="password" />
           </from>

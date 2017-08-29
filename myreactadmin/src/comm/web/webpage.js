@@ -8,9 +8,31 @@ import {
 import Homepage from './homepage';
 import Read from './read/read';
 import WebImage from './webImage/webImage';
+import Rone from './read/detail/Rone';
+
 let logo  = require('./img/logo.gif');
-// let banner  = require('./img/banner.gif');
+
+
+const Child = ({match})=>{
+  console.log(match.params.url)
+  let arr = [
+    {'633196260':<Rone />},
+  ]
+  let r = arr.find((e)=>e[match.params.url]);
+  console.log(r[match.params.url])
+  return (r[match.params.url]);
+}
 class Webpage extends Component{
+  constructor(){
+    super();
+    this.state = {
+      id:0
+    }
+  }
+  componentDidMount(){
+    let data = JSON.parse(localStorage.getItem('data'));
+    console.log(data);
+  }
   render(){
     return(
       <div>
@@ -34,12 +56,13 @@ class Webpage extends Component{
         <Route exact path="/" render={()=>{
           return <Homepage />
         }} />
-        <Route path="/web/read" render={()=>{
+        <Route exact path="/web/read" render={()=>{
           return <Read />
         }} />
         <Route path="/web/image" render={()=>{
           return <WebImage />
         }} />
+        <Route exact path="/web/read/:url" component={Child} />
       </div>
     )
   }
