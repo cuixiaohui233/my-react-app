@@ -9,8 +9,8 @@ import {
 } from 'react-router-dom';
 ReactDOM.render(
   <Router>
-    <WrappedNormalLoginForm />
-    {/* <Webpage /> */}
+    {/* <WrappedNormalLoginForm /> */}
+    <Webpage />
   </Router>
   ,
    document.getElementById('root'));

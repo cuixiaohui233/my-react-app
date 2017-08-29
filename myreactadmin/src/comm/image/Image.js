@@ -316,7 +316,12 @@ function getItem(data){
       发布状态:'已发布',
       操作:'jj',
       动作:'审核',
-      checked:false
+      checked:false,
+      头像:'https://img3.doubanio.com/icon/u74022697-14.jpg',
+      title:'葫芦娃你站住的相册',
+      num:150,
+      img:['https://img1.doubanio.com/view/photo/lthumb/public/p2496090327.webp','https://img3.doubanio.com/view/photo/lthumb/public/p2496090472.webp','https://img3.doubanio.com/view/photo/lthumb/public/p2496090471.webp']
+
     },{
       标题:'「人们」',
       id:1638051845,
@@ -325,7 +330,12 @@ function getItem(data){
       发布状态:'已发布',
       操作:'jj',
       动作:'审核',
-      checked:false
+      checked:false,
+      头像:'https://img1.doubanio.com/icon/u4058053-68.jpg',
+      title:'葫芦娃你站住的相册',
+      num:150,
+      img:['https://img1.doubanio.com/view/photo/lthumb/public/p2496090327.webp','https://img3.doubanio.com/view/photo/lthumb/public/p2496090472.webp','https://img3.doubanio.com/view/photo/lthumb/public/p2496090471.webp']
+
     },{
      标题:'湿湿的梦',
      id:1651158281,
@@ -334,7 +344,11 @@ function getItem(data){
      发布状态:'已发布',
      操作:'jj',
      动作:'审核',
-     checked:false
+     checked:false,
+     头像:'https://img3.doubanio.com/icon/u74022697-14.jpg',
+     title:'chaosmiao的相册',
+     num:97,
+     img:['https://img1.doubanio.com/view/photo/lthumb/public/p2496300719.webp','https://img3.doubanio.com/view/photo/lthumb/public/p2496300723.webp','https://img1.doubanio.com/view/photo/lthumb/public/p2496300747.webp']
     },{
       标题:'即时乐树',
       id:1647018236,
@@ -343,7 +357,12 @@ function getItem(data){
       发布状态:'已发布',
       操作:'jj',
       动作:'审核',
-      checked:false
+      checked:false,
+      头像:'https://img3.doubanio.com/icon/u74022697-14.jpg',
+      title:'葫芦娃你站住的相册',
+      num:150,
+      img:['https://img1.doubanio.com/view/photo/lthumb/public/p2496090327.webp','https://img3.doubanio.com/view/photo/lthumb/public/p2496090472.webp','https://img3.doubanio.com/view/photo/lthumb/public/p2496090471.webp']
+
     },{
       标题:'在商业社会做个堂堂正正的废物会死吗？',
       id:1651117401,
@@ -352,7 +371,12 @@ function getItem(data){
       发布状态:'已发布',
       操作:'jj',
       动作:'审核',
-      checked:false
+      checked:false,
+      头像:'https://img3.doubanio.com/icon/u74022697-14.jpg',
+      title:'葫芦娃你站住的相册',
+      num:150,
+      img:['https://img1.doubanio.com/view/photo/lthumb/public/p2496090327.webp','https://img3.doubanio.com/view/photo/lthumb/public/p2496090472.webp','https://img3.doubanio.com/view/photo/lthumb/public/p2496090471.webp']
+
     },{
       标题:'萨尔兹卡默古特',
       id:1649846355,
@@ -361,7 +385,12 @@ function getItem(data){
       发布状态:'已发布',
       操作:'jj',
       动作:'审核',
-      checked:false
+      checked:false,
+      头像:'https://img3.doubanio.com/icon/u74022697-14.jpg',
+      title:'葫芦娃你站住的相册',
+      num:150,
+      img:['https://img1.doubanio.com/view/photo/lthumb/public/p2496090327.webp','https://img3.doubanio.com/view/photo/lthumb/public/p2496090472.webp','https://img3.doubanio.com/view/photo/lthumb/public/p2496090471.webp']
+
     },{
       标题:'夏天去香港看海',
       id:1650648598,
@@ -370,7 +399,12 @@ function getItem(data){
       发布状态:'已发布',
       操作:'jj',
       动作:'审核',
-      checked:false
+      checked:false,
+      头像:'https://img3.doubanio.com/icon/u74022697-14.jpg',
+      title:'葫芦娃你站住的相册',
+      num:150,
+      img:['https://img1.doubanio.com/view/photo/lthumb/public/p2496090327.webp','https://img3.doubanio.com/view/photo/lthumb/public/p2496090472.webp','https://img3.doubanio.com/view/photo/lthumb/public/p2496090471.webp']
+
     },{
       标题:'北京红冶钢厂',
       id:1651038482,
@@ -379,7 +413,12 @@ function getItem(data){
       发布状态:'已发布',
       操作:'jj',
       动作:'审核',
-      checked:false
+      checked:false,
+      头像:'https://img3.doubanio.com/icon/u74022697-14.jpg',
+      title:'葫芦娃你站住的相册',
+      num:150,
+      img:['https://img1.doubanio.com/view/photo/lthumb/public/p2496090327.webp','https://img3.doubanio.com/view/photo/lthumb/public/p2496090472.webp','https://img3.doubanio.com/view/photo/lthumb/public/p2496090471.webp']
+
     }
   ]
 }
