@@ -1,5 +1,6 @@
 import React,{Component} from 'react';
 
+import Webpage from '../web/homepage';
 class Add extends Component{
   constructor(){
     super();
@@ -113,7 +114,10 @@ class Add extends Component{
   }
   render(){
     return(
-      <from>
+      <div>
+      <Webpage />
+      <div id="mask"></div>
+      <from className="login-form">
         <p className="title_short" >
           <span>用户名：</span>
           <input
@@ -138,7 +142,7 @@ class Add extends Component{
             value={this.state.sex}
           />
         </p>
-        <p className="title_short" >
+        {/* <p className="title_short" >
           <span>联系电话：</span>
           <input
             type="text"
@@ -161,7 +165,7 @@ class Add extends Component{
             onChange={this.changeaddress}
             value={this.state.address}
           />
-        </p>
+        </p> */}
         <button
           onClick = {this.add}
           className=""
@@ -172,6 +176,7 @@ class Add extends Component{
           >注册管理员
         </button>
       </from>
+    </div>
     )
   }
 }

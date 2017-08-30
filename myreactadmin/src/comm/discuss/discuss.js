@@ -14,7 +14,7 @@ class Discuss extends Component{
   constructor(){
     super();
     this.state = {
-      title:['','id','评论内容','更新时间','操作'],
+      title:['', 'id','姓名','评论内容','更新时间'],
       data:[],
       power:[
         {name:'admin',type:'admin'},
@@ -26,22 +26,24 @@ class Discuss extends Component{
     }
   }
   componentDidMount(){
+    let data1 = JSON.parse(localStorage.getItem('diss1'))
     this.setState({
-      data:getItem('ddd')
+      data:data1
     });
   }
-  delete = (newID)=>{
-    // console.log(newID)
-    let {data} = this.state;
-    let data1 = Object.assign(data);
-    let list = data1.filter((e,i)=>{
-      return e.id !== newID;
-    });
-    // console.log(list);
-    this.setState({
-      data:list
-    })
-  }
+  // delete = (newID)=>{
+  //   console.log(data)
+  //   let {data} = this.state;
+  //   let data1 = Object.assign(data);
+  //   let list = data1.filter((e,i)=>{
+  //     console.log(e.id);
+  //     return e.id !== newID;
+  //   });
+  //   // console.log(list);
+  //   this.setState({
+  //     data:list
+  //   })
+  // }
   //受控表单
   change = (newId)=>{
     let {data} = this.state;
@@ -108,14 +110,9 @@ class Discuss extends Component{
         list = filterview.map((e,i)=>{
           let data = {
             id:e.id,
-            标题:e.标题,
-            封面:e.封面,
-            图片名称:e.图片名称,
-            Tags:e.Tags,
-            更新时间:e.更新时间,
-            发布状态:e.发布状态,
-            动作:e.动作,
-            操作:e.操作,
+            name:e.author.name,
+            标题:e.content,
+            更新时间:e.created,
             key:i+new Date,
             checked:e.checked,
             delete:this.delete,
@@ -159,12 +156,9 @@ class Discuss extends Component{
       list = filterview.map((e,i)=>{
         let data = {
           id:e.id,
-          标题:e.标题,
-          封面:e.封面,
-          图片名称:e.图片名称,
-          更新时间:e.更新时间,
-          发布状态:e.发布状态,
-          操作:e.操作,
+          name:e.author.name,
+          标题:e.content,
+          更新时间:e.created,
           key:i+new Date,
           checked:e.checked,
           delete:this.delete,

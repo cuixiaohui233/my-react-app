@@ -245,7 +245,7 @@ changecheckbox =(check)=>{
           delete:this.delete,
           change:this.change
         }
-        if(i>(this.state.page-1)*5-1 && i<=this.state.page*5-1){
+        if(i>(this.state.page-1)*3-1 && i<=this.state.page*3-1){
           return <Tr {...data} title={title}/>
         }
       });

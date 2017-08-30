@@ -24,25 +24,30 @@ class PickerSizesDemo2 extends Component {
   click = (ev)=>{
     let data1 = Object.assign(this.props.data);
     data1 = data1.filter((e,i)=>{
-      if(e.标题.includes(this.state.val)){
+      if(e.id ==this.state.val){
+        return e;
+      }else if(e.author.name == this.state.val){
         return e;
       }
     })
-    console.log(data1);
     this.props.changeView(data1,ev.target.id);
   }
   keyupchange = (ev)=>{
     if(ev.keyCode === 13){
       let data1 = Object.assign(this.props.data);
       data1 = data1.filter((e,i)=>{
-        if(e.标题.includes(this.state.val)){
+        if(e.id ==this.state.val){
+          return e;
+        }else if(e.author.name == this.state.val){
           return e;
         }
       })
-      console.log(ev.target.id);
-      this.props.changeView(data1,ev.target.id);
+      if(this.state.val){
+        this.props.changeView(data1,'search');
+      }else{
+        this.props.changeView(data1,'all');
+      }
     }
-
   }
   render() {
     const { size } = this.state;
@@ -61,6 +66,7 @@ class PickerSizesDemo2 extends Component {
           size={size}
           value={this.state.val}
           onChange={this.handleNumberChange}
+          onKeyUp={this.keyupchange}
           className="input-ziji"
         />
         <button

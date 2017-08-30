@@ -1,0 +1,88 @@
+#redhhh{
+  width:959px;
+  height:auto;
+  margin:0 auto;
+}
+.item_h1{
+  margin:0;
+}
+.item_read{
+  height:100px;
+  margin-top:30px;
+}
+#actic img{
+  display: inline-block;
+  /*margin:0 auto;*/
+  margin-left:40px;
+}
+#actic p{
+  margin-bottom:30px;
+  font-size:14px;
+  color:#000;
+}
+#banquan{
+  width:959px;
+  height:auto;
+  margin:0 auto;
+
+}
+#banquan span{
+  font-size:12px;
+}
+#pinglun{
+  width:959px;
+  height:auto;
+  margin:0 auto;
+  margin-top:40px;
+}
+#pact{
+  width:100%;
+  height:80px;
+  margin-bottom:30px;
+}
+.pimg{
+  display: inline-block;
+  float: left;
+  margin-right:20px;
+}
+.pitem{
+  width:80%;
+  float: left;
+}
+.p_item{
+  width:100%;
+  background: #f2fbf2;
+  font-size:14px;
+  margin-bottom:5px;
+}
+.p_item span{
+  display: inline-block;
+  margin-right:5px;
+  font-size:10px;
+}
+.p_icon{
+  display: inline-block;
+  margin-top:5px;
+  color:#bbb;
+}
+.p_act{
+  color:#000;
+}
+.pingfen{
+  width:800px;
+  height:40px;
+}
+.read_react{
+  font-size:16px;
+  color:#000;
+  font-weight:bold;
+  margin-bottom:10px;
+    float: left;
+}
+.read_react_star{
+  margin-right:10px;
+  float:left;
+}
+.read_star{
+  float: left;
+}

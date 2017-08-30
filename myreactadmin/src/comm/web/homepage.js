@@ -152,10 +152,6 @@ class Homepage extends Component{
       <div className="webpage">
         <div id="web_banner">
           <img src={banner} className="banner_img" />
-          <from className="webfrom">
-            <input type="text" />
-            <input type="password" />
-          </from>
         </div>
         <div id="advert">
           <a href="https://erebor.douban.com/redirect/?ad=188411&uid=&bid=7qezcFiVg98&unit=dale_anonymous_home_page_middle_2&crtr=3%3A%2F&mark=&hn=hador15&sig=195d8fea5a0bb1593a9f148af49a7a979dc44c4838597db68f4156b03db7be5b5e138753e5db5cc768c84627871a00eebde70ace6324b23f852733ac2807c50c&pid=debug_a51700db43644dfab6c4b68ae301d319106066f8&target=aHR0cHM6Ly9zaGlqaS5kb3ViYW4uY29tL3NwZWNpYWwvcWl4aQ==">
