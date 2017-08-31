@@ -33,6 +33,7 @@ class Homepage extends Component{
     }
   }
   componentDidMount(){
+    console.log(getItem('img'));
     this.setState({
       article:getItem('article'),
       img:getItem('img'),
@@ -196,7 +197,7 @@ class Homepage extends Component{
   }
 }
 function getItem(data){
-  let arr = JSON.parse(localStorage.getItem('data'));
+  let arr = JSON.parse(localStorage.getItem('data')) || [];
   // console.log(arr);
   // let arr1 = Object.assign(arr);
   let list = null;
@@ -213,7 +214,7 @@ function getItem(data){
   })
   // console.log(list);
 
-  let arr1 = JSON.parse(localStorage.getItem('image'));
+  let arr1 = JSON.parse(localStorage.getItem('image'))||[];
   let list1 = null;
   list1 = arr1.map((e,i)=>{
     // console.log(e.封面)
@@ -227,96 +228,131 @@ function getItem(data){
     return hhh;
   })
 
-  let arr2 = JSON.parse(localStorage.getItem('product'));
+  let arr2 = JSON.parse(localStorage.getItem('product')) || [];
   let list2 = null;
-  list2 = arr2.map((e,i)=>{
-    // console.log(e,href)
-    let hhh = {
-      title:e.标题,
-      id:e.id,
-      img:e.封面,
-      href:e.href
-    }
-    return hhh;
-  })
+  if(arr2){
+    list2 = arr2.map((e,i)=>{
+      // console.log(e,href)
+      let hhh = {
+        title:e.标题,
+        id:e.id,
+        img:e.封面,
+        href:e.href
+      }
+      return hhh;
+    })
+  }
+
 
   if(data === 'article'){
     localStorage.removeItem('article');
-     return JSON.parse(localStorage.getItem('article')) || list;
+    if(list.length){
+      return JSON.parse(localStorage.getItem('article')) || list;
+    }else{
+      return [
+        { title :"为什么《圆桌派》的观众老骂蒋方舟？", authorname :"魏小河", avatar :"https://img3.doubanio.com/icon/u3340912-61.jpg", update_time :"2017-08-27 14:00:56", summary :"一 我是《锵锵三人行》的忠实观众，顺理成章的，也成为《圆桌派》的观众。 和以前...", id :633196260}
+        ,{ title :"独自在家", authorname :"安歌", avatar :"https://img3.doubanio.com/icon/u1795862-3.jpg", update_time :"2017-08-26 17:35:54", summary :"在这之前我一直以为一成不变地等待我的世界失陷了，当我还不知道前方是什么，后方...", id :633649108}
+        ,
+        { title :"当我逛书展不买书时我还能做些什么", authorname :"向三峡", avatar :"https://img3.doubanio.com/icon/u1024373-11.jpg", update_time :"2017-08-27 06:49:07", summary :"今年是我第三次参加上海书展，开幕前，新同事求带，微信问我何时去，我告其8月18日...", id :634206154}
+        ,{ title :"艺术又终结了吗？", authorname :"神经现实", avatar :"https://img3.doubanio.com/icon/u165265254-3.jpg", update_time :"2017-08-26 16:41:41", summary :"越来越多的艺术品和艺术形式以前所未有的数量产出。艺术馆普及世界各地，在有些国...", id :633311053}
+        ,
+        { title :"终于，和林家栋谈了谈电影、表演和金像奖影帝", authorname :"支离疏", avatar :"https://img3.doubanio.com/icon/u2905955-15.jpg", update_time :"2017-08-27 11:34:54", summary :"", id :633528924}
+        ,
+        { title :"新品种草&经典回顾丨谁能不爱哑光口红", authorname :"芙蕾娅Freya", avatar :"https://img3.doubanio.com/icon/u9546008-61.jpg", update_time :"2017-08-26 00:31:06", summary :"", id :634021319},
+        { title :"青梅竹马这件小事", authorname :"赤豆年糕", avatar :"https://img3.doubanio.com/icon/u38396260-11.jpg", update_time :"2017-08-27 12:28:12", summary :"", id :634104356}
+        ,{ title :"今 敏先生去世的第七年，回忆他曾经的自叙", authorname :"机核网", avatar :"https://img3.doubanio.com/icon/u162576392-2.jpg", update_time :"2017-08-27 12:51:31", summary :"", id :634483634}
+        ,{ title :"希望还是虚妄？十字路口的国产动画电影", authorname :"白鹅纪", avatar :"https://img1.doubanio.com/icon/u158210937-7.jpg", update_time :"2017-08-25 21:50:48", summary :"", id :634444806}
+        ,{ title :"7位女摄影师拍同一对姑娘", authorname :"七七", avatar :"https://img3.doubanio.com/icon/u34715093-12.jpg", update_time :"2017-08-27 14:00:36", summary :"", id :634529429}
+        ,{ title :"这支香，仿佛收集了整个夏天的阳光", authorname :"神奇蘑蘑菇", avatar :"https://img3.doubanio.com/icon/u1427914-54.jpg", update_time :"2017-08-26 17:15:51", summary :"", id :634074646}
+        ,{ title :"我唐日常（十五）猝不及防的更新", authorname :"春坊正字", avatar :"https://img1.doubanio.com/icon/u51610855-17.jpg", update_time :"2017-08-27 09:04:09", summary :"", id :634525453}]
+    }
   }else if(data === 'img'){
+    console.log(list1)
     localStorage.removeItem('img');
-    return JSON.parse(localStorage.getItem('img')) || list1 || [
-      {
-        title:'没有青海湖和茶卡的青海',
-        id:1651058003,
-        img:img1
-      },{
-        title:'「人们」',
-        id:1638051845,
-        img:img2
-      },{
-       title:'湿湿的梦',
-       id:1651158281,
-       img:img3
-      },{
-        title:'即时乐树',
-        id:1647018236,
-        img:img4
-      },{
-        title:'在商业社会做个堂堂正正的废物会死吗？',
-        id:1651117401,
-        img:img5
-      },{
-        title:'萨尔兹卡默古特',
-        id:1649846355,
-        img:img6
-      },{
-        title:'夏天去香港看海',
-        id:1650648598,
-        img:img7
-      },{
-        title:'北京红冶钢厂',
-        id:1651038482,
-        img:img8
-      }
-    ]
+    if(list1.length){
+      return JSON.parse(localStorage.getItem('img')) || list1
+    }else{
+      return [
+        {
+          title:'没有青海湖和茶卡的青海',
+          id:1651058003,
+          img:img1
+        },{
+          title:'「人们」',
+          id:1638051845,
+          img:img2
+        },{
+         title:'湿湿的梦',
+         id:1651158281,
+         img:img3
+        },{
+          title:'即时乐树',
+          id:1647018236,
+          img:img4
+        },{
+          title:'在商业社会做个堂堂正正的废物会死吗？',
+          id:1651117401,
+          img:img5
+        },{
+          title:'萨尔兹卡默古特',
+          id:1649846355,
+          img:img6
+        },{
+          title:'夏天去香港看海',
+          id:1650648598,
+          img:img7
+        },{
+          title:'北京红冶钢厂',
+          id:1651038482,
+          img:img8
+        }
+      ]
+    }
+
   }else if(data === 'market'){
     localStorage.removeItem('market');
-    return JSON.parse(localStorage.getItem('market')) || list2 || [
+    if(list2.length){
+      return JSON.parse(localStorage.getItem('market')) || list2
+    }else{
+      return [
+        {
+          title:"悦诗风吟",
+          id:1,
+          img:"https://img1.doubanio.com/view/dianpu_product_item/large/public/p1974318.jpg",
+          href:"https://market.douban.com/item/207844/?r=5&index=1&category=index"
+      },
       {
-        title:'没有青海湖和茶卡的青海',
-        id:1651058003,
-        img:img1
-      },{
-        title:'「人们」',
-        id:1638051845,
-        img:img2
-      },{
-       title:'湿湿的梦',
-       id:1651158281,
-       img:img3
-      },{
-        title:'即时乐树',
-        id:1647018236,
-        img:img4
-      },{
-        title:'在商业社会做个堂堂正正的废物会死吗？',
-        id:1651117401,
-        img:img5
-      },{
-        title:'萨尔兹卡默古特',
-        id:1649846355,
-        img:img6
-      },{
-        title:'夏天去香港看海',
-        id:1650648598,
-        img:img7
-      },{
-        title:'北京红冶钢厂',
-        id:1651038482,
-        img:img8
+        title:"ERICD",
+        id:2,
+        img:"https://img3.doubanio.com/view/dianpu_product_item/large/public/p1964580.jpg",
+        href:"https://market.douban.com/item/204712/?r=5&index=2&category=index"
+      },
+      {
+        title:"hanalice",
+        id:3,
+        img:"https://img1.doubanio.com/view/dianpu_product_item/large/public/p1985219.jpg",
+        href:"https://market.douban.com/item/213750/?r=5&index=3&category=index"
+      },
+      {
+        title:"觅潮记",
+        id:4,
+        img:"https://img1.doubanio.com/view/dianpu_product_item/large/public/p1985709.jpg",
+        href:"https://market.douban.com/item/213933/?r=5&index=4&category=index"
+      },
+      {
+        title:"macbook",
+        id:5,
+        img:"https://img3.doubanio.com/view/dianpu_product_item/large/public/p1971660.jpg",
+        href:"https://market.douban.com/item/90190/?r=5&index=6&category=index"
+      },
+      {
+        title:"小巨蛋",
+        id:6,
+        img:"https://img1.doubanio.com/view/dianpu_product_item/large/public/p449949.jpg",
+        href:"https://market.douban.com/item/90190/?r=5&index=6&category=index"
       }
     ]
+    }
   }
 }
 export default Homepage;

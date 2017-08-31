@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 import { Icon } from 'antd';import App from '../../App';
 import Webpage from '../web/homepage';
-class Add extends Component{
+class Addadmin extends Component{
   constructor(){
     super();
     this.state = {
@@ -20,7 +20,8 @@ class Add extends Component{
       address:'',
       checked:false,
       bool:false,
-      states:'admin'
+      states:'admin',
+      num:0
     }
   }
   componentDidMount(){
@@ -76,15 +77,20 @@ class Add extends Component{
     })
     return num+1;
   }
-  add = ()=>{
+  click = (ev)=>{
+    this.setState({
+      num:ev.target.id
+    })
+  }
+  addadmin = ()=>{
     let {arr} = this.state;
     let arr1 = Object.assign(arr);
     let arr2 = getItem('users');
     // console.log(arr2);
-    if(this.state.name && this.state.pass){
+    if(this.state.name && this.state.pass && (this.state.num ==1 || this.state.num ==2 ||this.state.num ==3 || this.state.num ==4)){
       if(arr2.find(e => e.username === this.state.name)){
         alert('换个名字吧！');
-        this.props.changeRoute('add','member');
+        this.props.changeRoute('addmin','admin');
       }else{
         arr1.push({
           username:this.state.name,
@@ -95,15 +101,17 @@ class Add extends Component{
           address:this.state.address,
           checked:false,
           bool:true,
-          states:'member'
+          states:'admin',
+          num:this.state.num
         });
         localStorage.setItem('users',JSON.stringify(arr1));
-        this.props.changeRoute('true','member');
+        this.props.changeRoute('true','admin');
       }
     }else {
       alert('请填写信息')
-      this.props.changeRoute('add','');
+      this.props.changeRoute('addmin','');
     }
+
   }
   render(){
     // console.log(this.props.changeRoute);
@@ -111,8 +119,8 @@ class Add extends Component{
       <div>
       <Webpage />
       <div id="mask"></div>
-      <from className="login-form login_form3" id="login_form2">
-        <h1 className="welcome1">注册新用户</h1>
+      <from className="login-form login_form2" id="login_form2">
+        <h1 className="welcome1">注册超级管理员</h1>
         <Link to="/"><span className="quxiao"><Icon type="close" /></span></Link>
         <p className="title_short" >
           <span>用户名：</span>
@@ -130,13 +138,30 @@ class Add extends Component{
             value={this.state.pass}
           />
         </p>
-        <Link to="/app">
+        <div className="taocan">
+          <span className="monery">资费：</span>
+          <ul>
+            <li
+              onClick={this.click}
+              className = "title_long" id="1">连续包月10元<Icon type="check" className={this.state.num == 1?"anticon-check-show dui1":"dui1"} /></li><br />
+            <li
+              onClick={this.click}
+              className = "title_long" id="2">12个月108元<del>180</del><Icon type="check" className={this.state.num == 2?"anticon-check-show dui2":"dui2"}  /></li><br />
+            <li
+              onClick={this.click}
+              className = "title_long" id="3">3个月30元<del>45</del><Icon type="check"  className={this.state.num == 3?"anticon-check-show dui3":"dui3"}  /></li><br />
+            <li
+              onClick={this.click}
+              className = "title_long" id="4">1个月15元<Icon type="check"  className={this.state.num == 4?"anticon-check-show dui4":"dui4"}  /></li><br />
+          </ul>
+
+        </div>
+
         <button
-          onClick = {this.add}
-          id="add"
-          >注册会员
+          onClick = {this.addadmin}
+          id="add_admin"
+          ><Link to="/app">注册超级会员</Link>
         </button>
-        </Link>
       </from>
     </div>
     )
@@ -157,4 +182,4 @@ function getItem(data){
       checked:false,
   }]
 }
-export default Add;
+export default Addadmin;

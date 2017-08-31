@@ -27,6 +27,8 @@ class Discuss extends Component{
   }
   componentDidMount(){
     let data1 = JSON.parse(localStorage.getItem('diss1'))
+    // console.log(data1);
+    if(!data1)return;
     this.setState({
       data:data1
     });
@@ -64,7 +66,7 @@ class Discuss extends Component{
     let data1 = Object.assign(data);
     let list = null;
     list = data1.filter((e,i)=>!e.checked);
-    console.log(data1);
+    // console.log(data1);
     this.setState({
       data:list
     })

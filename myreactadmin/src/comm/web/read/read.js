@@ -12,15 +12,15 @@ class Read extends Component{
     super();
   }
   render(){
-    let data = JSON.parse(localStorage.getItem('data'));
+    let data = JSON.parse(localStorage.getItem('article'));
     // console.log(data);
     let data1 = Object.assign(data);
     let list = null;
     list = data1.map((e,i)=>{
       return <div className="webpage_read">
-        <p><img src={e.avatar} /><span>{e.作者}</span></p>
-        <Link to={'/web/read/'+e.id} className="read_title" >{e.标题}</Link>
-        <p>{e.内容}</p>
+        <p><img src={e.avatar} /><span>{e.authorname}</span></p>
+        <Link to={'/web/read/'+e.id} className="read_title" >{e.title}</Link>
+        <p>{e.summary}</p>
       </div>
     })
     return(

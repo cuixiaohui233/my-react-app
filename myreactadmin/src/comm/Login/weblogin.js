@@ -6,6 +6,7 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
+
 import './Login.css';
 import Error from '../Consultation/error';
 import Add from '../add/add';
@@ -57,7 +58,7 @@ class NormalLoginForm extends Component {
           if(arr.password+'' === this.state.val1){
             if(arr.bool){
               console.log(arr.states);
-                this.props.changeRoute(true,arr.states);
+                this.props.changeRoute('true',arr.states);
             }
           }else{
             alert('密码错误');
@@ -77,6 +78,7 @@ class NormalLoginForm extends Component {
         <div id="mask"></div>
       <form onSubmit={this.handleSubmit} className={this.state.class}>
         <h1 className="welcome">欢迎来到微奇生活</h1>
+        <Link to="/"><span className="quxiao"><Icon type="close" /></span></Link>
         <p>
           <span><Icon type="user" style={{ fontSize: 18 }} /> :</span>
           <input
@@ -86,7 +88,7 @@ class NormalLoginForm extends Component {
           placeholder="请输入用户名"
         />
         </p>
-        <p>
+        <p id="del_bott">
           <span><Icon type="lock"  style={{ fontSize: 18 }} /> :</span>
           <input
           type="password"
@@ -95,19 +97,21 @@ class NormalLoginForm extends Component {
           placeholder="请输入密码"
         />
         </p>
+        <p id="add_list">
+        <Link to='/add'>注册会员</Link>
+        <Link to='/addmin' className="addAdmin">注册超级会员</Link></p>
         <Link to="/app">
         <button
           onClick={this.click}
           >登录
         </button>
         </Link>
-      <Link to="/add">
+      {/* <Link to="/add">
         <button
           className="add"
-          // onClick={this.click}
           >立即注册
         </button>
-      </Link>
+      </Link> */}
 
       </form>
     </div>
