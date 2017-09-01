@@ -92,6 +92,17 @@ class Addadmin extends Component{
         alert('换个名字吧！');
         this.props.changeRoute('addmin','admin');
       }else{
+        let time = new Date();
+        let timer = time.getFullYear() + (time.getMonth()+1)+time.getDate();
+        if(this.state.num ==1){
+          timer = timer+30;
+        }else if(this.state.num ==2){
+          timer = timer+(12*30);
+        }else if(this.state.num ==3){
+          timer = timer+(3*30);
+        }else if(this.state.num ==4){
+          timer = timer+30;
+        }
         arr1.push({
           username:this.state.name,
           password:this.state.pass,
@@ -102,7 +113,8 @@ class Addadmin extends Component{
           checked:false,
           bool:true,
           states:'admin',
-          num:this.state.num
+          num:this.state.num,
+          time:timer
         });
         localStorage.setItem('users',JSON.stringify(arr1));
         this.props.changeRoute('true','admin');

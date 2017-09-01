@@ -30,27 +30,30 @@ class Homepage extends Component{
       arr:[],
       img:[],
       market:[],
+      list:[]
     }
   }
   componentDidMount(){
-    console.log(getItem('img'));
-    this.setState({
-      article:getItem('article'),
-      img:getItem('img'),
-      market:getItem('market')
+    // console.log(getItem('img'));
+    setTimeout(()=>{
+      this.setState({
+        article:getItem('article'),
+        img:getItem('img'),
+        market:getItem('market')
+      });
     });
   }
   artClick = (ev)=>{
-    console.log(ev.target.id)
-    $.ajax({
-      url:'https://api.douban.com/v2/note/'+ev.target.id,
-      // url:'https://api.douban.com/v2/note/user_created/51610855',
-      dataType:'jsonp',
-      success:function(data){
-        console.log(data);
-        // arr1.push(data);
-      }
-    })
+    // console.log(ev.target.id)
+    // $.ajax({
+    //   url:'https://api.douban.com/v2/note/'+ev.target.id,
+    //   // url:'https://api.douban.com/v2/note/user_created/51610855',
+    //   dataType:'jsonp',
+    //   success:function(data){
+    //     // console.log(data);
+    //     // arr1.push(data);
+    //   }
+    // })
   }
   render(){
     let {img,article,market} = this.state;
@@ -154,11 +157,11 @@ class Homepage extends Component{
         <div id="web_banner">
           <img src={banner} className="banner_img" />
         </div>
-        <div id="advert">
+        {/* <div id="advert">
           <a href="https://erebor.douban.com/redirect/?ad=188411&uid=&bid=7qezcFiVg98&unit=dale_anonymous_home_page_middle_2&crtr=3%3A%2F&mark=&hn=hador15&sig=195d8fea5a0bb1593a9f148af49a7a979dc44c4838597db68f4156b03db7be5b5e138753e5db5cc768c84627871a00eebde70ace6324b23f852733ac2807c50c&pid=debug_a51700db43644dfab6c4b68ae301d319106066f8&target=aHR0cHM6Ly9zaGlqaS5kb3ViYW4uY29tL3NwZWNpYWwvcWl4aQ==">
             <img src="https://img1.doubanio.com/view/dale-online/dale_ad/public/3b6c8a1c4e50839.jpg"/>
           </a>
-        </div>
+        </div> */}
         <div id="word">
           <h3 className="hot_item">热点内容</h3>
           <div id="img_dl">
@@ -167,27 +170,45 @@ class Homepage extends Component{
           <div id="img_ul">
             <ul className="img_ul">
             {art}
-          </ul>
+            </ul>
+          </div>
+          <div id="img_ll">
+            <img className="img_ll_image" src="https://img3.doubanio.com/view/dale-online/dale_ad/public/dd5457bd37cf704.jpg" />
+            <div className="img_ll_div">
+              <span className="hot_art">热门话题</span>
+              <ul className="img_ul" style={paddingleft='10px'}>
+                <li><a href="http://www.vikilife.com/150144.html" title="煎饼摊大妈：我月入3万，怎么会少你一个鸡蛋！" rel="bookmark">#煎饼摊大妈：我月入3...</a></li>
+                <li><a href="http://www.vikilife.com/150130.html" title="写给女儿：我宁愿你不“善良”" rel="bookmark">#写给女儿：我宁愿你不“善良”</a></li>
+                <li><a href="http://www.vikilife.com/149544.html" title="7个养猫小技巧 喜欢喵星人的必看​​" rel="bookmark">#7个养猫小技巧 喜欢喵星人的必看​​</a></li>
+                <li><a href="http://www.vikilife.com/149495.html" title="很多花根本不用买，扯几片叶子就能种出一片花园！" rel="bookmark">#很多花根本不用买，扯几片叶...</a></li>
+                <li><a href="http://www.vikilife.com/149404.html" title="手工视频教程：好看的鲜花绽放贺卡DIY" rel="bookmark">#手工视频教程：好看的鲜花绽放贺卡DIY</a></li>
+                <li><a href="http://www.vikilife.com/149337.html" title="手工diy视频教程：用棉花和空瓶做了一盏云朵灯" rel="bookmark">#手工diy视频教程：用棉花和空瓶做...</a></li>
+                <li><a href="http://www.vikilife.com/149247.html" title="夏天喝过这些饮料才叫爽，有哪些好喝的饮料推荐" rel="bookmark">#夏天喝过这些饮料才叫爽，有哪些好...</a></li>
+                <li><a href="http://www.vikilife.com/150035.html" title="《战狼2》10句最经典台词，燃爆了！" rel="bookmark">#《战狼2》10句最经典台词，燃爆了！</a></li>
+                <li><a href="http://www.vikilife.com/149572.html" title="你的不自律，正在慢慢毁掉你" rel="bookmark">#你的不自律，正在慢慢毁掉你</a></li>
+                <li><a href="http://www.vikilife.com/149328.html" title="《摔跤吧，爸爸》：爱你最好的方式，是给你力量" rel="bookmark">#《摔跤吧，爸爸》：爱你最好的方...</a></li>
+              </ul>
+            </div>
           </div>
         </div>
         <div id="article">
           <h3 className="hot_item hot_item_add">文章</h3>
           <div id="hot_article">
-            <h3><span className="hot_art">热门文章</span><Link to="/">更多</Link></h3>
+            <h3><span className="hot_art">热门文章</span>· · · · · · <Link to="/web/read">更多</Link></h3>
             <div className="hot_article_item">{art1}</div>
           </div>
         </div>
         <div id="image">
           <h3 className="hot_item hot_item_add">图集</h3>
           <div id="hot_image">
-            <h3><span className="hot_art">热门相册</span><Link to="/">更多</Link></h3>
+            <h3><span className="hot_art">热门相册</span>· · · · · · <Link to="/web/image">更多</Link></h3>
             <div className="img_item">{image1}</div>
           </div>
         </div>
         <div id="margit">
           <h3 className="hot_item hot_item_add">市集</h3>
           <div id="hot_margit">
-            <h3><span className="hot_art">热门商品</span><Link to="/">更多</Link></h3>
+            <h3><span className="hot_art">热门商品</span>· · · · · · <Link to="/">更多</Link></h3>
             <div>{supermarket}</div>
           </div>
         </div>
@@ -267,7 +288,7 @@ function getItem(data){
         ,{ title :"我唐日常（十五）猝不及防的更新", authorname :"春坊正字", avatar :"https://img1.doubanio.com/icon/u51610855-17.jpg", update_time :"2017-08-27 09:04:09", summary :"", id :634525453}]
     }
   }else if(data === 'img'){
-    console.log(list1)
+    // console.log(list1)
     localStorage.removeItem('img');
     if(list1.length){
       return JSON.parse(localStorage.getItem('img')) || list1
