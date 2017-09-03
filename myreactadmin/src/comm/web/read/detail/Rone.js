@@ -10,43 +10,64 @@ import $ from 'jquery';
 import './read_item.css';
 
 class Rone extends Component{
-  constructor(){
-    super();
+  constructor(props){
+    super(props);
     this.state = {
       data:[],
       title:'',
       name:'',
       img:'',
       pinfo:[],
-      val:''
+      val:'',
+      time:'',
+      url:this.props.url
     }
   }
   componentDidMount(){
     let that = this;
-    $.ajax({
-      url:'https://api.douban.com/v2/note/633196260',
-      data:{
-        format:'html_full'
-      },
-      dataType:'jsonp',
-      success:function(data){
-        // console.log(data);
-        that.setState({
-          data:data,
-          title:data.title,
-          name:data.author.name,
-          img:data.author.avatar
-        })
-      }
-    })
+    let data = JSON.parse(localStorage.getItem('data')) || JSON.parse(localStorage.getItem('article')) ;
+    let data1 = Object.assign(data);
+    data1 = data1.find((e)=>e.id == this.state.url);
+    if(data1.type){
+      this.setState({
+        title:data1.标题,
+        name:data1.作者,
+        // img:data.
+      })
+    }else{
+      $.ajax({
+        url:'https://api.douban.com/v2/note/'+this.state.url,
+        data:{
+          format:'html_full'
+        },
+        dataType:'jsonp',
+        success:function(data){
+          console.log(data);
+          that.setState({
+            data:data,
+            title:data.title,
+            name:data.author.name,
+            img:data.author.avatar,
+            time:data.update_time
+          })
+        }
+      })
+    }
+
     that.setState({
-      pinfo:getItem('diss1')
+      pinfo:getItem('diss')
     })
 
   }
   componentDidUpdate() {
-    // if(this.state.data)
+  let data = JSON.parse(localStorage.getItem('data')) || JSON.parse(localStorage.getItem('article')) ;
+    let data1 = Object.assign(data);
+    data1 = data1.find((e)=>e.id == this.state.url);
+    if(data1.type){
+      document.getElementById("actic").innerHTML = `<p>${data1.内容}</p>`;
+    }else{
       document.getElementById("actic").innerHTML = this.state.data.content;
+    }
   }
 
   changeTextarea = (ev)=>{
@@ -84,7 +105,6 @@ class Rone extends Component{
     }
   }
   render(){
-    // console.log(this.state.pinfo)
     let {pinfo} = this.state;
     let pinfo1 = Object.assign(pinfo);
     let list = null;
@@ -104,7 +124,7 @@ class Rone extends Component{
         return a.id-b.id;
       })
       // console.log(pinfo);
-      localStorage.setItem('diss1',JSON.stringify(pinfo))
+      localStorage.setItem('diss',JSON.stringify(pinfo))
     }
     // console.log(list);
     return(
@@ -112,7 +132,7 @@ class Rone extends Component{
         <div id="redhhh">
           <div className="webpage_read item_read">
           <h1 className="item_h1">{this.state.title}</h1>
-            <div><img src={this.state.img} /><span>{this.state.name}</span></div>
+            <div id="webpage_image_img_span"><img src={this.state.img} /><span>{this.state.name}</span><span>{this.state.time}</span></div>
           </div>
           <div id="actic"></div>
         </div>
@@ -147,17 +167,16 @@ class Rone extends Component{
     )
   }
 }
+let pitem = [];
+$.ajax({
+  url:'https://api.douban.com/v2/note/633196260/comments',
+  dataType:'jsonp',
+  success:function(data){
+    // console.log(data);
+    pitem = data.comments;
+  }
+})
 function getItem(data){
-  let pitem = [];
-  $.ajax({
-    url:'https://api.douban.com/v2/note/633196260/comments',
-    dataType:'jsonp',
-    success:function(data){
-      // console.log(data);
-      pitem = data.comments;
-    }
-  })
-  // console.log(pitem)
   return JSON.parse(localStorage.getItem(data)) || pitem
 }
 export default Rone;

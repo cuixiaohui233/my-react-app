@@ -26,7 +26,7 @@ class DelandAdd extends Component{
   render(){
     return (
       <Router>
-      <div className="DelandAdd">
+      <div className="DelandAdd_cons">
         <button
           className="first_child"
           onClick={this.alldel}

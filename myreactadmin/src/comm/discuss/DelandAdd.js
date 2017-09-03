@@ -9,7 +9,7 @@ class DelandAdd extends Component{
   }
   render(){
     return (
-      <div className="DelandAdd">
+      <div className="DelandAdd_diss">
         <button
           className="first_child"
           onClick={this.alldel}

@@ -5,7 +5,7 @@ import Consult from './Consult';
 import {BrowserRouter as Router,Route,Link,Redirect} from 'react-router-dom';
 import Nologin from './no_login';
 const openNotificationWithIcon = (type) => {
-  console.log(type);
+  // console.log(type);
     notification[type]({
       message: '添加成功',
       description: '成功添加一条数据',
@@ -54,7 +54,9 @@ class Addcontent extends Component{
         动作:'下架',
         作者:changewriter,
         更新时间:this.props.changeTime(),
-        内容:this.state.textarea
+        内容:this.state.textarea,
+        type:'mylist',
+        // img:
       });
       openNotificationWithIcon('success');
     }

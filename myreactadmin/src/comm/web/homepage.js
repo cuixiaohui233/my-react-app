@@ -163,7 +163,7 @@ class Homepage extends Component{
           </a>
         </div> */}
         <div id="word">
-          <h3 className="hot_item">热点内容</h3>
+          <h3 className="hot_item">热点内容· · · · · · </h3>
           <div id="img_dl">
             {image}
           </div>
@@ -176,7 +176,7 @@ class Homepage extends Component{
             <img className="img_ll_image" src="https://img3.doubanio.com/view/dale-online/dale_ad/public/dd5457bd37cf704.jpg" />
             <div className="img_ll_div">
               <span className="hot_art">热门话题</span>
-              <ul className="img_ul" style={paddingleft='10px'}>
+              <ul className="img_ul" style={{paddingLeft:'10px'}}>
                 <li><a href="http://www.vikilife.com/150144.html" title="煎饼摊大妈：我月入3万，怎么会少你一个鸡蛋！" rel="bookmark">#煎饼摊大妈：我月入3...</a></li>
                 <li><a href="http://www.vikilife.com/150130.html" title="写给女儿：我宁愿你不“善良”" rel="bookmark">#写给女儿：我宁愿你不“善良”</a></li>
                 <li><a href="http://www.vikilife.com/149544.html" title="7个养猫小技巧 喜欢喵星人的必看​​" rel="bookmark">#7个养猫小技巧 喜欢喵星人的必看​​</a></li>

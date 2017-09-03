@@ -9,14 +9,18 @@ const SubMenu = Menu.SubMenu;
 class Menu1 extends Component{
   render(){
     return(
-      <div>
+      <div id="minu">
         <Menu className="side-div" mode="vertical">
-          <SubMenu key="sub1" title={
-            <span>
-              <Icon type="mail" />
-              <span><Link to="/content">文章管理</Link></span>
-            </span>}>
-          </SubMenu>
+
+            <SubMenu key="sub1" title={
+              <Link to="/content">
+                <span>
+                  <Icon type="mail" />
+                  文章管理
+                </span>
+              </Link>
+            }>
+            </SubMenu>
           <SubMenu key="sub2" title={
             <span>
               <Icon type="appstore" />
@@ -24,12 +28,12 @@ class Menu1 extends Component{
             </span>
           }>
           </SubMenu>
-          <SubMenu key="sub3" title={<span><Icon type="desktop" /><span>产品管理</span></span>}>
-            <Menu.Item key="3"><Link to="/brand">品牌管理</Link></Menu.Item>
-            <Menu.Item key="5"><Link to="/product">产品管理</Link></Menu.Item>
+          <SubMenu key="sub3" title={<span><Icon type="desktop" /><span><Link to="/product">产品管理</Link></span></span>}>
+            {/* <Menu.Item key="3"><Link to="/brand">品牌管理</Link></Menu.Item>
+            <Menu.Item key="5"><Link to="/product">产品管理</Link></Menu.Item> */}
           </SubMenu>
-          <SubMenu key="sub4" title={<span><Icon type="notification" /><span>评论管理</span></span>}>
-            <Menu.Item key="6"><Link to="/discuss">评论列表</Link></Menu.Item>
+          <SubMenu key="sub4" title={<span><Icon type="notification" /><Link to="/discuss">评论列表</Link></span>}>
+            {/* <Menu.Item key="6"><Link to="/discuss">评论列表</Link></Menu.Item> */}
           </SubMenu>
           <SubMenu key="sub5" title={<span><Icon type="usergroup-add" /><span>会员管理</span></span>}>
             <Menu.Item key="8"><Link to="/member">会员列表</Link></Menu.Item>

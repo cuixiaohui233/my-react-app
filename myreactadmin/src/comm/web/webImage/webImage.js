@@ -12,20 +12,20 @@ class WebImage extends Component{
     super();
   }
   render(){
-    let data = JSON.parse(localStorage.getItem('image'));
+  let data = JSON.parse(localStorage.getItem('image')) || JSON.parse(localStorage.getItem('img'));
     // console.log(data);
     let data1 = Object.assign(data);
     let list = null;
     let img1 = null;
     list = data1.map((e,i)=>{
-      return <div className="webpage_read1">
+      return <Link to={'/web/webimage/'+e.id}><div className="webpage_read1">
         <p className="webpage_image"><img src={e.头像} id="touxiang" /><span id="biaoti">{e.title}-{e.标题}</span></p>
         <p className="webpage_image1">
           <img className="img_little" src={e.img[0]} />
           <img className="img_little" src={e.img[1]} />
           <img className="img_little" src={e.img[2]} />
         </p>
-      </div>
+      </div></Link>
     })
     return(
       <div id="webpage_read">

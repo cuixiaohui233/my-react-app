@@ -4,16 +4,13 @@
   float: left;
 }
 #table{
-  width:100%;
+  width:98%;
   font-size: 14px;
   border:1px solid #ddd;
   border-collapse: separate;
   border-spacing: 0;
+  margin-left:7%;
   /*height:170px;*/
-}
-#table th{
-  min-width:57px;
-  background: #f5fafe;
 }
 td,th{
   border-bottom:1px solid #ddd;

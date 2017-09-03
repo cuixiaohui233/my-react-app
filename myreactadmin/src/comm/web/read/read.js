@@ -17,11 +17,11 @@ class Read extends Component{
     let data1 = Object.assign(data);
     let list = null;
     list = data1.map((e,i)=>{
-      return <div className="webpage_read">
-        <p><img src={e.avatar} /><span>{e.authorname}</span></p>
-        <Link to={'/web/read/'+e.id} className="read_title" >{e.title}</Link>
-        <p>{e.summary}</p>
-      </div>
+      return <Link to={'/web/read/'+e.id}><div className="webpage_read">
+        <p className="web_read_img_span"><img src={e.avatar} /><span className="authorname">{e.authorname}</span></p>
+        <span id="read_title" >{e.title}</span>
+        <p className="read_title_p">{e.summary}</p>
+      </div></Link>
     })
     return(
       <div id="webpage_read">

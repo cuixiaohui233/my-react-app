@@ -9,9 +9,9 @@
   height:48px;
   line-height:48px;
   float: left;
-  font-size:25px;
+  font-size:20px;
   color:#494949;
-  font-weight:bold;
+  /*font-weight:bold;*/
 }
 .webpage_image{
   width:auto;

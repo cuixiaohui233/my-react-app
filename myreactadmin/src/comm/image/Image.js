@@ -278,7 +278,7 @@ class Image extends Component{
          />
         {addanddel}
         <table>
-          <thead>
+          <thead id="table">
             <tr>
               {item}
             </tr>

@@ -26,7 +26,7 @@ class Discuss extends Component{
     }
   }
   componentDidMount(){
-    let data1 = JSON.parse(localStorage.getItem('diss1'))
+    let data1 = JSON.parse(localStorage.getItem('diss'));
     // console.log(data1);
     if(!data1)return;
     this.setState({

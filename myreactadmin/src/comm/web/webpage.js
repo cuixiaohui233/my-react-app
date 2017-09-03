@@ -10,11 +10,7 @@ import Homepage from './homepage';
 import Read from './read/read';
 import WebImage from './webImage/webImage';
 import Rone from './read/detail/Rone';
-import Rtwo from './read/detail/Rtwo';
-import Rthree from './read/detail/Rthree';
-import Rfour from './read/detail/Rfour';
-import Rfive from './read/detail/Rfive';
-import Rsix from './read/detail/Rsix';
+import Rtwo from './webImage/detail/Rone';
 import App from '../../App';
 import WrappedNormalLoginForm from '../Login/weblogin';
 import Add from '../add/add';
@@ -24,18 +20,11 @@ let logo  = require('./img/logo.gif');
 
 const Child = ({match})=>{
   // console.log(match.params.url)
-  let arr = [
-    {'633196260':<Rone />},
-    {'633649108':<Rtwo />},
-    {'634206154':<Rthree />},
-    {'633311053':<Rfour />},
-    {'633311053':<Rfive />},
-    {'633528924':<Rsix />},
-    {'633196260':<Rone />},
-  ]
-  let r = arr.find((e)=>e[match.params.url]);
-  // console.log(r[match.params.url])
-  return (r[match.params.url]);
+  return (<Rone url={match.params.url} />);
+}
+const Child2 = ({match})=>{
+  // console.log(match.params.url)
+  return (<Rtwo url={match.params.url} />);
 }
 class Webpage extends Component{
   constructor(){
@@ -51,7 +40,7 @@ class Webpage extends Component{
   }
   changeRoute = (newbool,newstate) =>{
     // if(typeof newstate == )
-    console.log(newbool,newstate)
+    // console.log(newbool,newstate)
     this.setState({
       stateBool:newbool,
       states:newstate
@@ -103,6 +92,7 @@ class Webpage extends Component{
           return <WrappedNormalLoginForm changeRoute={this.changeRoute} />
         }}/>
         <Route exact path="/web/read/:url" component={Child} />
+        <Route exact path="/web/webimage/:url" component={Child2} />
         <Route  path="/add" render = {()=>{
           return <Add changeRoute = {this.changeRoute} />
         }} />
