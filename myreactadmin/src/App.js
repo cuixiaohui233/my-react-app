@@ -16,9 +16,6 @@ import Consult from './comm/Consultation/Consult';
 import Image  from './comm/image/Image';
 
 //品牌管理
-import Brand from './comm/brand/brand';
-
-//品牌管理
 import Product from './comm/product/product';
 
 //评论管理
@@ -45,9 +42,6 @@ class App extends Component {
             }} />
             <Route path="/content" render={()=>{
               return <Consult power={this.props.power} />
-            }} />
-            <Route path="/brand" render={()=>{
-              return <Brand power={this.props.power} />
             }} />
             <Route path="/product" render={()=>{
               return <Product power={this.props.power} />

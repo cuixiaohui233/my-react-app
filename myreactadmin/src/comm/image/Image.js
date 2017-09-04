@@ -35,7 +35,7 @@ class Image extends Component{
   constructor(){
     super();
     this.state = {
-      title:['','id','标题','封面','图片名称','更新时间','发布状态','操作'],
+      title:['','id','标题','封面','相册描述','更新时间','发布状态','操作'],
       data:[],
       power:[
         {name:'admin',type:'admin'},
@@ -50,30 +50,6 @@ class Image extends Component{
     this.setState({
       data:getItem('image')
     });
-    // let that = this;
-    // $.ajax({
-          //文章：https://api.douban.com/v2/note/633196260
-          // 632385296,634702061,633983893,634075881
-    //   // 1650813162,1650417319,1623545509,109319721,65512298,73998172
-    //   url:'https://api.douban.com/v2/album/74539453/photos?callback=?',
-    //   dataType:'jsonp',
-    //   success:function(jsonp){
-    //     console.log(jsonp);
-    //     that.setState({
-    //       data:[{
-    //         id:1,
-    //         标题:'data',
-    //         封面:img2,
-    //         图片名称:'现代简约 白色 餐厅',
-    //         更新时间:'2017-8-15',
-    //         发布状态:'已发布',
-    //         操作:'jj',
-    //         动作:'审核',
-    //         checked:false
-    //       }]
-    //     });
-    //   }
-    // })
   }
   delete = (newID)=>{
     // console.log(newID)
@@ -136,7 +112,7 @@ class Image extends Component{
     let data1 = Object.assign(data);
     let list = null;
     list = data1.filter((e,i)=>!e.checked);
-    console.log(data1);
+    // console.log(data1);
     this.setState({
       data:list
     })
@@ -161,22 +137,37 @@ class Image extends Component{
     this.setState({
       page:newpage
     })
-  }//修改数据
+  }
+  //修改数据
   changedata = (newData)=>{
     // console.log(newData);
     let {data} = this.state;
     let data1 = Object.assign(data);
     data1.map((e,i)=>{
-      e.分类 = newData.分类
-      e.标题 = newData.标题
-      e.作者 = newData.作者
-      e.内容 = newData.内容
+      if(e.id === newData.id){
+        e.分类 = newData.分类
+        e.标题 = newData.标题
+        e.作者 = newData.作者
+        e.info = newData.info
+      }
     })
-    console.log(data1);
     this.setState({
       data:data1
     })
     openNotificationWithIcon2('success');
+  }
+
+  changecheckbox =(check)=>{
+    let {data} = this.state;
+    let data1 = Object.assign(data);
+    data1.map((e,i)=>{
+      if(e.id == check){
+        e.checked = !e.checked;
+      }
+    })
+    this.setState({
+      data:data1
+    })
   }
   render(){
     let {data,title} = this.state;
@@ -196,6 +187,7 @@ class Image extends Component{
     if(this.props.power === 'admin'){
       if(filterview.length){
         list = filterview.map((e,i)=>{
+          // console.log(e);
           let data = {
             id:e.id,
             标题:e.标题,
@@ -206,11 +198,14 @@ class Image extends Component{
             发布状态:e.发布状态,
             动作:e.动作,
             操作:e.操作,
+            info:e.info,
+            img:e.img,
             key:i+new Date,
             checked:e.checked,
             delete:this.delete,
             change:this.change,
-            changedata:this.changedata
+            changedata:this.changedata,
+            changecheckbox:this.changecheckbox
           }
           if(i>(this.state.page-1)*3-1 && i<=this.state.page*3-1){
             return <Tr {...data} title={title}/>
@@ -258,10 +253,12 @@ class Image extends Component{
           更新时间:e.更新时间,
           发布状态:e.发布状态,
           操作:e.操作,
+          info:e.info,
           key:i+new Date,
           checked:e.checked,
           delete:this.delete,
-          change:this.change
+          change:this.change,
+          changecheckbox:this.changecheckbox
         }
         if(i>(this.state.page-1)*3-1 && i<=this.state.page*3-1){
           return <Tr {...data} title={title}/>
@@ -295,23 +292,12 @@ class Image extends Component{
     )
   }
 }
-// {
-//   id:1,
-//   标题:'戳爷',
-//   封面:img1,
-//   图片名称:'现代简约 白色 餐厅',
-//   更新时间:'2017-8-15',
-//   发布状态:'已发布',
-//   操作:'jj',
-//   动作:'审核',
-//   checked:false
-// }
 function getItem(data){
   return JSON.parse(localStorage.getItem(data)) || [
     {
       标题:'没有青海湖和茶卡的青海',
       id:1651058003,
-      封面:'https://img3.doubanio.com/view/photo/albumcover/public/p2496090164.webp',
+      封面:img1,
       更新时间:'2017-8-15',
       发布状态:'已发布',
       操作:'jj',
@@ -319,13 +305,14 @@ function getItem(data){
       checked:false,
       头像:'https://img3.doubanio.com/icon/u74022697-14.jpg',
       title:'葫芦娃你站住的相册',
+      info:'hahahah',
       num:150,
       img:['https://img1.doubanio.com/view/photo/lthumb/public/p2496090327.webp','https://img3.doubanio.com/view/photo/lthumb/public/p2496090472.webp','https://img3.doubanio.com/view/photo/lthumb/public/p2496090471.webp']
 
     },{
       标题:'「人们」',
       id:1638051845,
-      封面:'https://img3.doubanio.com/view/photo/albumcover/public/p2495967745.webp',
+      封面:img2,
       更新时间:'2017-8-15',
       发布状态:'已发布',
       操作:'jj',
@@ -339,7 +326,7 @@ function getItem(data){
     },{
      标题:'湿湿的梦',
      id:1651158281,
-     封面:'https://img3.doubanio.com/view/photo/albumcover/public/p2496300741.webp',
+     封面:img3,
      更新时间:'2017-8-15',
      发布状态:'已发布',
      操作:'jj',
@@ -352,7 +339,7 @@ function getItem(data){
     },{
       标题:'即时乐树',
       id:1647018236,
-      封面:'https://img1.doubanio.com/view/photo/albumcover/public/p2458889137.webp',
+      封面:img4,
       更新时间:'2017-8-15',
       发布状态:'已发布',
       操作:'jj',
@@ -366,7 +353,7 @@ function getItem(data){
     },{
       标题:'在商业社会做个堂堂正正的废物会死吗？',
       id:1651117401,
-      封面:'https://img3.doubanio.com/view/photo/albumcover/public/p2496206512.webp',
+      封面:img5,
       更新时间:'2017-8-15',
       发布状态:'已发布',
       操作:'jj',
@@ -380,7 +367,7 @@ function getItem(data){
     },{
       标题:'萨尔兹卡默古特',
       id:1649846355,
-      封面:'https://img3.doubanio.com/view/photo/albumcover/public/p2493323083.webp',
+      封面:img6,
       更新时间:'2017-8-15',
       发布状态:'已发布',
       操作:'jj',
@@ -394,7 +381,7 @@ function getItem(data){
     },{
       标题:'夏天去香港看海',
       id:1650648598,
-      封面:'https://img3.doubanio.com/view/photo/albumcover/public/p2495070565.webp',
+      封面:img7,
       更新时间:'2017-8-15',
       发布状态:'已发布',
       操作:'jj',
@@ -408,7 +395,7 @@ function getItem(data){
     },{
       标题:'北京红冶钢厂',
       id:1651038482,
-      封面:'https://img3.doubanio.com/view/photo/albumcover/public/p2496039272.webp',
+      封面:img8,
       更新时间:'2017-8-15',
       发布状态:'已发布',
       操作:'jj',

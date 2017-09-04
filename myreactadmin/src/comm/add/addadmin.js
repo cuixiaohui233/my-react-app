@@ -20,6 +20,7 @@ class Addadmin extends Component{
       address:'',
       checked:false,
       bool:false,
+      userType:false,
       states:'admin',
       num:0
     }
@@ -192,6 +193,7 @@ function getItem(data){
       email:'',
       address:'',
       checked:false,
+      userType:false,
   }]
 }
 export default Addadmin;

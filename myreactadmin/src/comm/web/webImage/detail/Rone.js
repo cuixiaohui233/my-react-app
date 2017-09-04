@@ -34,14 +34,16 @@ class Rtwo extends Component{
       // })
     }else{
       $.ajax({
-        url:'https://api.douban.com/v2/album/118763016/photos',
-        // url:'https://api.douban.com/v2/album/'+this.state.url+'/photos?callback',
+        // url:'https://api.douban.com/v2/album/118763016/photos',
+        url:'https://api.douban.com/v2/album/'+this.state.url+'/photos?callback',
+        type:'post',
         dataType:'jsonp',
         data:{
           scope: 'community_basic_photo',
           count:20
         },
         success:function(data){
+          console.log(data);
           that.setState({
             title:data.album.title,
             name:data.album.author.name,
@@ -59,7 +61,7 @@ class Rtwo extends Component{
     let list = null;
     list = pinfo1.map((e,i)=>{
       return <div className="webpage_img_info">
-              <img src={e.thumb} />
+              <img src={e.thumb} id="layout"/>
              </div>
     })
     return(

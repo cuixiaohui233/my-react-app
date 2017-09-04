@@ -30,7 +30,23 @@ class Homepage extends Component{
       arr:[],
       img:[],
       market:[],
-      list:[]
+      list:[],
+      val:'',
+      val1:'',
+      arr:[
+          {
+          id:1,
+          username:'aaa',
+          password:'aaa',
+          bool:true,
+          states:'admin',
+          sex:'女',
+          phone:'12312312334',
+          email:'',
+          address:'',
+          checked:false,
+        }
+      ]
     }
   }
   componentDidMount(){
@@ -54,6 +70,45 @@ class Homepage extends Component{
     //     // arr1.push(data);
     //   }
     // })
+  }
+  change1 = (ev)=>{
+    this.setState({
+      val:ev.target.value
+    })
+  }
+  change2 = (ev)=>{
+    this.setState({
+      val1:ev.target.value
+    })
+  }
+  click = ()=>{
+    if(this.state.val && this.state.val1){
+      let arr2 = JSON.parse(localStorage.getItem('users')) || this.state.arr;
+      let arr = arr2.find(e=>e.username === this.state.val);
+      // console.log(arr,this.state.val1);
+        if(arr2.find(e=>e.username === this.state.val)){
+          // console.log(arr.password,this.state.val1);
+          if(arr.password+'' === this.state.val1){
+            if(arr.bool){
+                this.props.changeRoute('true',arr.states);
+                console.log(arr.username);
+                arr2.map((e,i)=>{
+                  if(e.username == this.state.val){
+                    e.userType = e.username;
+                  }
+                })
+                // console.log(arr2);
+                localStorage.setItem('users',JSON.stringify(arr2));
+            }
+          }else{
+            alert('密码错误');
+          }
+        }else{
+          alert('对不起没有此用户');
+        }
+    }else{
+      alert('请输入密码！');
+    }
   }
   render(){
     let {img,article,market} = this.state;
@@ -156,12 +211,35 @@ class Homepage extends Component{
       <div className="webpage">
         <div id="web_banner">
           <img src={banner} className="banner_img" />
+          <div id="web_login">
+            <p className="username"><input
+              type="text"
+              value={this.state.val}
+              onChange={this.change1}
+              placeholder="手机号"
+            /></p>
+            <p className="password"><input
+              type="password"
+              onChange={this.change2}
+              value={this.state.val1}
+              placeholder="密码"
+            /></p>
+            <p id="login_button">
+              <input
+                type="button"
+                value="登录"
+                onClick={this.click}
+                className="user_login"
+              />
+              <input
+                type="button"
+                value="注册"
+                className="user_add"
+                onClick={this.add}
+              />
+          </p>
+          </div>
         </div>
-        {/* <div id="advert">
-          <a href="https://erebor.douban.com/redirect/?ad=188411&uid=&bid=7qezcFiVg98&unit=dale_anonymous_home_page_middle_2&crtr=3%3A%2F&mark=&hn=hador15&sig=195d8fea5a0bb1593a9f148af49a7a979dc44c4838597db68f4156b03db7be5b5e138753e5db5cc768c84627871a00eebde70ace6324b23f852733ac2807c50c&pid=debug_a51700db43644dfab6c4b68ae301d319106066f8&target=aHR0cHM6Ly9zaGlqaS5kb3ViYW4uY29tL3NwZWNpYWwvcWl4aQ==">
-            <img src="https://img1.doubanio.com/view/dale-online/dale_ad/public/3b6c8a1c4e50839.jpg"/>
-          </a>
-        </div> */}
         <div id="word">
           <h3 className="hot_item">热点内容· · · · · · </h3>
           <div id="img_dl">
@@ -297,7 +375,7 @@ function getItem(data){
         {
           title:'没有青海湖和茶卡的青海',
           id:1651058003,
-          img:img1
+          img:'https://img3.doubanio.com/view/photo/albumcover/public/p2497507971.webp'
         },{
           title:'「人们」',
           id:1638051845,

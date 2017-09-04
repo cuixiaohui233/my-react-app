@@ -20,7 +20,11 @@ class Add extends Component{
       address:'',
       checked:false,
       bool:false,
-      states:'admin'
+      states:'',
+      userType:null,
+      collect:[],
+      score:[],
+      comment:[]
     }
   }
   componentDidMount(){
@@ -86,6 +90,12 @@ class Add extends Component{
         alert('换个名字吧！');
         this.props.changeRoute('add','member');
       }else{
+        for(var i=0;i<arr1.length;i++){
+          if(arr1[i].userType){
+            arr1[i].userType = null;
+          }
+        }
+        console.log(arr1);
         arr1.push({
           username:this.state.name,
           password:this.state.pass,
@@ -95,7 +105,11 @@ class Add extends Component{
           address:this.state.address,
           checked:false,
           bool:true,
-          states:'member'
+          states:'member',
+          userType:this.state.name,
+          collect:[],
+          score:[],
+          comment:[]
         });
         localStorage.setItem('users',JSON.stringify(arr1));
         this.props.changeRoute('true','member');
@@ -155,6 +169,10 @@ function getItem(data){
       email:'',
       address:'',
       checked:false,
+      userType:null,
+      collect:[],
+      score:[],
+      comment:[]
   }]
 }
 export default Add;

@@ -171,10 +171,10 @@ changecheckbox =(check)=>{
     let filterview = null;
     switch (this.state.view) {
       case 'search':
-        filterview = this.state.info
+        filterview = this.state.info;
         break;
       case 'all':
-        filterview = this.state.data
+        filterview = this.state.data;
         break;
     }
     // console.log(this.props.power)
@@ -243,7 +243,8 @@ changecheckbox =(check)=>{
           key:i+new Date,
           checked:e.checked,
           delete:this.delete,
-          change:this.change
+          change:this.change,
+          changecheckbox:this.changecheckbox
         }
         if(i>(this.state.page-1)*3-1 && i<=this.state.page*3-1){
           return <Tr {...data} title={title}/>

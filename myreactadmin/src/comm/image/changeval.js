@@ -9,8 +9,10 @@ class Changecontent extends Component{
   constructor(props){
     super(props);
     this.state = {
+      id:this.props.id,
       title:this.props.标题,
-      textarea:this.props.内容,
+      info:this.props.info,
+      img:this.props.img,
       changewriter:this.props.作者,
       bool:false
     }
@@ -22,7 +24,7 @@ class Changecontent extends Component{
   }
   changeTextarea = (ev)=>{
     this.setState({
-      textarea:ev.target.value
+      info:ev.target.value
     })
   }
   changewriter = (ev)=>{
@@ -31,45 +33,51 @@ class Changecontent extends Component{
     })
   }
   changeVal = ()=>{
-    let {title,changewriter} = this.state;
-    if(title  && changewriter){
+    let {title,changewriter,info,id} = this.state;
+    if(title && info){
       this.props.changedata({
+        id:id,
         标题:title,
         作者:changewriter,
+        info:info
       });
     }
     this.setState({
       bool:true
     })
   }
+  del_img = (ev)=>{
+    this.props.del_img(ev.target.id);
+  }
   render(){
+    // console.log(this.props)
+    let {img} = this.state;
+    let image = null;
+    image = img.map((e,i)=>{
+      return <p className="image_img_p">
+        <img src={e} className="changeval1_img"/>
+        <span className="close"
+          onClick= {this.del_img}
+          id={e.id}
+          ><Icon type="close"/></span>
+      </p>
+    })
     return(
       <div className="addContent">
           <from>
-            <p className="title_short" ><span><i>*</i>文章标题：</span><input
+            <p className="title_short" ><span><i>*</i>相册标题：</span><input
               type="text"
               onChange={this.change}
               value={this.state.title}
             /></p>
-            <p className="text_short">
-              <input
-                type="file"
-                name="file"
-                ref = {(elem)=>{this.file = elem}}
-              />
-              <input
-                type="button"
-                value="按钮"
-                id="btn"
-                onClick={this.uplode}
-              />
-            </p>
-            <p className="title_short"><span><i>*</i>图片名称：</span><input
+            <p className="title_short" ><span><i>*</i>相册描述：</span><input
               type="text"
-              onChange={this.changewriter}
-              value={this.state.changewriter}
-            />
-          </p>
+              onChange={this.changeTextarea}
+              value={this.state.info}
+            /></p>
+            <div className="text_img">
+              {image}
+            </div>
           </from>
         <span className="off"><Link to="/image"><Icon type="close" /></Link></span>
         <p className="button_short">

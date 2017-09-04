@@ -20,11 +20,11 @@ let logo  = require('./img/logo.gif');
 
 const Child = ({match})=>{
   // console.log(match.params.url)
-  return (<Rone url={match.params.url} />);
+  return (<Rone url={match.params.url}/>);
 }
 const Child2 = ({match})=>{
   // console.log(match.params.url)
-  return (<Rtwo url={match.params.url} />);
+  return (<Rtwo url={match.params.url}/>);
 }
 class Webpage extends Component{
   constructor(){
@@ -68,7 +68,7 @@ class Webpage extends Component{
           </div>
         </nav>
         <Route exact path="/" render={()=>{
-          return <Homepage />
+          return <Homepage changeRoute={this.changeRoute} />
         }} />
         <Route exact path="/web/read" render={()=>{
           return <Read />

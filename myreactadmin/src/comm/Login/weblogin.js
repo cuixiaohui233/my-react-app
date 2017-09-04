@@ -34,6 +34,10 @@ class NormalLoginForm extends Component {
           email:'',
           address:'',
           checked:false,
+          userType:'',
+          collect:[],
+          score:[],
+          comment:[]
         }
       ]
     }
@@ -57,8 +61,19 @@ class NormalLoginForm extends Component {
           // console.log(arr.password,this.state.val1);
           if(arr.password+'' === this.state.val1){
             if(arr.bool){
-              console.log(arr.states);
                 this.props.changeRoute('true',arr.states);
+                for(var i=0;i<arr2.length;i++){
+                  if(arr2[i].userType){
+                    arr2[i].userType = null;
+                  }
+                }
+                arr2.map((e,i)=>{
+                  if(e.username == this.state.val){
+                    e.userType = e.username;
+                  }
+                })
+                console.log(arr2);
+                localStorage.setItem('users',JSON.stringify(arr2));
             }
           }else{
             alert('密码错误');
@@ -69,7 +84,6 @@ class NormalLoginForm extends Component {
     }else{
       alert('请输入密码！');
     }
-
   }
   render() {
     return (

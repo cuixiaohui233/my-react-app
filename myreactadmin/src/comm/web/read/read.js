@@ -12,6 +12,7 @@ class Read extends Component{
     super();
   }
   render(){
+    console.log(this.props.stateBool);
     let data = JSON.parse(localStorage.getItem('article'));
     // console.log(data);
     let data1 = Object.assign(data);

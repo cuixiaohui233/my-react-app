@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 import registerServiceWorker from './registerServiceWorker';
-import WrappedNormalLoginForm from './comm/Login/Login.js';
+// import WrappedNormalLoginForm from './comm/Login/Login.js';
 import Webpage from './comm/web/webpage';
 import {
   BrowserRouter as Router,

@@ -11,7 +11,9 @@ class Addcontent extends Component{
       title:'',
       changewriter:'',
       summary:'',
-      bool:false
+      bool:false,
+      imgsrc:'',
+      info:''
     }
   }
   change = (ev)=>{
@@ -21,7 +23,7 @@ class Addcontent extends Component{
   }
   changewriter = (ev)=>{
     this.setState({
-      changewriter:ev.target.value
+      info:ev.target.value
     })
   }
   summary = (ev)=>{
@@ -29,16 +31,27 @@ class Addcontent extends Component{
       summary:ev.target.value
     })
   }
+
+imgChange = ()=>{
+  var oFReader = new FileReader();
+  var file = this.file.files[0];
+  oFReader.readAsDataURL(file);
+  oFReader.onloadend = (oFRevent)=>{
+    this.setState({
+      imgsrc:oFRevent.target.result
+    })
+  }
+
+}
   //保存并发布
   submin = () =>{
-    let {title,changewriter} = this.state;
-    let url = this.file.value;
-    if(title && url && changewriter){
+    let {title,imgsrc,info} = this.state;
+    if(title &&info){
       this.props.addText({
         id:this.props.maxId(),
         标题:title,
-        封面:url,
-        图片名称:changewriter,
+        封面:imgsrc,
+        info:info,
         发布状态:'已发布',
         动作:'下架',
         更新时间:this.props.changeTime()
@@ -52,7 +65,7 @@ class Addcontent extends Component{
   draft = () =>{
     let {title,changewriter} = this.state;
     let url = require(this.file.value);
-    if(title && url && changewriter){
+    if(title  && changewriter){
       this.props.addText({
         id:this.props.maxId(),
         分类:this.classify.value,
@@ -63,44 +76,30 @@ class Addcontent extends Component{
       });
     }
   }
-  //上传图片
-  uplode = ()=>{
-    const ajax = new XMLHttpRequest;
-		ajax.open('post','./post_file.php');
-    const ff = this.file.files[0];
-    console.log(ff);
-		const formData = new FormData;
-		formData.append('file',ff);
-    ajax.send( formData );
-  }
   render(){
     return(
       <div className="addContent">
           <from>
-            <p className="title_short" ><span><i>*</i>文章标题：</span><input
+            <p className="title_short" ><span><i>*</i>相册标题：</span><input
               type="text"
               onChange={this.change}
               value={this.state.title}
             /></p>
             <p className="text_short">
+              <span><i>*</i>相册封面：</span>
               <input
                 type="file"
                 name="file"
+                onChange={this.imgChange}
                 ref = {(elem)=>{this.file = elem}}
               />
-            	<input
-                type="button"
-                value="按钮"
-                id="btn"
-                onClick={this.uplode}
+            </p>
+            <p className="title_short"><span><i>*</i>相册描述：</span><input
+                type="text"
+                onChange={this.changewriter}
+                value={this.state.info}
               />
             </p>
-            <p className="title_short"><span><i>*</i>图片名称：</span><input
-              type="text"
-              onChange={this.changewriter}
-              value={this.state.changewriter}
-            />
-          </p>
           </from>
         <span className="off"><Link to="/"><Icon type="close" /></Link></span>
         <p className="button_short">

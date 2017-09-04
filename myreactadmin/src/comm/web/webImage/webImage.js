@@ -18,6 +18,7 @@ class WebImage extends Component{
     let list = null;
     let img1 = null;
     list = data1.map((e,i)=>{
+      // console.log(e.img)
       return <Link to={'/web/webimage/'+e.id}><div className="webpage_read1">
         <p className="webpage_image"><img src={e.头像} id="touxiang" /><span id="biaoti">{e.title}-{e.标题}</span></p>
         <p className="webpage_image1">

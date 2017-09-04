@@ -34,7 +34,7 @@ class DelandAdd extends Component{
         <Link to="/addcontent">
           <button
             className="last_child"
-            ><Icon type="edit" />添加咨询</button>
+            ><Icon type="edit" />添加文章</button>
         </Link>
         <Switch>
           <Route path="/addcontent" render={()=>{

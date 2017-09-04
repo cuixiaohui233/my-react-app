@@ -26,9 +26,16 @@ class PickerSizesDemo1 extends Component {
     data1 = data1.filter((e,i)=>{
       if(e.标题.includes(this.state.val)){
         return e;
+      }else if(e.id == this.state.val){
+        return e;
+      }else if(e.更新时间.includes(this.state.val)){
+        return e;
+      }else if(e.标题 === this.state.val){
+        return e;
+      }else if(e.发布状态 === this.state.val){
+        return e;
       }
     })
-    console.log(data1);
     this.props.changeView(data1,ev.target.id);
   }
   keyupchange = (ev)=>{
@@ -39,20 +46,14 @@ class PickerSizesDemo1 extends Component {
           return e;
         }
       })
-      console.log(ev.target.id);
       this.props.changeView(data1,ev.target.id);
     }
   }
   render() {
     const { size } = this.state;
-
-
     // <span className="fanwei">日期范围：</span><span></span>
     // <DatePicker size={size} /><span></span>
     // <DatePicker size={size} /><span></span>
-    //
-
-
     return (
       <div className="date-input">
         <Input

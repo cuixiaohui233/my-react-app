@@ -58,7 +58,7 @@ class Product extends Component{
   }
   //添加数据
   addText= (newTxt) =>{
-    console.log(newTxt)
+    // console.log(newTxt)
     let {data} = this.state;
     let data1 = Object.assign(data);
     data1.push(newTxt);
@@ -79,19 +79,19 @@ class Product extends Component{
     })
     return num+1;
   }
-  //更新时间
-  changeTime = ()=>{
-    let date = new Date();
-    let date1 = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
-    return date1;
-  }
+  // //更新时间
+  // changeTime = ()=>{
+  //   let date = new Date();
+  //   let date1 = date.getFullYear()+'-'+(date.getMonth()+1)+'-'+date.getDate();
+  //   return date1;
+  // }
   //批量删除
   alldel = ()=>{
     let {data} = this.state;
     let data1 = Object.assign(data);
     let list = null;
     list = data1.filter((e,i)=>!e.checked);
-    console.log(data1);
+    // console.log(data1);
     this.setState({
       data:list
     })
@@ -116,6 +116,35 @@ class Product extends Component{
     this.setState({
       page:newpage
     })
+  }
+  changecheckbox =(check)=>{
+    let {data} = this.state;
+    let data1 = Object.assign(data);
+    data1.map((e,i)=>{
+      if(e.id == check){
+        e.checked = !e.checked;
+      }
+    })
+    this.setState({
+      data:data1
+    })
+  }
+  changedata = (newData)=>{
+    // console.log(newData);
+    let {data} = this.state;
+    let data1 = Object.assign(data);
+    data1.map((e,i)=>{
+      if(e.id === newData.id){
+        e.标题 = newData.title,
+        e.封面 = newData.img,
+        e.图片名称 = newData.info,
+        e.更新时间 = newData.price
+      }
+    })
+    this.setState({
+      data:data1
+    })
+    // openNotificationWithIcon2('success');
   }
   render(){
     let {data,title} = this.state;
@@ -148,7 +177,9 @@ class Product extends Component{
             key:i+new Date,
             checked:e.checked,
             delete:this.delete,
-            change:this.change
+            change:this.change,
+            changecheckbox:this.changecheckbox,
+            changedata:this.changedata
           }
           if(i>(this.state.page-1)*3-1 && i<=this.state.page*3-1){
             return <Tr {...data} title={title}/>
@@ -160,7 +191,6 @@ class Product extends Component{
       let shuju = {
         addText:this.addText,
         maxId:this.maxId,
-        changeTime:this.changeTime,
         alldel:this.alldel
       }
       addanddel = <DelandAdd {...shuju}/>;
@@ -198,7 +228,8 @@ class Product extends Component{
           key:i+new Date,
           checked:e.checked,
           delete:this.delete,
-          change:this.change
+          change:this.change,
+          changecheckbox:this.changecheckbox
         }
         if(i>(this.state.page-1)*3-1 && i<=this.state.page*3-1){
           return <Tr {...data} title={title}/>

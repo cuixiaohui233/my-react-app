@@ -89,10 +89,10 @@ class Tr extends Component{
           {icon}</td>
           <td>{this.props.id}</td>
           <td title={this.props.标题}>{title}</td>
-          <td>{this.props.item}</td>
-          <td>{this.props.更新时间}</td>
           <td title={this.props.作者}>{writer}</td>
           <td title={this.props.内容}>{item}</td>
+          <td>{this.props.item}</td>
+          <td>{this.props.更新时间}</td>
           <td>{this.props.发布状态}</td>
           {h}
         </tr>

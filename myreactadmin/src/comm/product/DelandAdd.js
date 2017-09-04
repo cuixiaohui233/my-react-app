@@ -23,7 +23,7 @@ class DelandAdd extends Component{
           onClick={this.alldel}
           ><Icon type="delete" />批量删除</button>
         <Link to="/addbrand">
-          <button className="last_child"><Icon type="edit" />添加图片</button>
+          <button className="last_child"><Icon type="edit" />添加商品</button>
         </Link>
         <Switch>
           <Route path="/addbrand" render={()=>{

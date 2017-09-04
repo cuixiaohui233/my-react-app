@@ -20,7 +20,7 @@ class Rone extends Component{
       pinfo:[],
       val:'',
       time:'',
-      url:this.props.url
+      url:this.props.url,
     }
   }
   componentDidMount(){
@@ -90,19 +90,36 @@ class Rone extends Component{
   click = ()=>{
     let {pinfo} = this.state;
     let arr1 = Object.assign(pinfo);
-    if(this.state.val){
-      let data = {
-        author:{avatar:'https://img1.doubanio.com/icon/user_normal.jpg',name:'佚名'},
-        created:2017-8-30,
-        content:this.state.val,
-        id:this.maxId()
-      }
-      arr1.unshift(data);
-      this.setState({
-        pinfo:arr1,
-        val:''
+    let arr2 = JSON.parse(localStorage.getItem('users'))||[];
+    if(arr2.length){
+      let arr3 = arr2.filter((e,i)=>{
+        if(e.userType && e.userType === e.username){
+          return e;
+        }
       })
+      if(this.state.val && arr3[0].userType){
+        let data = {
+          author:{avatar:'https://img1.doubanio.com/icon/user_normal.jpg',name:'佚名'},
+          created:2017-8-30,
+          content:this.state.val,
+          id:this.maxId()
+        }
+        arr1.unshift(data);
+        arr3[0].comment.unshift(data);
+        // console.log(arr1,arr2);
+        localStorage.setItem('users',JSON.stringify(arr2));
+        this.setState({
+          pinfo:arr1,
+          val:''
+        })
+      }else{
+      alert('请先登录');
+      }
+    }else{
+      alert('请先登录');
     }
+
+
   }
   render(){
     let {pinfo} = this.state;
@@ -119,9 +136,6 @@ class Rone extends Component{
             <p className="p_icon">来自微奇生活</p>
           </div>
         </div>
-      })
-      pinfo.sort(function(a,b){
-        return a.id-b.id;
       })
       // console.log(pinfo);
       localStorage.setItem('diss',JSON.stringify(pinfo))
@@ -158,6 +172,7 @@ class Rone extends Component{
                <input
                  type="button"
                  value="发表评论"
+                 className="push_item"
                  onClick={this.click}
                />
             {list}

@@ -37,19 +37,16 @@ class Addcontent extends Component{
   }
   //保存并发布
   submin = () =>{
-
-
     let {title,textarea,changewriter,summary} = this.state;
     if(title && textarea && changewriter && summary){
       this.props.addText({
         id:this.props.maxId(),
-        分类:this.classify.value,
         标题:title,
         发布状态:'已发布',
         动作:'下架',
         作者:changewriter,
-        更新时间:this.props.changeTime(),
-        内容:this.state.textarea
+        更新时间:summary,
+        图片名称:this.state.textarea,
       });
     }
     this.setState({
@@ -62,13 +59,12 @@ class Addcontent extends Component{
     if(title && textarea && changewriter && summary){
       this.props.addText({
         id:this.props.maxId(),
-        分类:this.classify.value,
         标题:title,
-        发布状态:'草稿',
-        动作:'审核',
+        发布状态:'已发布',
+        动作:'下架',
         作者:changewriter,
-        更新时间:this.props.changeTime(),
-        内容:textarea
+        更新时间:summary,
+        图片名称:this.state.textarea,
       });
     }
   }
@@ -76,18 +72,11 @@ class Addcontent extends Component{
     return(
       <div className="addContent">
         <from>
-          <p className="title_short" ><span><i>*</i>文章标题：</span><input
+          <p className="title_short" ><span><i>*</i>商品名称：</span><input
             type="text"
             onChange={this.change}
             value={this.state.title}
           /></p>
-
-          <p className="title_short"><span>文章分类：</span><select ref = {(elem)=>{this.classify = elem}} name="" className="select">
-                        <option value="全部类型">全部类型</option>
-                        <option value="帮助说明">帮助说明</option>
-                        <option value="新闻资讯">新闻资讯</option>
-                      </select>
-          </p>
           <p className="text_short"><span className="title_item">文章内容：</span>
             <textarea
               name=""
@@ -107,7 +96,7 @@ class Addcontent extends Component{
             onChange={this.changewriter}
             value={this.state.changewriter}
           /></p>
-          <p className="title_short"><span>文章摘要：</span><input
+          <p className="title_short"><span>价格：</span><input
             type="text"
             onChange={this.summary}
             value={this.state.summary}
