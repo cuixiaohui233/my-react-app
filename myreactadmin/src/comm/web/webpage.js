@@ -26,6 +26,11 @@ const Child2 = ({match})=>{
   // console.log(match.params.url)
   return (<Rtwo url={match.params.url}/>);
 }
+const Child3 = ({match})=>{
+  // console.log(match.params.url)
+
+  return (<Rone url={match.params.url}/>);
+}
 class Webpage extends Component{
   constructor(){
     super();
@@ -52,7 +57,7 @@ class Webpage extends Component{
         <nav>
           <div className="nav">
             <div id="web_logo">
-              <Link to="/"><img src={logo} className="logo_img"/></Link>
+              <Link to="/home"><img src={logo} className="logo_img"/></Link>
               <input type="text" className="logo_input"/>
             </div>
             <div id="web_item">
@@ -60,14 +65,18 @@ class Webpage extends Component{
                 <span><Link to="/web/read" className="article">文章</Link></span>
                 <span><Link to="/web/image" className="image">图集</Link></span>
                 <span><Link to="/" className="market">市集</Link></span>
-                <span><Link to="/app" className="movie">管理</Link></span>
+                <span><Link to="/app/content" className="movie">管理</Link></span>
                 {/* <span><Link to="/" className="movie">电影</Link></span>
                 <span><Link to="/" className="muise">音乐</Link></span> */}
               </p>
             </div>
           </div>
         </nav>
+        <Switch>
         <Route exact path="/" render={()=>{
+          return <Homepage changeRoute={this.changeRoute} />
+        }} />
+        <Route exact path="/home" render={()=>{
           return <Homepage changeRoute={this.changeRoute} />
         }} />
         <Route exact path="/web/read" render={()=>{
@@ -76,7 +85,7 @@ class Webpage extends Component{
         <Route path="/web/image" render={()=>{
           return <WebImage />
         }} />
-        <Route path="/app" render={()=>{
+        <Route path="/app/content" render={()=>{
           if(this.state.stateBool == 'true'){
             return <App power={this.state.states} />
           }else if(this.state.stateBool == 'false'){
@@ -93,12 +102,11 @@ class Webpage extends Component{
         }}/>
         <Route exact path="/web/read/:url" component={Child} />
         <Route exact path="/web/webimage/:url" component={Child2} />
-        <Route  path="/add" render = {()=>{
-          return <Add changeRoute = {this.changeRoute} />
-        }} />
+        <Route exact path="/homeimage/:url" component={Child3} />
         <Route  path="/addmin" render = {()=>{
           return <Addadmin changeRoute = {this.changeRoute} />
         }} />
+      </Switch>
       </div>
     )
   }

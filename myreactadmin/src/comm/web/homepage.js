@@ -35,18 +35,26 @@ class Homepage extends Component{
       val1:'',
       arr:[
           {
-          id:1,
-          username:'aaa',
-          password:'aaa',
-          bool:true,
-          states:'admin',
-          sex:'女',
-          phone:'12312312334',
-          email:'',
-          address:'',
-          checked:false,
+            id:1,
+            username:'admin',
+            penname:'赵总',
+            oneselfinfo:'厉害到爆炸',
+            password:'aaa123',
+            email:'15931662302@163.com',
+            bool:true,
+            states:'admin',
+            sex:'女',
+            phone:'15931662302',
+            address:'',
+            time:'2017-9-6',
+            checked:false,
+            userType:'admin',
+            collect:[],
+            score:[],
+            comment:[],
         }
-      ]
+      ],
+      loginClass:'web_login'
     }
   }
   componentDidMount(){
@@ -58,18 +66,6 @@ class Homepage extends Component{
         market:getItem('market')
       });
     });
-  }
-  artClick = (ev)=>{
-    // console.log(ev.target.id)
-    // $.ajax({
-    //   url:'https://api.douban.com/v2/note/'+ev.target.id,
-    //   // url:'https://api.douban.com/v2/note/user_created/51610855',
-    //   dataType:'jsonp',
-    //   success:function(data){
-    //     // console.log(data);
-    //     // arr1.push(data);
-    //   }
-    // })
   }
   change1 = (ev)=>{
     this.setState({
@@ -91,14 +87,21 @@ class Homepage extends Component{
           if(arr.password+'' === this.state.val1){
             if(arr.bool){
                 this.props.changeRoute('true',arr.states);
-                console.log(arr.username);
+                // console.log(arr.username);
+                for(var i=0;i<arr2.length;i++){
+                  if(arr2[i].userType){
+                    arr2[i].userType = null;
+                  }
+                }
                 arr2.map((e,i)=>{
                   if(e.username == this.state.val){
                     e.userType = e.username;
                   }
                 })
-                // console.log(arr2);
                 localStorage.setItem('users',JSON.stringify(arr2));
+                this.setState({
+                  loginClass:'web_login_none'
+                })
             }
           }else{
             alert('密码错误');
@@ -140,11 +143,11 @@ class Homepage extends Component{
         return <dl className="img_dl">
                 <dt>
                   <span className="img_span">
-                  <Link to="/"><img src={data.img} /></Link>
+                  <Link to={'/web/webimage/'+e.id}><img src={data.img} /></Link>
                   </span>
                 </dt>
                 <dd>
-                  <Link to={'/image/'+data.id}>{data.txt}</Link>
+                  <Link to={'/web/webimage/'+e.id}>{data.txt}</Link>
                 </dd>
               </dl>
       }
@@ -159,28 +162,28 @@ class Homepage extends Component{
       return <dl className="img_dl">
               <dt>
                 <span className="img_span">
-                <Link to="/"><img src={data.img} /></Link>
+                <Link to={'/web/webimage/'+e.id}><img src={data.img} /></Link>
                 </span>
               </dt>
               <dd>
-                <Link to={'/image/'+data.id}>{data.txt}</Link>
+                <Link to={'/web/webimage/'+e.id}>{data.txt}</Link>
               </dd>
             </dl>
     })
     art = article1.map((e,i)=>{
       return <li
         onClick={this.artClick}
-        ><Link to="/" id = {e.id}>{e.title}</Link></li>
+        ><Link to={'/homeimage/'+e.id} id = {e.id}>{e.title}</Link></li>
     })
     art1 = article1.map((e,i)=>{
       if(i<=4){
-        return <div id="author">
+        return <Link to={'/homeimage/'+e.id} id = {e.id}><div id="author">
           <div className="art_author"><img src={e.avatar} className="art_img"/><span>{e.authorname}</span></div>
           <div className="art_item">
             <p>{e.title}</p>
             <p className="art_txt">{e.summary}</p>
           </div>
-        </div>
+        </div></Link>
       }
     })
     supermarket = market1.map((e,i)=>{
@@ -207,11 +210,13 @@ class Homepage extends Component{
               </div>
     })
     return(
-      <Router>
       <div className="webpage">
         <div id="web_banner">
           <img src={banner} className="banner_img" />
-          <div id="web_login">
+          <div id="web_welcome">
+            <h3>欢迎登陆微奇生活</h3>
+          </div>
+          <div id={this.state.loginClass}>
             <p className="username"><input
               type="text"
               value={this.state.val}
@@ -291,7 +296,6 @@ class Homepage extends Component{
           </div>
         </div>
       </div>
-    </Router>
     )
   }
 }

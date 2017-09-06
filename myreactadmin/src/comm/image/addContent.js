@@ -63,18 +63,21 @@ imgChange = ()=>{
   }
   //保存草稿
   draft = () =>{
-    let {title,changewriter} = this.state;
-    let url = require(this.file.value);
-    if(title  && changewriter){
+    let {title,imgsrc,info} = this.state;
+    if(title &&info){
       this.props.addText({
         id:this.props.maxId(),
-        分类:this.classify.value,
         标题:title,
+        封面:imgsrc,
+        info:info,
         发布状态:'草稿',
-        动作:'审核',
+        动作:'下架',
         更新时间:this.props.changeTime()
       });
     }
+    this.setState({
+      bool:true
+    })
   }
   render(){
     return(

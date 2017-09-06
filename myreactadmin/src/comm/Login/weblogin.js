@@ -24,20 +24,23 @@ class NormalLoginForm extends Component {
       class:'login-form',
       arr:[
           {
-          id:1,
-          username:'aaa',
-          password:'aaa',
-          bool:true,
-          states:'admin',
-          sex:'女',
-          phone:'12312312334',
-          email:'',
-          address:'',
-          checked:false,
-          userType:'',
-          collect:[],
-          score:[],
-          comment:[]
+            id:1,
+            username:'admin',
+            penname:'赵总',
+            oneselfinfo:'厉害到爆炸',
+            password:'aaa123',
+            email:'15931662302@163.com',
+            bool:true,
+            states:'admin',
+            sex:'女',
+            phone:'15931662302',
+            address:'',
+            time:'2017-9-6',
+            checked:false,
+            userType:'admin',
+            collect:[],
+            score:[],
+            comment:[]
         }
       ]
     }
@@ -72,7 +75,7 @@ class NormalLoginForm extends Component {
                     e.userType = e.username;
                   }
                 })
-                console.log(arr2);
+                // console.log(arr2);
                 localStorage.setItem('users',JSON.stringify(arr2));
             }
           }else{
@@ -111,22 +114,15 @@ class NormalLoginForm extends Component {
           placeholder="请输入密码"
         />
         </p>
-        <p id="add_list">
-        <Link to='/add'>注册会员</Link>
-        <Link to='/addmin' className="addAdmin">注册超级会员</Link></p>
-        <Link to="/app">
-        <button
-          onClick={this.click}
-          >登录
-        </button>
+        <Link to="/app/content">
+          <button
+            onClick={this.click}
+            >登录
+          </button>
         </Link>
-      {/* <Link to="/add">
-        <button
-          className="add"
-          >立即注册
-        </button>
-      </Link> */}
-
+        <Link to='/addmin'>
+          <button className="addAdmin">注册会员</button>
+        </Link>
       </form>
     </div>
     );

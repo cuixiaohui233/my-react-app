@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import Menu1 from './comm/side/Menu1';
 import Header from './comm/Head/Head';
 import Nav from './comm/navigation/nav';
+import Personal from './comm/personal/personal';
 import {
   BrowserRouter as Router,
   Route,
@@ -40,7 +41,7 @@ class App extends Component {
             <Route path="/image" render={()=>{
               return <Image power={this.props.power}/>
             }} />
-            <Route path="/content" render={()=>{
+            <Route path="/app/content" render={()=>{
               return <Consult power={this.props.power} />
             }} />
             <Route path="/product" render={()=>{
@@ -54,6 +55,9 @@ class App extends Component {
             }} />
             <Route path="/member" render={()=>{
               return <Member power={this.props.power} />
+            }} />
+            <Route path="/personal" render={()=>{
+              return <Personal />
             }} />
           </Switch>
         </div>

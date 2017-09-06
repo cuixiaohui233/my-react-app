@@ -4,7 +4,7 @@ import { Input } from 'antd';
 import './Date.css'
 // const { MonthPicker, RangePicker } = DatePicker;
 
-class PickerSizesDemo extends Component {
+class PickerSizesDemo1 extends Component {
   constructor(props){
     super(props);
     this.state = {
@@ -30,7 +30,7 @@ class PickerSizesDemo extends Component {
         return e;
       }else if(e.更新时间.includes(this.state.val)){
         return e;
-      }else if(e.作者 === this.state.val){
+      }else if(e.图片名称 === this.state.val){
         return e;
       }else if(e.发布状态 === this.state.val){
         return e;
@@ -40,15 +40,16 @@ class PickerSizesDemo extends Component {
   }
   keyupchange = (ev)=>{
     if(ev.keyCode === 13){
+      console.log(1111);
       let data1 = Object.assign(this.props.data);
       data1 = data1.filter((e,i)=>{
-        if(e.标题.includes(this.state.val)){
+        if(e.标题 === this.state.val){
           return e;
         }else if(e.id == this.state.val){
           return e;
         }else if(e.更新时间.includes(this.state.val)){
           return e;
-        }else if(e.作者 === this.state.val){
+        }else if(e.图片名称 === this.state.val){
           return e;
         }else if(e.发布状态 === this.state.val){
           return e;
@@ -56,10 +57,12 @@ class PickerSizesDemo extends Component {
       })
       this.props.changeView(data1,ev.target.id);
     }
-
   }
   render() {
     const { size } = this.state;
+    // <span className="fanwei">日期范围：</span><span></span>
+    // <DatePicker size={size} /><span></span>
+    // <DatePicker size={size} /><span></span>
     return (
       <div className="date-input">
         <Input
@@ -70,7 +73,6 @@ class PickerSizesDemo extends Component {
           onKeyUp={this.keyupchange}
           placeholder="请输入关键字查询"
           className="input-ziji"
-          id="keyup"
         />
         <button
           id="search"
@@ -86,4 +88,4 @@ class PickerSizesDemo extends Component {
     );
   }
 }
-export default PickerSizesDemo
+export default PickerSizesDemo1

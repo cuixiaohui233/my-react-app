@@ -81,6 +81,23 @@ nav{
   right:200px;
   padding-top:38px;
 }
+#web_welcome{
+  width:270px;
+  height:172px;
+  position: absolute;
+  top:0px;
+  right:200px;
+  padding-top:38px;
+}
+#web_welcome h3{
+  height:40px;
+  line-height: 40px;
+  font-size:18px;
+  text-align: center;
+}
+#web_login_none{
+  display: none;
+}
 #web_login .username,
 #web_login .password,
 #web_login .username input,

@@ -30,7 +30,7 @@ class PickerSizesDemo1 extends Component {
         return e;
       }else if(e.更新时间.includes(this.state.val)){
         return e;
-      }else if(e.标题 === this.state.val){
+      }else if(e.info === this.state.val){
         return e;
       }else if(e.发布状态 === this.state.val){
         return e;
@@ -43,6 +43,14 @@ class PickerSizesDemo1 extends Component {
       let data1 = Object.assign(this.props.data);
       data1 = data1.filter((e,i)=>{
         if(e.标题.includes(this.state.val)){
+          return e;
+        }else if(e.id == this.state.val){
+          return e;
+        }else if(e.更新时间.includes(this.state.val)){
+          return e;
+        }else if(e.info === this.state.val){
+          return e;
+        }else if(e.发布状态 === this.state.val){
           return e;
         }
       })
@@ -61,6 +69,8 @@ class PickerSizesDemo1 extends Component {
           size={size}
           value={this.state.val}
           onChange={this.handleNumberChange}
+          onKeyUp={this.keyupchange}
+          placeholder="请输入关键字查询"
           className="input-ziji"
         />
         <button

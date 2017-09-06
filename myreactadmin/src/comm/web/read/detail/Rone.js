@@ -21,6 +21,8 @@ class Rone extends Component{
       val:'',
       time:'',
       url:this.props.url,
+      starValue:0,
+      collect:false
     }
   }
   componentDidMount(){
@@ -42,7 +44,7 @@ class Rone extends Component{
         },
         dataType:'jsonp',
         success:function(data){
-          console.log(data);
+          // console.log(data);
           that.setState({
             data:data,
             title:data.title,
@@ -55,12 +57,12 @@ class Rone extends Component{
     }
 
     that.setState({
-      pinfo:getItem('diss')
+      pinfo:getItem('diss'+this.props.title)
     })
 
   }
   componentDidUpdate() {
-  let data = JSON.parse(localStorage.getItem('data')) || JSON.parse(localStorage.getItem('article')) ;
+    let data = JSON.parse(localStorage.getItem('data')) || JSON.parse(localStorage.getItem('article')) ;
     let data1 = Object.assign(data);
     data1 = data1.find((e)=>e.id == this.state.url);
     if(data1.type){
@@ -99,13 +101,14 @@ class Rone extends Component{
       })
       if(this.state.val && arr3[0].userType){
         let data = {
-          author:{avatar:'https://img1.doubanio.com/icon/user_normal.jpg',name:'佚名'},
-          created:2017-8-30,
+          author:{avatar:'https://img1.doubanio.com/icon/user_normal.jpg',name:arr3[0].username},
+          created:+new Date,
           content:this.state.val,
           id:this.maxId()
         }
         arr1.unshift(data);
         arr3[0].comment.unshift(data);
+        arr3[0].score.unshift(this.state.starValue);
         // console.log(arr1,arr2);
         localStorage.setItem('users',JSON.stringify(arr2));
         this.setState({
@@ -118,10 +121,32 @@ class Rone extends Component{
     }else{
       alert('请先登录');
     }
+  }
+  starChange = (value)=>{
+    this.setState({
+      starValue:value
+    })
+  }
+  collectclick = ()=>{
+    let {pinfo} = this.state;
+    let arr1 = Object.assign(pinfo);
+    let arr2 = JSON.parse(localStorage.getItem('users'))||[];
+    if(arr2.length){
+      let arr3 = arr2.filter((e,i)=>{
+        if(e.userType && e.userType === e.username){
+          return e;
+        }
+      })
+      this.setState({
+        collect:!this.state.collect
+      })
+      arr3[0].collect = this.state.collect;
 
-
+      localStorage.setItem('users',JSON.stringify(arr2));
+    }
   }
   render(){
+    // console.log(this.props.url)
     let {pinfo} = this.state;
     let pinfo1 = Object.assign(pinfo);
     let list = null;
@@ -131,14 +156,17 @@ class Rone extends Component{
         return <div id="pact">
           <div className="pimg"><img src={e.author.avatar} /></div>
           <div className="pitem">
-            <p className="p_item"><span>{e.created}</span><span><a href={e.author.alt}>{e.author.name}</a></span></p>
+            <p className="p_item">
+              <span>{e.created}</span>
+              <span><a href={e.author.alt}>{e.author.name}</a></span>
+            </p>
             <p className="p_act">{e.content}</p>
             <p className="p_icon">来自微奇生活</p>
           </div>
         </div>
       })
       // console.log(pinfo);
-      localStorage.setItem('diss',JSON.stringify(pinfo))
+      localStorage.setItem('diss'+this.props.url,JSON.stringify(pinfo))
     }
     // console.log(list);
     return(
@@ -156,7 +184,13 @@ class Rone extends Component{
         </div>
         <div id="pinglun">
           <div>
-            <div className="pingfen"><p className="read_react_star read_react">评分</p><Rate className="read_star" /></div>
+            <div className="pingfen">
+              <p className="read_react_star read_react">评分</p>
+              <Rate
+                className="read_star"
+                onChange={this.starChange}
+              />
+            </div>
             <div  className="pingfen"><p className="read_react">回应</p></div>
             <textarea
               name=""
@@ -175,6 +209,9 @@ class Rone extends Component{
                  className="push_item"
                  onClick={this.click}
                />
+               <div
+                 onClick = {this.collectclick}
+                >收藏此文章</div>
             {list}
           </div>
         </div>
@@ -183,15 +220,20 @@ class Rone extends Component{
   }
 }
 let pitem = [];
+let url = window.location.href.slice(32);
+console.log(url)
+// http://localhost:3000/homeimage/633311053
+
 $.ajax({
-  url:'https://api.douban.com/v2/note/633196260/comments',
+  url:'https://api.douban.com/v2/note/'+window.location.href.slice(31)+'/comments',
   dataType:'jsonp',
   success:function(data){
-    // console.log(data);
+    console.log(data);
     pitem = data.comments;
   }
 })
 function getItem(data){
+  console.log(pitem)
   return JSON.parse(localStorage.getItem(data)) || pitem
 }
 export default Rone;

@@ -13,8 +13,38 @@
   float: left;
 }
 #head_user{
+  width:100px;
   height:50px;
+  text-align: center;
+  font-size:14px;
   line-height: 50px;
   float: right;
   margin-right: 30px;
+  position: relative;
+}
+#head_user p{
+  transition: .2s;
+}
+#head_user p:hover{
+  background: red;
+
+}
+#ul_block{
+  width:100%;
+  /*background: red;*/
+  position: absolute;
+  top:50px;
+  left:0;
+  transition: .2s;
+  z-index: 2;
+}
+#ul_none{
+  display: none;
+  transition: .2s;
+}
+#ul_block li{
+  height:30px;
+  line-height: 30px;
+  border:1px solid #eee;
+  background:#f5fafe;
 }

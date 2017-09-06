@@ -1,5 +1,5 @@
 import React,{Component} from 'react';
-import PickerSizesDemo1 from '../Data/Dateimage';
+import PickerSizesDemo1 from '../Data/DateProduct';
 import DelandAdd from './DelandAdd';
 import Tr from './Tr';
 import '../table/table.css';

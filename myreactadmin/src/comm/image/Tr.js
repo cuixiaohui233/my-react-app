@@ -50,13 +50,18 @@ class Tr extends Component{
     }
     let h = null;
     if(this.props.动作){
-      h = <td><a href="javascript:;"
+      h = <td>
+        {/* <a href="javascript:;"
         onClick = {this.click1}
-      >{this.props.动作}</a><span>
-        <Link to="/changeval1">修改</Link></span>
+      >{this.props.动作}</a> */}
+      <span className="change_val">
+        <Link to="/changeval1">
+          <Icon type="edit" />
+        </Link>
+      </span>
       <a href="javascript:;"
         onClick = {this.delVal}
-        >删除
+        ><Icon type="delete" />
       </a>
       <Switch>
         <Route path="/changeval1" render={()=>{

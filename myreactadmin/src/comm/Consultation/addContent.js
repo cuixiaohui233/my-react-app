@@ -65,21 +65,21 @@ class Addcontent extends Component{
     })
   }
   //保存草稿
-  draft = () =>{
-    let {title,textarea,changewriter,summary} = this.state;
-    if(title && textarea && changewriter && summary){
-      this.props.addText({
-        id:this.props.maxId(),
-        分类:this.classify.value,
-        标题:title,
-        发布状态:'草稿',
-        动作:'审核',
-        作者:changewriter,
-        更新时间:this.props.changeTime(),
-        内容:textarea
-      });
-    }
-  }
+  // draft = () =>{
+  //   let {title,textarea,changewriter,summary} = this.state;
+  //   if(title && textarea && changewriter && summary){
+  //     this.props.addText({
+  //       id:this.props.maxId(),
+  //       分类:this.classify.value,
+  //       标题:title,
+  //       发布状态:'草稿',
+  //       动作:'审核',
+  //       作者:changewriter,
+  //       更新时间:this.props.changeTime(),
+  //       内容:textarea
+  //     });
+  //   }
+  // }
   render(){
     // <p className="title_short"><span><i>*</i>分类栏目：</span><select ref = {(elem)=>{this.column = elem}} name="" className="select">
     //           <option value="全部栏目">全部栏目</option>
@@ -137,13 +137,13 @@ class Addcontent extends Component{
               >保存并提交
             </button>
           </Link>
-          <Link to="/image">
+          {/* <Link to="/image">
             <button
               className="button2"
               onClick = {this.draft}
               >保存草稿
             </button>
-          </Link>
+          </Link> */}
           <Link to="/image">
             <button className="button3">取消</button>
           </Link>
