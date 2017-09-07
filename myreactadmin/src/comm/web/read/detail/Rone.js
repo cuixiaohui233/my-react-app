@@ -141,6 +141,8 @@ class Rone extends Component{
         collect:!this.state.collect
       })
       arr3[0].collect = this.state.collect;
+      console.log(arr3[0]);
+      // arr3[0].collect.push(this.state.title);
 
       localStorage.setItem('users',JSON.stringify(arr2));
     }

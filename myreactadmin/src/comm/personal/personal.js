@@ -159,14 +159,39 @@ class Personal extends Component {
     alert('修改成功')
   }
   render(){
-    let {user_comment} = this.state;
+    let {user_comment,user_score,user_collect} = this.state;
     console.log(user_comment)
     let commentinfo = Object.assign(user_comment);
+    let commentscore = Object.assign(user_score);
+    let commentcollect = Object.assign(user_collect);
     let commentdiv = null;
+    let scorediv = null;
+    let collectdiv = null;
     if(!commentinfo.length){
       commentdiv = <div>阿哦，暂时没有评论！</div>
     }else{
       commentdiv = commentinfo.map((e,i)=>{
+        let key = i;
+        return <div classname="" key={i+1}>
+                  <p key={i+2}>{e.content}<span key={i+3}>{e.created}</span></p>
+                </div>
+      })
+    }
+    //[{"id":1,"username":"admin","penname":"赵总","oneselfinfo":"厉害到爆炸","password":"aaa123","email":"15931662302@163.com","bool":true,"states":"admin","sex":"女","phone":"15931662302","address":"","time":"2017-9-6","checked":false,"userType":null,"collect":[],"score":[],"comment":[]},{"id":2,"username":"sss","password":"sss","penname":"sss","oneselfinfo":"sss","phone":"sss","email":"sss","checked":false,"bool":true,"states":"member","num":"1","time":2063,"userType":null,"collect":[],"score":[],"comment":[]},{"id":3,"username":"ddd","password":"ddd","penname":"d","oneselfinfo":"d","phone":"d","email":"d","checked":false,"bool":true,"states":"member","num":"4","time":2063,"userType":"ddd","collect":[],"score":[],"comment":[]}]
+    if(!commentscore.length){
+      scorediv = <div>阿哦，暂时没有收藏！</div>
+    }else{
+      scorediv = commentscore.map((e,i)=>{
+        let key = i;
+        return <div classname="" key={i+1}>
+                  <p key={i+2}>{e}<span key={i+3}></span></p>
+                </div>
+      })
+    }
+    if(!commentcollect.length){
+      collectdiv = <div>阿哦，暂时没有评分！</div>
+    }else{
+      collectdiv = commentcollect.map((e,i)=>{
         let key = i;
         return <div classname="" key={i+1}>
                   <p key={i+2}>{e.content}<span key={i+3}>{e.created}</span></p>
@@ -306,10 +331,10 @@ class Personal extends Component {
               {commentdiv}
             </TabPane>
             <TabPane tab="我的收藏" key="4">
-
+              {scorediv}
             </TabPane>
-            <TabPane tab="我的评论" key="5">
-
+            <TabPane tab="我的评分" key="5">
+              {collectdiv}
             </TabPane>
             <TabPane tab="二维码" key="6">几里拐弯的二维码</TabPane>
           </Tabs>
