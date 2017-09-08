@@ -73,9 +73,6 @@ class Webpage extends Component{
           </div>
         </nav>
         <Switch>
-        <Route exact path="/" render={()=>{
-          return <Homepage changeRoute={this.changeRoute} />
-        }} />
         <Route exact path="/home" render={()=>{
           return <Homepage changeRoute={this.changeRoute} />
         }} />
@@ -105,6 +102,9 @@ class Webpage extends Component{
         <Route exact path="/homeimage/:url" component={Child3} />
         <Route  path="/addmin" render = {()=>{
           return <Addadmin changeRoute = {this.changeRoute} />
+        }} />
+        <Route path="/" render={()=>{
+          return <Homepage changeRoute={this.changeRoute} />
         }} />
       </Switch>
       </div>

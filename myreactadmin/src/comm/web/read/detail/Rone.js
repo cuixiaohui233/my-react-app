@@ -108,7 +108,9 @@ class Rone extends Component{
         }
         arr1.unshift(data);
         arr3[0].comment.unshift(data);
-        arr3[0].score.unshift(this.state.starValue);
+        if(this.state.starValue){
+          arr3[0].score.unshift({socre:this.state.starValue,title:this.state.title});
+        }
         // console.log(arr1,arr2);
         localStorage.setItem('users',JSON.stringify(arr2));
         this.setState({
@@ -128,7 +130,7 @@ class Rone extends Component{
     })
   }
   collectclick = ()=>{
-    let {pinfo} = this.state;
+    let {pinfo,title} = this.state;
     let arr1 = Object.assign(pinfo);
     let arr2 = JSON.parse(localStorage.getItem('users'))||[];
     if(arr2.length){
@@ -140,15 +142,16 @@ class Rone extends Component{
       this.setState({
         collect:!this.state.collect
       })
-      arr3[0].collect = this.state.collect;
-      console.log(arr3[0]);
+      // arr3[0].collect.map((e,i)=>{})
+      arr3[0].collect.unshift(this.state.title);
+      console.log(title);
       // arr3[0].collect.push(this.state.title);
 
       localStorage.setItem('users',JSON.stringify(arr2));
     }
   }
   render(){
-    // console.log(this.props.url)
+    // console.log(this.state.title)
     let {pinfo} = this.state;
     let pinfo1 = Object.assign(pinfo);
     let list = null;
