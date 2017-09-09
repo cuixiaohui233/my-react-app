@@ -13,7 +13,7 @@ class Rtwo extends Component{
   constructor(props){
     super(props);
     this.state = {
-      data:[],
+      info:[],
       title:'',
       name:'',
       img:'',
@@ -23,47 +23,30 @@ class Rtwo extends Component{
   }
   componentDidMount(){
     let that = this;
-    let data = JSON.parse(localStorage.getItem('image')) || JSON.parse(localStorage.getItem('img'));
+    let data = JSON.parse(localStorage.getItem('img'));
     let data1 = Object.assign(data);
     data1 = data1.find((e)=>e.id == this.state.url);
-    if(data1.type){
-      // this.setState({
-      //   title:data1.标题,
-      //   name:data1.作者,
-      //   // img:data.
-      // })
-    }else{
-      $.ajax({
-        // url:'https://api.douban.com/v2/album/118763016/photos',
-        url:'https://api.douban.com/v2/album/'+this.state.url+'/photos?callback',
-        type:'post',
-        dataType:'jsonp',
-        data:{
-          scope: 'community_basic_photo',
-          count:20
-        },
-        success:function(data){
-          console.log(data);
-          that.setState({
-            title:data.album.title,
-            name:data.album.author.name,
-            img:data.album.author.avatar,
-            data:data.photos,
-            time:data.album.updated
-          })
-        }
-      })
-    }
+    console.log(data1);
+    that.setState({
+      title:data1.标题,
+      name:data1.title,
+      img:data1.头像,
+      info:data1.img,
+      time:data1.更新时间
+    })
   }
   render(){
-    let {data} = this.state;
-    let pinfo1 = Object.assign(data);
+    let {info} = this.state;
+      console.log(info);
+    let pinfo1 = Object.assign(info);
     let list = null;
-    list = pinfo1.map((e,i)=>{
-      return <div className="webpage_img_info">
-              <img src={e.thumb} id="layout"/>
-             </div>
-    })
+    if(pinfo1.length){
+      list = pinfo1.map((e,i)=>{
+        return <div className="webpage_img_info">
+                <img src={e} id="layout"/>
+               </div>
+      })
+    }
     return(
       <div id="redhhh">
         <div className="webpage_read item_read">
@@ -81,4 +64,7 @@ class Rtwo extends Component{
     )
   }
 }
+
+
+
 export default Rtwo;

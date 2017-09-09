@@ -8,6 +8,8 @@ import {
 import { Rate } from 'antd';
 import $ from 'jquery';
 import './read_item.css';
+import NormalLoginForm from '../../../Login/loginrouter'
+
 
 class Rone extends Component{
   constructor(props){
@@ -22,7 +24,8 @@ class Rone extends Component{
       time:'',
       url:this.props.url,
       starValue:0,
-      collect:false
+      collect:false,
+      show:'login-form-none'
     }
   }
   componentDidMount(){
@@ -97,6 +100,8 @@ class Rone extends Component{
       let arr3 = arr2.filter((e,i)=>{
         if(e.userType && e.userType === e.username){
           return e;
+        }else{
+          return [];
         }
       })
       if(this.state.val && arr3[0].userType){
@@ -118,10 +123,16 @@ class Rone extends Component{
           val:''
         })
       }else{
-      alert('请先登录');
+      // alert('请先登录');
+      this.setState({
+        show:'login-form-block'
+      })
       }
     }else{
-      alert('请先登录');
+      // alert('请先登录');
+      this.setState({
+        show:'login-form-block'
+      })
     }
   }
   starChange = (value)=>{
@@ -176,6 +187,10 @@ class Rone extends Component{
     // console.log(list);
     return(
       <div>
+        <div  id={this.state.show}>
+          <NormalLoginForm/>
+        </div>
+
         <div id="redhhh">
           <div className="webpage_read item_read">
           <h1 className="item_h1">{this.state.title}</h1>

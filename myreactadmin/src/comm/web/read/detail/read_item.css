@@ -111,9 +111,10 @@
   align-items:center;*/
 }
 .webpage_img_info{
-  width:170px;
-  height:119px;
-  border:1px solid #000;
+  width:305px;
+  height:208px;
+  /*border:1px solid #000;*/
+  overflow: hidden;
   float: left;
   margin:0 10px 10px 0;
 }

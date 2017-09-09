@@ -10,6 +10,16 @@
   padding-left:60px;
   background:#fff;
 }
+#login-form-none{
+  width:100%;
+  height: 100%;
+  display: none;
+}
+#login-form-block{
+  width:100%;
+  height: 100%;
+  display: block;
+}
 .login_form2{
   width:540px;
   height:560px;

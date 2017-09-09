@@ -31,9 +31,10 @@ class Header extends Component {
     for(var i=0;i<arr2.length;i++){
         arr2[i].userType = null;
         console.log(111111);
+        localStorage.setItem('users',JSON.stringify(arr2));
     }
-    // window.location.href=window.location.href;
-    // window.location.reload;
+    window.location.href='/home';
+    window.location.reload;
   }
   render(){
     let data = JSON.parse(localStorage.getItem('users')) || [];

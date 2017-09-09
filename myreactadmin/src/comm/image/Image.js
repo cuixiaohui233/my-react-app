@@ -48,7 +48,7 @@ class Image extends Component{
   }
   componentDidMount(){
     this.setState({
-      data:getItem('image')
+      data:getItem('img')
     });
   }
   delete = (newID)=>{
@@ -211,7 +211,7 @@ class Image extends Component{
             return <Tr {...data} title={title}/>
           }
         });
-        localStorage.setItem('image',JSON.stringify(data));
+        localStorage.setItem('img',JSON.stringify(data));
       }
 
       let shuju = {

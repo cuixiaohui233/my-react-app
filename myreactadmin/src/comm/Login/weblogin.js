@@ -91,7 +91,7 @@ class NormalLoginForm extends Component {
   render() {
     return (
       <div>
-        <Webpage />
+        {/* <Webpage /> */}
         <div id="mask"></div>
       <form onSubmit={this.handleSubmit} className={this.state.class}>
         <h1 className="welcome">欢迎来到微奇生活</h1>

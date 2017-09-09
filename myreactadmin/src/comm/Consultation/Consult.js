@@ -40,7 +40,7 @@ class Consult extends Component{
   }
   componentDidMount(){
     this.setState({
-      data:getItem('data')
+      data:getItem('article')
     });
   }
   delete = (newID)=>{
@@ -208,7 +208,7 @@ changecheckbox =(check)=>{
             return <Tr {...data} title={title}/>
           }
         });
-        localStorage.setItem('data',JSON.stringify(data));
+        localStorage.setItem('article',JSON.stringify(data));
       }
       let shuju = {
         addText:this.addText,

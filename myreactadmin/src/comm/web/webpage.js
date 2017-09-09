@@ -73,9 +73,7 @@ class Webpage extends Component{
           </div>
         </nav>
         <Switch>
-        <Route exact path="/home" render={()=>{
-          return <Homepage changeRoute={this.changeRoute} />
-        }} />
+
         <Route exact path="/web/read" render={()=>{
           return <Read />
         }} />
@@ -87,16 +85,14 @@ class Webpage extends Component{
             return <App power={this.state.states} />
           }else if(this.state.stateBool == 'false'){
             // alert('请先登录！')
-            return <Redirect to="/login" />
+            return <Redirect to="/home/login" />
           }else if(this.state.stateBool == 'add'){
             return <Redirect to="/add" />
           }else if(this.state.stateBool == 'addmin'){
             return <Redirect to="/addmin" />
           }
         }} />
-        <Route path="/login" render = {()=>{
-          return <WrappedNormalLoginForm changeRoute={this.changeRoute} />
-        }}/>
+
         <Route exact path="/web/read/:url" component={Child} />
         <Route exact path="/web/webimage/:url" component={Child2} />
         <Route exact path="/homeimage/:url" component={Child3} />
@@ -107,6 +103,12 @@ class Webpage extends Component{
           return <Homepage changeRoute={this.changeRoute} />
         }} />
       </Switch>
+      <Route path="/home" render={()=>{
+        return <Homepage changeRoute={this.changeRoute} />
+      }} />
+      <Route path="/home/login" render = {()=>{
+        return <WrappedNormalLoginForm changeRoute={this.changeRoute} />
+      }}/>
       </div>
     )
   }

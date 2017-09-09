@@ -4,6 +4,7 @@ import { Icon }from 'antd';
 import {BrowserRouter as Router,Route,Link,Redirect} from 'react-router-dom';
 // import Nologin from './no_login';
 
+let images = [];
 class Addcontent extends Component{
   constructor(){
     super();
@@ -13,6 +14,7 @@ class Addcontent extends Component{
       summary:'',
       bool:false,
       imgsrc:'',
+      imgs:[],
       info:''
     }
   }
@@ -41,11 +43,24 @@ imgChange = ()=>{
       imgsrc:oFRevent.target.result
     })
   }
+}
+imgsChange = ()=>{
+  var oFReader1 = new FileReader();
+  var file = this.file1.files[0];
+  oFReader1.readAsDataURL(file);
+  oFReader1.onloadend = (oFRevent)=>{
+    let ofrevent = oFRevent.target.result;
+    images.push(ofrevent)
+    console.log(images)
 
+    this.setState({
+      imgs:images
+    })
+  }
 }
   //保存并发布
   submin = () =>{
-    let {title,imgsrc,info} = this.state;
+    let {title,imgsrc,info,imgs} = this.state;
     if(title &&info){
       this.props.addText({
         id:this.props.maxId(),
@@ -54,7 +69,8 @@ imgChange = ()=>{
         info:info,
         发布状态:'已发布',
         动作:'下架',
-        更新时间:this.props.changeTime()
+        更新时间:this.props.changeTime(),
+        img:imgs
       });
     }
     this.setState({
@@ -63,7 +79,7 @@ imgChange = ()=>{
   }
   //保存草稿
   draft = () =>{
-    let {title,imgsrc,info} = this.state;
+    let {title,imgsrc,info,imgs} = this.state;
     if(title &&info){
       this.props.addText({
         id:this.props.maxId(),
@@ -72,7 +88,8 @@ imgChange = ()=>{
         info:info,
         发布状态:'草稿',
         动作:'下架',
-        更新时间:this.props.changeTime()
+        更新时间:this.props.changeTime(),
+        img:imgs
       });
     }
     this.setState({
@@ -95,6 +112,15 @@ imgChange = ()=>{
                 name="file"
                 onChange={this.imgChange}
                 ref = {(elem)=>{this.file = elem}}
+              />
+            </p>
+            <p className="text_short">
+              <span><i>*</i>相册内容：</span>
+              <input
+                type="file"
+                name="file"
+                onChange={this.imgsChange}
+                ref = {(elem)=>{this.file1 = elem}}
               />
             </p>
             <p className="title_short"><span><i>*</i>相册描述：</span><input
