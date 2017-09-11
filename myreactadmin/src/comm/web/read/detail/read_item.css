@@ -29,6 +29,7 @@
 }
 #banquan span{
   font-size:12px;
+  color:#b9b4b4;
 }
 #pinglun{
   width:959px;
@@ -119,6 +120,26 @@
   margin:0 10px 10px 0;
 }
 .push_item{
+  width:100px;
+  height:20px;
+  line-height:20px;
   border:none;
-  background:skubliu
+  background:skubliu;
+  position:absolute;
+  top:10px;
+  right:0;
+}
+.p_button{
+  width:590px;
+  height:30px;
+  position: relative;
+  margin-bottom:20px;
+}
+.shoucang{
+  cursor:pointer;
+  font-size:16px;
+  width:959px;
+  margin:0 auto;
+  margin-top:10px;
+  /*color:#000;*/
 }

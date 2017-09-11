@@ -94,6 +94,9 @@ let img8_3 = require('./webImage/images/p2496034293.webp');
 let img8_4 = require('./webImage/images/p2496034603.webp');
 let img8_5 = require('./webImage/images/p2496034762.webp');
 let img8_6 = require('./webImage/images/p2496039044.webp');
+
+let hot = require('./webImage/images/hot.jpg')
+let uadmin = require('../web/webImage/images/timg.jpg')
 class Homepage extends Component{
   constructor(){
     super();
@@ -110,7 +113,7 @@ class Homepage extends Component{
           {
             id:1,
             username:'admin',
-            penname:'赵总',
+            penname:'管理员',
             oneselfinfo:'厉害到爆炸',
             password:'aaa123',
             email:'15931662302@163.com',
@@ -121,6 +124,7 @@ class Homepage extends Component{
             address:'',
             time:'2017-9-6',
             checked:false,
+            img:uadmin,
             userType:'admin',
             collect:[],
             score:[],
@@ -210,16 +214,15 @@ class Homepage extends Component{
       let data = {
         img:e.封面,
         txt:e.标题,
-        key:i
       }
       if(i <= 3){
-        return <dl className="img_dl">
-                <dt>
-                  <span className="img_span">
-                  <Link to={'/web/webimage/'+e.id}><img src={data.img} /></Link>
+        return <dl key={i+1} className="img_dl">
+                <dt key={i+2}>
+                  <span className="img_span" key={i+3}>
+                  <Link to={'/web/webimage/'+e.id}><img src={data.img} key={i+4}/></Link>
                   </span>
                 </dt>
-                <dd>
+                <dd key={i+5}>
                   <Link to={'/web/webimage/'+e.id}>{data.txt}</Link>
                 </dd>
               </dl>
@@ -233,54 +236,56 @@ class Homepage extends Component{
         key:i
       }
       if(i<8){
-        return <dl className="img_dl">
-                <dt>
-                  <span className="img_span">
-                  <Link to={'/web/webimage/'+e.id}><img src={data.img} /></Link>
+        return <dl key={i+1} className="img_dl">
+                <dt key={i+2}>
+                  <span key={i+3} className="img_span">
+                  <Link  key={i+4} to={'/web/webimage/'+e.id}><img src={data.img} /></Link>
                   </span>
                 </dt>
-                <dd>
-                  <Link to={'/web/webimage/'+e.id}>{data.txt}</Link>
+                <dd key={i+5}>
+                  <Link  key={i+6} to={'/web/webimage/'+e.id}>{data.txt}</Link>
                 </dd>
               </dl>
       }
 
     })
     art = article1.map((e,i)=>{
-      return <li
+      return <li  key={i+1}
         onClick={this.artClick}
         ><Link to={'/homeimage/'+e.id} id = {e.id}>{e.标题}</Link></li>
     })
     art1 = article1.map((e,i)=>{
       if(i<=4){
-        return <Link to={'/homeimage/'+e.id} id = {e.id}><div id="author">
-          <div className="art_author"><img src={e.avatar} className="art_img"/><span>{e.作者}</span></div>
-          <div className="art_item">
-            <p>{e.标题}</p>
-            <p className="art_txt">{e.内容}</p>
-          </div>
-        </div></Link>
+        return <Link key={i+6} to={'/homeimage/'+e.id} id = {e.id}>
+                <div key={i+1} id="author">
+                  <div key={i+2} className="art_author"><img src={e.avatar} className="art_img"/><span>{e.作者}</span></div>
+                  <div key={i+3} className="art_item">
+                    <p key={i+4}>{e.标题}</p>
+                    <p key={i+5} className="art_txt">{e.内容}</p>
+                  </div>
+                </div>
+              </Link>
       }
     })
     supermarket = market1.map((e,i)=>{
-      return  <div className="grid-item">
-                <div className="product-item" data-id="90190">
-                  <div className="p-img">
-                    <a href={e.href} target="_blank" title="小巨蛋T1便携式茶具礼品套装砂岩釉茶盒版（极客黑）">
-                      <img className="market_img" src={e.img} />
+      return  <div  key={i+12} className="grid-item">
+                <div key={i+11}  className="product-item" data-id="90190">
+                  <div key={i+10}  className="p-img">
+                    <a key={i+9}  href={e.href} target="_blank" title="小巨蛋T1便携式茶具礼品套装砂岩釉茶盒版（极客黑）">
+                      <img key={i+8}  className="market_img" src={e.img} />
                     </a>
                   </div>
-                  <div className="p-title">
-                    <a href="https://market.douban.com/item/90190/?r=5&amp;index=6&amp;category=index" target="_blank" title="小巨蛋T1便携式茶具礼品套装砂岩釉茶盒版（极客黑）">
+                  <div key={i+7}  className="p-title">
+                    <a key={i+6}  href="https://market.douban.com/item/90190/?r=5&amp;index=6&amp;category=index" target="_blank" title="小巨蛋T1便携式茶具礼品套装砂岩釉茶盒版（极客黑）">
                       小巨蛋T1便携式茶具礼品套装砂岩釉茶盒版（极客黑）
                     </a>
                   </div>
-                  <div className="p-brand">
-                    <a href="https://market.douban.com/shop/miniteaset/" target="_blank">小巨蛋市集</a>
+                  <div key={i+5}  className="p-brand">
+                    <a key={i+4}  href="https://market.douban.com/shop/miniteaset/" target="_blank">小巨蛋市集</a>
                   </div>
-                  <div className="p-price">
-                    <del className="price">736.00</del>
-                    <i className="price">368.00</i>
+                  <div key={i+3}  key={i+1}  className="p-price">
+                    <del key={i+2}  className="price">736.00</del>
+                    <i key={i+1}  className="price">368.00</i>
                   </div>
                 </div>
               </div>
@@ -312,12 +317,14 @@ class Homepage extends Component{
                 onClick={this.click}
                 className="user_login"
               />
+              <Link to="/add">
               <input
                 type="button"
                 value="注册"
                 className="user_add"
                 onClick={this.add}
               />
+            </Link>
           </p>
           </div>
         </div>
@@ -332,7 +339,9 @@ class Homepage extends Component{
             </ul>
           </div>
           <div id="img_ll">
-            <img className="img_ll_image" src="https://img3.doubanio.com/view/dale-online/dale_ad/public/dd5457bd37cf704.jpg" />
+            <a href="https://erebor.douban.com/redirect/?ad=188759&uid=&bid=sJKqm499hcE&unit=dale_anonymous_homepage_right_top&crtr=3%3A%2F&mark=&hn=daisy9a&sig=4c82a34477315d44dc7769a3b08f7e710b6551830f2fea3410d55f59ef9fafc93dfa273ff35fd72a71bf0b419c8580c0083568e9025324c5eb56d528219848ff&pid=debug_91d7dab63eca2d58f451be19c139c76c7fc53f43&target=aHR0cHM6Ly9tLmRvdWJhbi5jb20vcGFnZS9oMDl5c3Rx">
+              <img className="img_ll_image" src={hot} />
+            </a>
             <div className="img_ll_div">
               <span className="hot_art">热门话题</span>
               <ul className="img_ul" style={{paddingLeft:'10px'}}>

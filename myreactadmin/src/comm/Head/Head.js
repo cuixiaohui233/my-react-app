@@ -30,7 +30,7 @@ class Header extends Component {
     console.log(arr2);
     for(var i=0;i<arr2.length;i++){
         arr2[i].userType = null;
-        console.log(111111);
+        // console.log(111111);
         localStorage.setItem('users',JSON.stringify(arr2));
     }
     window.location.href='/home';
@@ -44,7 +44,7 @@ class Header extends Component {
 
     if(data1[0].states === 'admin'){
       box =  <ul id={this.state.classBool?'ul_block':'ul_none'}>
-              <li>修改信息</li>
+              <Link to="/personal"><li onClick={this.changeClassNone}>修改信息</li></Link>
               <Link to="/"><li
                 onClick = {this.click}
               >退出登录</li></Link>
@@ -54,9 +54,10 @@ class Header extends Component {
               <Link to="/personal"><li
                 onClick={this.changeClassNone}
               >个人中心</li></Link>
-              <Link to="/"><li
+              <li
                 onClick = {this.click}
-              >退出登录</li></Link>
+              >退出登录
+              </li>
             </ul>
     }
 

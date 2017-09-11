@@ -14,7 +14,7 @@ class Discuss extends Component{
   constructor(){
     super();
     this.state = {
-      title:['', 'id','姓名','评论内容','更新时间'],
+      title:['', 'id','姓名','文章标题','评论内容','更新时间'],
       data:[],
       power:[
         {name:'admin',type:'admin'},
@@ -114,6 +114,7 @@ class Discuss extends Component{
             id:e.id,
             name:e.author.name,
             标题:e.content,
+            titles:e.title,
             更新时间:e.created,
             key:i+new Date,
             checked:e.checked,
@@ -124,7 +125,7 @@ class Discuss extends Component{
             return <Tr {...data} title={title}/>
           }
         });
-        localStorage.setItem('ddd',JSON.stringify(data));
+        // localStorage.setItem('ddd',JSON.stringify(data));
       }
 
       let shuju = {
@@ -161,6 +162,7 @@ class Discuss extends Component{
           name:e.author.name,
           标题:e.content,
           更新时间:e.created,
+          titles:e.title,
           key:i+new Date,
           checked:e.checked,
           delete:this.delete,

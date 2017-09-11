@@ -35,6 +35,7 @@ class Tr extends Component{
           /></td>
           <td>{this.props.id}</td>
           <td>{this.props.name}</td>
+          <td>{this.props.titles}</td>
           <td>{this.props.标题}</td>
           <td>{this.props.更新时间}</td>
         </tr>

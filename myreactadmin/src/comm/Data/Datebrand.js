@@ -28,6 +28,12 @@ class PickerSizesDemo2 extends Component {
         return e;
       }else if(e.author.name == this.state.val){
         return e;
+      }else if(e.created == this.state.val){
+        return e;
+      }else if(this.state.val.includes(e.content)){
+        return e;
+      }else if(e.title.includes(this.state.val)){
+        return e;
       }
     })
     this.props.changeView(data1,ev.target.id);
@@ -35,10 +41,17 @@ class PickerSizesDemo2 extends Component {
   keyupchange = (ev)=>{
     if(ev.keyCode === 13){
       let data1 = Object.assign(this.props.data);
+      console.log(data1);
       data1 = data1.filter((e,i)=>{
         if(e.id ==this.state.val){
           return e;
         }else if(e.author.name == this.state.val){
+          return e;
+        }else if(e.created == this.state.val){
+          return e;
+        }else if(this.state.val.includes(e.content)){
+          return e;
+        }else if(e.title.includes(this.state.val)){
           return e;
         }
       })

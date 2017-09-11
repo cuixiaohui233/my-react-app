@@ -12,7 +12,7 @@ import { Tabs } from 'antd';
 const TabPane = Tabs.TabPane;
 
 function callback(key) {
-  console.log(key);
+  // console.log(key);
 }
 class Personal extends Component {
   constructor(){
@@ -34,7 +34,9 @@ class Personal extends Component {
       user_code:getItem()[0].id,
       user_img:getItem()[0].id,
       userType:getItem()[0].userType,
-      userInputClass:'form-control'
+      userInputClass:'form-control',
+      img:getItem()[0].img,
+      zctime:getItem()[0].time,
     }
   }
   //解控
@@ -160,7 +162,7 @@ class Personal extends Component {
   }
   render(){
     let {user_comment,user_score,user_collect} = this.state;
-    console.log(user_comment)
+    console.log(user_score)
     let commentinfo = Object.assign(user_comment);
     let commentscore = Object.assign(user_score);
     let commentcollect = Object.assign(user_collect);
@@ -172,19 +174,21 @@ class Personal extends Component {
     }else{
       commentdiv = commentinfo.map((e,i)=>{
         let key = i;
-        return <div classname="" key={i+1}>
-                  <p key={i+2}>{e.content}<span key={i+3}>{e.created}</span></p>
+        return <div className=""
+                style={{height:30}}
+                key={i+1}>
+                  <p key={i+2} style={{height:30 , lineHeight:'30px' }}><span>《{e.title}》</span><span>"{e.content}"</span><span key={i+3}>{e.created}</span></p>
                 </div>
       })
     }
-    //[{"id":1,"username":"admin","penname":"赵总","oneselfinfo":"厉害到爆炸","password":"aaa123","email":"15931662302@163.com","bool":true,"states":"admin","sex":"女","phone":"15931662302","address":"","time":"2017-9-6","checked":false,"userType":null,"collect":[],"score":[],"comment":[]},{"id":2,"username":"sss","password":"sss","penname":"sss","oneselfinfo":"sss","phone":"sss","email":"sss","checked":false,"bool":true,"states":"member","num":"1","time":2063,"userType":null,"collect":[],"score":[],"comment":[]},{"id":3,"username":"ddd","password":"ddd","penname":"d","oneselfinfo":"d","phone":"d","email":"d","checked":false,"bool":true,"states":"member","num":"4","time":2063,"userType":"ddd","collect":[],"score":[],"comment":[]}]
+
     if(!commentscore.length){
       scorediv = <div>阿哦，暂时没有评分！</div>
     }else{
       scorediv = commentscore.map((e,i)=>{
         let key = i;
-        return <div className="" key={i+1}>
-                  <p key={i+2}>{e.title}{e.socre}<span key={i+3}></span></p>
+        return <div className=""   style={{height:30,fontSize:14}} key={i+1}>
+                  <p key={i+2}>{e.title}<span key={i+3}>{e.socre}分</span></p>
                 </div>
       })
     }
@@ -193,21 +197,20 @@ class Personal extends Component {
     }else{
       collectdiv = commentcollect.map((e,i)=>{
         let key = i;
-        return <div className="" key={i+1}>
+        return <div className="" key={i+1} style={{height:30,fontSize:14}} key={i+1}>
                   <p key={i+2}>{e}<span key={i+3}>{e.created}</span></p>
                 </div>
       })
     }
-
     return (
       <div id="personal">
         <div className="user_info">
           <div className="user_img">
-            <img src="" />
+            <img src={this.state.img} className = "u_admin"/>
           </div>
-          <h3>admin</h3>
+          <h3>{this.state.username}</h3>
           <p>
-            <span>管理员</span>
+            <span>{this.state.states === 'admin'?'管理员':'会员'}</span>
           </p>
           <p>微奇生活</p>
         </div>

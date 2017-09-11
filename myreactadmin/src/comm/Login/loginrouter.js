@@ -22,6 +22,7 @@ class NormalLoginForm extends Component {
       val:'',
       val1:'',
       class:'login-form',
+      id:'mask',
       arr:[
           {
             id:1,
@@ -64,7 +65,7 @@ class NormalLoginForm extends Component {
           // console.log(arr.password,this.state.val1);
           if(arr.password+'' === this.state.val1){
             if(arr.bool){
-                this.props.changeRoute('login',arr.states);
+                // this.props.changeRoute('login',arr.states);
                 for(var i=0;i<arr2.length;i++){
                   if(arr2[i].userType){
                     arr2[i].userType = null;
@@ -76,6 +77,10 @@ class NormalLoginForm extends Component {
                   }
                 })
                 // console.log(arr2);
+                this.setState({
+                  class:'login-form-none',
+                  id:'mask-none'
+                })
                 localStorage.setItem('users',JSON.stringify(arr2));
             }
           }else{
@@ -92,7 +97,7 @@ class NormalLoginForm extends Component {
     return (
       <div>
         {/* <Webpage /> */}
-        <div id="mask"></div>
+        <div id={this.state.id}></div>
       <form onSubmit={this.handleSubmit} className={this.state.class}>
         <h1 className="welcome">欢迎来到微奇生活</h1>
         <Link to="/"><span className="quxiao"><Icon type="close" /></span></Link>
@@ -114,10 +119,13 @@ class NormalLoginForm extends Component {
           placeholder="请输入密码"
         />
         </p>
+        {/* <Link to="/app/content"> */}
           <button
             onClick={this.click}
+            type="button"
             >登录
           </button>
+        {/* </Link> */}
         <Link to='/addmin'>
           <button className="addAdmin">注册会员</button>
         </Link>

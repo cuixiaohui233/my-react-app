@@ -16,6 +16,7 @@ import WrappedNormalLoginForm from '../Login/weblogin';
 import Add from '../add/add';
 import Addadmin from '../add/addadmin';
 let logo  = require('./img/logo.gif');
+let uadmin = require('../web/webImage/images/timg.jpg')
 
 
 const Child = ({match})=>{
@@ -36,7 +37,29 @@ class Webpage extends Component{
     super();
     this.state = {
       stateBool:'false',
-      states:''
+      states:'',
+      arr:[
+          {
+            id:1,
+            username:'admin',
+            penname:'管理员',
+            oneselfinfo:'厉害到爆炸',
+            password:'aaa123',
+            email:'15931662302@163.com',
+            bool:true,
+            states:'admin',
+            sex:'女',
+            phone:'15931662302',
+            address:'',
+            time:'2017-9-6',
+            checked:false,
+            img:uadmin,
+            userType:null,
+            collect:[],
+            score:[],
+            comment:[],
+        }
+      ],
     }
   }
   componentDidMount(){
@@ -51,7 +74,24 @@ class Webpage extends Component{
       states:newstate
     })
   }
+  click = ()=>{
+    let arr2 = JSON.parse(localStorage.getItem('users')) || this.state.arr;
+    arr2.map((e,i)=>{
+      if(e.userType){
+        this.setState({
+          stateBool:'true',
+          states:e.states
+        })
+      }else {
+        this.setState({
+          stateBool:'false',
+          states:'',
+        })
+      }
+    })
+  }
   render(){
+
     return(
       <div>
         <nav>
@@ -65,7 +105,7 @@ class Webpage extends Component{
                 <span><Link to="/web/read" className="article">文章</Link></span>
                 <span><Link to="/web/image" className="image">图集</Link></span>
                 <span><Link to="/" className="market">市集</Link></span>
-                <span><Link to="/app/content" className="movie">管理</Link></span>
+                <span onClick={this.click}><Link to="/app/content" className="movie">管理</Link></span>
                 {/* <span><Link to="/" className="movie">电影</Link></span>
                 <span><Link to="/" className="muise">音乐</Link></span> */}
               </p>
@@ -102,10 +142,11 @@ class Webpage extends Component{
         <Route path="/" render={()=>{
           return <Homepage changeRoute={this.changeRoute} />
         }} />
+        <Route path="/home" render={()=>{
+          return <Homepage changeRoute={this.changeRoute} />
+        }} />
       </Switch>
-      <Route path="/home" render={()=>{
-        return <Homepage changeRoute={this.changeRoute} />
-      }} />
+
       <Route path="/home/login" render = {()=>{
         return <WrappedNormalLoginForm changeRoute={this.changeRoute} />
       }}/>

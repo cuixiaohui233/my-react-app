@@ -5,9 +5,11 @@ import {
   Switch,
   Redirect,
 } from 'react-router-dom';
-import { Icon } from 'antd';
+import { Icon,Radio } from 'antd';
 import App from '../../App';
 import Webpage from '../web/homepage';
+let member = require('../web/webImage/images/user_normal.jpg')
+const RadioGroup = Radio.Group;
 class Addadmin extends Component{
   constructor(){
     super();
@@ -26,7 +28,8 @@ class Addadmin extends Component{
       bool:false,
       userType:null,
       states:'',
-      num:0
+      num:0,
+      value: 1,
     }
   }
   componentDidMount(){
@@ -97,21 +100,25 @@ class Addadmin extends Component{
     let arr1 = Object.assign(arr);
     let arr2 = getItem('users');
     // console.log(arr2);
-    if(this.state.name && this.state.pass && (this.state.num ==1 || this.state.num ==2 ||this.state.num ==3 || this.state.num ==4)){
+    if(this.state.name && this.state.pass && (this.state.num ==1 || this.state.num ==2 ||this.state.num ==3 || this.state.num ==4) && this.state.value){
       if(arr2.find(e => e.username === this.state.name)){
         alert('换个名字吧！');
         this.props.changeRoute('addmin','member');
       }else{
         let time = new Date();
-        let timer = time.getFullYear() + (time.getMonth()+1)+time.getDate();
+        let timer = '';
         if(this.state.num ==1){
-          timer = timer+30;
+          timer = time.getFullYear()+'年' + (time.getMonth()+2) +'月'+time.getDate()+'日';
+          // timer = timer+30;
         }else if(this.state.num ==2){
-          timer = timer+(12*30);
+          // timer = timer+(12*30);
+          timer = (time.getFullYear()+1)+'年' + (time.getMonth()+1) +'月'+time.getDate()+'日';
         }else if(this.state.num ==3){
-          timer = timer+(3*30);
+          // timer = timer+(3*30);
+          timer = time.getFullYear()+'年' + (time.getMonth()+4) +'月'+time.getDate()+'日';
         }else if(this.state.num ==4){
-          timer = timer+30;
+          // timer = timer+30;
+          timer = time.getFullYear()+'年' + (time.getMonth()+2) +'月'+time.getDate()+'日';
         }
         for(var i=0;i<arr1.length;i++){
           if(arr1[i].userType){
@@ -119,6 +126,7 @@ class Addadmin extends Component{
           }
         }
         arr1.push({
+          img:member,
           id:this.maxId(),
           username:this.state.name,
           password:this.state.pass,
@@ -144,7 +152,13 @@ class Addadmin extends Component{
       alert('请填写信息')
       this.props.changeRoute('addmin','');
     }
-
+  }
+  //单选回调
+  onRadio = (e) => {
+    console.log('radio checked', e.target.value);
+    this.setState({
+      value: e.target.value,
+    });
   }
   render(){
     // console.log(this.props.changeRoute);
@@ -154,7 +168,7 @@ class Addadmin extends Component{
       <div id="mask"></div>
       <from className="login-form login_form2" id="login_form2">
         <h1 className="welcome1">注册会员</h1>
-        <Link to="/login"><span className="huitui"><Icon type="rollback" /></span></Link>
+        <Link to="/home/login"><span className="huitui"><Icon type="rollback" /></span></Link>
         <Link to="/"><span className="quxiao"><Icon type="close" /></span></Link>
         <p className="title_short" >
           <span>用户名：</span>
@@ -223,12 +237,19 @@ class Addadmin extends Component{
           </ul>
 
         </div>
-
-        <button
+        <RadioGroup onChange={this.onRadio} value={this.state.value}>
+          <span style={{marginRight:10}}>支付方式：</span>
+          <Radio value={1}>微信支付</Radio>
+          <Radio value={2}>支付宝</Radio>
+          <Radio value={3}>省钱宝</Radio>
+          <Radio value={4}>银行卡</Radio>
+        </RadioGroup>
+        <Link to="/app/content"><button
           onClick = {this.addadmin}
           id="add_admin"
-          ><Link to="/app/content">注册超级会员</Link>
-        </button>
+          type="button"
+          >注册会员
+        </button></Link>
       </from>
     </div>
     )

@@ -24,9 +24,11 @@
 }
 #head_user p{
   transition: .2s;
+  color:#49a9ee;
+  font-size: 16px;
 }
 #head_user p:hover{
-  background: red;
+color: #108ee9;
 
 }
 #ul_block{
@@ -36,7 +38,9 @@
   top:50px;
   left:0;
   transition: .2s;
+  border-radius: 4px;
   z-index: 2;
+  box-shadow:0 1px 6px rgba(0,0,0,.2);
 }
 #ul_none{
   display: none;
@@ -45,6 +49,14 @@
 #ul_block li{
   height:30px;
   line-height: 30px;
-  border:1px solid #eee;
-  background:#f5fafe;
+  /*border:1px solid #eee;*/
+  color:#716d6d;
+  background:#fff;
+  transition: .3s;
+}
+#ul_block li:hover{
+background:#f5fafe;
+transition: .3s;
+color:#000;
+/*font-weight: bold;*/
 }
