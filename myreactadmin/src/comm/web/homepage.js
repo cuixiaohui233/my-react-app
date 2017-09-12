@@ -94,7 +94,7 @@ let img8_3 = require('./webImage/images/p2496034293.webp');
 let img8_4 = require('./webImage/images/p2496034603.webp');
 let img8_5 = require('./webImage/images/p2496034762.webp');
 let img8_6 = require('./webImage/images/p2496039044.webp');
-
+// console.log(img8_6);
 let hot = require('./webImage/images/hot.jpg')
 let uadmin = require('../web/webImage/images/timg.jpg')
 class Homepage extends Component{
@@ -526,13 +526,7 @@ function getItem(data){
             checked:false
           }
       ];
-    // }
   }else if(data === 'img'){
-    // console.log(list1)
-    // localStorage.removeItem('img');
-    // if(list1.length){
-    //   return JSON.parse(localStorage.getItem('img'))
-    // }else{
       return JSON.parse(localStorage.getItem('img')) || [
         {
           标题:'没有青海湖和茶卡的青海',
@@ -549,7 +543,8 @@ function getItem(data){
           num:150,
           img:[img2_1,img2_2,img2_3,img2_4,img2_5,img2_6]
 
-        },{
+        },
+        {
           标题:'「人们」',
           id:1638051845,
           封面:img2,

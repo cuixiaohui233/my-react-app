@@ -47,19 +47,35 @@ class Changecontent extends Component{
     })
   }
   del_img = (ev)=>{
-    this.props.del_img(ev.target.id);
+    console.log(ev.target.id);
+    this.props.del_img(ev.target.id,this.state.title);
+    let {img} = this.state;
+    let img1 = [];
+    img.map((e,i)=>{
+      if(i+'' === ev.target.id){
+        img.splice(i,1);
+      }
+    })
+    console.log(img);
+    this.setState({
+      img:img
+    })
   }
   render(){
     // console.log(this.props)
     let {img} = this.state;
     let image = null;
     image = img.map((e,i)=>{
+      console.log(i);
+      // let key = i;
       return <p className="image_img_p">
         <img src={e} className="changeval1_img"/>
-        <span className="close"
-          onClick= {this.del_img}
-          id={e.id}
-          ><Icon type="close"/></span>
+        <span className="close">
+          <Icon type="close"
+            id={i}
+            onClick= {this.del_img}
+          />
+          </span>
       </p>
     })
     return(

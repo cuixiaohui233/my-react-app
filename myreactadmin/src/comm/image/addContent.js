@@ -51,8 +51,6 @@ imgsChange = ()=>{
   oFReader1.onloadend = (oFRevent)=>{
     let ofrevent = oFRevent.target.result;
     images.push(ofrevent)
-    console.log(images)
-
     this.setState({
       imgs:images
     })

@@ -269,7 +269,7 @@ function getItem(data){
       sex:'女',
       phone:'15931662302',
       address:'',
-      time:'2017-9-6',
+      time:'2217年8月1日',
       checked:false,
       userType:'admin',
       collect:[],

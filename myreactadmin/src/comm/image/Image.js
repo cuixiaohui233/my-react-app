@@ -169,6 +169,22 @@ class Image extends Component{
       data:data1
     })
   }
+  //删除一张图片
+  del_img = (newId,newTitle)=>{
+    // console.log(this.state.data,newTitle);
+    let newData = this.state.data.filter((e,i)=>{
+      if(e.标题 === newTitle){
+        return e;
+      }
+    })
+    newData[0].img.forEach((e,i)=>{
+      // console.log(newId,i);
+      if(i+'' === newId){
+        newData[0].img.splice(i,1);
+      }
+    })
+    console.log(newData,newData.img);
+  }
   render(){
     let {data,title} = this.state;
     let data1 = Object.assign(data);
@@ -205,7 +221,8 @@ class Image extends Component{
             delete:this.delete,
             change:this.change,
             changedata:this.changedata,
-            changecheckbox:this.changecheckbox
+            changecheckbox:this.changecheckbox,
+            del_img:this.del_img
           }
           if(i>(this.state.page-1)*3-1 && i<=this.state.page*3-1){
             return <Tr {...data} title={title}/>

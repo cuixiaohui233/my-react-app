@@ -47,6 +47,7 @@ class Tr extends Component{
       img:this.props.img,
       checked:this.props.checked,
       changedata:this.props.changedata,
+      del_img:this.props.del_img
     }
     let h = null;
     if(this.props.动作){
