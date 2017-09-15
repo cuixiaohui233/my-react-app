@@ -183,7 +183,7 @@ class Image extends Component{
         newData[0].img.splice(i,1);
       }
     })
-    console.log(newData,newData.img);
+//  console.log(newData,newData.img);
   }
   render(){
     let {data,title} = this.state;
@@ -216,6 +216,7 @@ class Image extends Component{
             操作:e.操作,
             info:e.info,
             img:e.img,
+            头像:e.头像,
             key:i+new Date,
             checked:e.checked,
             delete:this.delete,

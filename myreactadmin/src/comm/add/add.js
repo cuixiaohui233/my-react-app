@@ -9,6 +9,7 @@ import { Icon } from 'antd';
 import App from '../../App';
 import Webpage from '../web/homepage';
 let member = require('../web/webImage/images/user_normal.jpg')
+let uadmin = require('../web/webImage/images/timg.jpg')
 class Addadmin extends Component{
   constructor(){
     super();
@@ -253,9 +254,10 @@ function getItem(data){
       sex:'女',
       phone:'15931662302',
       address:'',
-      time:'2017-9-6',
+      time:'2217年8月1日',
       checked:false,
       userType:'admin',
+      img:uadmin,
       collect:[],
       score:[],
       comment:[]

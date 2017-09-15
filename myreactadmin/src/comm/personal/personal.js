@@ -131,7 +131,7 @@ class Personal extends Component {
     if(this.state.password && this.state.newPassword && this.state.surePassword){
       if(this.state.password === this.state.data[0].password){
         if(this.state.newPassword === this.state.surePassword){
-          console.log(this.state.data[0].password)
+//        console.log(this.state.data[0].password)
           newLocalData = {
             phone:this.state.phoneNum,
             email:this.state.userEmail,
@@ -162,7 +162,7 @@ class Personal extends Component {
   }
   render(){
     let {user_comment,user_score,user_collect} = this.state;
-    console.log(user_score)
+//  console.log(user_score)
     let commentinfo = Object.assign(user_comment);
     let commentscore = Object.assign(user_score);
     let commentcollect = Object.assign(user_collect);

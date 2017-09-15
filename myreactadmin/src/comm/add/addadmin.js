@@ -9,6 +9,7 @@ import { Icon,Radio } from 'antd';
 import App from '../../App';
 import Webpage from '../web/homepage';
 let member = require('../web/webImage/images/user_normal.jpg')
+let uadmin = require('../web/webImage/images/timg.jpg')
 const RadioGroup = Radio.Group;
 class Addadmin extends Component{
   constructor(){
@@ -155,7 +156,7 @@ class Addadmin extends Component{
   }
   //单选回调
   onRadio = (e) => {
-    console.log('radio checked', e.target.value);
+    // console.log('radio checked', e.target.value);
     this.setState({
       value: e.target.value,
     });
@@ -272,6 +273,7 @@ function getItem(data){
       time:'2217年8月1日',
       checked:false,
       userType:'admin',
+      img:uadmin,
       collect:[],
       score:[],
       comment:[]

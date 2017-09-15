@@ -47,7 +47,7 @@ class Changecontent extends Component{
     })
   }
   del_img = (ev)=>{
-    console.log(ev.target.id);
+//  console.log(ev.target.id);
     this.props.del_img(ev.target.id,this.state.title);
     let {img} = this.state;
     let img1 = [];
@@ -56,7 +56,7 @@ class Changecontent extends Component{
         img.splice(i,1);
       }
     })
-    console.log(img);
+//  console.log(img);
     this.setState({
       img:img
     })
@@ -66,7 +66,7 @@ class Changecontent extends Component{
     let {img} = this.state;
     let image = null;
     image = img.map((e,i)=>{
-      console.log(i);
+//    console.log(i);
       // let key = i;
       return <p className="image_img_p">
         <img src={e} className="changeval1_img"/>

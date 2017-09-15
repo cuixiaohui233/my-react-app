@@ -3,7 +3,6 @@ import './addContent.css';
 import { Icon,Button, notification }from 'antd';
 import Consult from './Consult';
 import {BrowserRouter as Router,Route,Link,Redirect} from 'react-router-dom';
-import Nologin from './no_login';
 const openNotificationWithIcon = (type) => {
   // console.log(type);
     notification[type]({

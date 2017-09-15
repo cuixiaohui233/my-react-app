@@ -76,19 +76,19 @@ class Webpage extends Component{
   }
   click = ()=>{
     let arr2 = JSON.parse(localStorage.getItem('users')) || this.state.arr;
-    arr2.map((e,i)=>{
-      if(e.userType){
-        this.setState({
-          stateBool:'true',
-          states:e.states
-        })
-      }else {
-        this.setState({
-          stateBool:'false',
-          states:'',
-        })
-      }
-    })
+    // console.log(arr2);
+    let arr3 = arr2.filter((e,i)=>e.userType === e.username) || [];
+    if(arr3[0] && arr3[0].userType){
+      this.setState({
+        stateBool:'true',
+        states:arr3[0].states
+      })
+    }else {
+      this.setState({
+        stateBool:'false',
+        states:'',
+      })
+    }
   }
   render(){
 

@@ -4,7 +4,6 @@ import './DelandAdd.css';
 import {BrowserRouter as Router,
   Route,
   Link,
-  // Redirect,
   Switch
 } from 'react-router-dom';
 import Addcontent from './addContent';

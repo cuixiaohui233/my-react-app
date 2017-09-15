@@ -68,7 +68,8 @@ imgsChange = ()=>{
         发布状态:'已发布',
         动作:'下架',
         更新时间:this.props.changeTime(),
-        img:imgs
+        img:imgs,
+        头像:getItem()[0].img
       });
     }
     this.setState({
@@ -87,7 +88,8 @@ imgsChange = ()=>{
         发布状态:'草稿',
         动作:'下架',
         更新时间:this.props.changeTime(),
-        img:imgs
+        img:imgs,
+        头像:getItem()[0].img
       });
     }
     this.setState({
@@ -95,6 +97,7 @@ imgsChange = ()=>{
     })
   }
   render(){
+//  console.log(getItem()[0]);
     return(
       <div className="addContent">
           <from>
@@ -104,7 +107,7 @@ imgsChange = ()=>{
               value={this.state.title}
             /></p>
             <p className="text_short">
-              <span><i>*</i>相册封面：</span>
+              <span><i>*</i>相册封面:</span>
               <input
                 type="file"
                 name="file"
@@ -121,7 +124,7 @@ imgsChange = ()=>{
                 ref = {(elem)=>{this.file1 = elem}}
               />
             </p>
-            <p className="title_short"><span><i>*</i>相册描述：</span><input
+            <p className="title_short"><span><i>*</i>相册描述:</span><input
                 type="text"
                 onChange={this.changewriter}
                 value={this.state.info}
@@ -149,5 +152,12 @@ imgsChange = ()=>{
       </div>
     )
   }
+}
+function getItem(){
+  let data = JSON.parse(localStorage.getItem('users')) || [];
+  data = data.filter((e,i)=>{
+    return e.username === e.userType;
+  })
+  return data;
 }
 export default Addcontent;

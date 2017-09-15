@@ -47,8 +47,8 @@ class Menu1 extends Component{
           <SubMenu key="sub4" title={<span><Icon type="notification" /><Link to="/discuss">评论列表</Link></span>}>
             {/* <Menu.Item key="6"><Link to="/discuss">评论列表</Link></Menu.Item> */}
           </SubMenu>
-          {lis}
-          <SubMenu key="sub7" title={<span><Icon type="hdd" /><span>系统统计</span></span>}>
+          {/* {lis} */}
+          {/* <SubMenu key="sub7" title={<span><Icon type="hdd" /><span>系统统计</span></span>}>
             <Menu.Item key="18"><Link to="/linechart">折线图</Link></Menu.Item>
             <Menu.Item key="19">时间轴折线图</Menu.Item>
             <Menu.Item key="20">区域图</Menu.Item>
@@ -56,7 +56,7 @@ class Menu1 extends Component{
             <Menu.Item key="22">饼状图</Menu.Item>
             <Menu.Item key="23">3D柱状图</Menu.Item>
             <Menu.Item key="24">3D饼状图</Menu.Item>
-          </SubMenu>
+          </SubMenu> */}
           {/* <SubMenu key="sub8" title={<span><Icon type="setting" /><span>系统管理</span></span>}>
             <Menu.Item key="25">系统设置</Menu.Item>
             <Menu.Item key="26">栏目管理</Menu.Item>

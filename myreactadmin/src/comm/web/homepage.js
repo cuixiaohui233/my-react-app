@@ -94,6 +94,13 @@ let img8_3 = require('./webImage/images/p2496034293.webp');
 let img8_4 = require('./webImage/images/p2496034603.webp');
 let img8_5 = require('./webImage/images/p2496034762.webp');
 let img8_6 = require('./webImage/images/p2496039044.webp');
+
+let market1 = require('./webImage/images/p1974318.jpg');
+let market2 = require('./webImage/images/p1964580.jpg');
+let market3 = require('./webImage/images/p1989799.jpg');
+let market4 = require('./webImage/images/p1987630.jpg');
+let market5 = require('./webImage/images/p504264.jpg');
+let market6 = require('./webImage/images/p1934032.jpg');
 // console.log(img8_6);
 let hot = require('./webImage/images/hot.jpg')
 let uadmin = require('../web/webImage/images/timg.jpg')
@@ -272,12 +279,12 @@ class Homepage extends Component{
                 <div key={i+11}  className="product-item" data-id="90190">
                   <div key={i+10}  className="p-img">
                     <a key={i+9}  href={e.href} target="_blank" title="小巨蛋T1便携式茶具礼品套装砂岩釉茶盒版（极客黑）">
-                      <img key={i+8}  className="market_img" src={e.img} />
+                      <img key={i+8}  className="market_img" src={e.封面} />
                     </a>
                   </div>
                   <div key={i+7}  className="p-title">
-                    <a key={i+6}  href="https://market.douban.com/item/90190/?r=5&amp;index=6&amp;category=index" target="_blank" title="小巨蛋T1便携式茶具礼品套装砂岩釉茶盒版（极客黑）">
-                      小巨蛋T1便携式茶具礼品套装砂岩釉茶盒版（极客黑）
+                    <a key={i+6}  href="https://market.douban.com/item/90190/?r=5&amp;index=6&amp;category=index" target="_blank" title={e.图片名称}>
+                      {e.图片名称}
                     </a>
                   </div>
                   <div key={i+5}  className="p-brand">
@@ -380,16 +387,23 @@ class Homepage extends Component{
             <div>{supermarket}</div>
           </div>
         </div>
+        <div id="footer">
+          <div className="footLeft">
+            <p><span>© 2005－2017 douban.com, all rights reserved 北京豆网科技有限公司</span></p>
+            <p><span>京ICP证090015号 京ICP备11027288号 网络视听许可证0110418号 </span></p>
+            <p><span>京网文[2015]2026-368号  京公网安备11010502000728  新出网证(京)字129号 </span></p>
+            <p><span>违法和不良信息举报电话：4008353331  </span></p>
+            <p><span>中国互联网举报中心 电话：12377 《食品流通许可证》许可证：SP1101051510347287</span></p>
+            <p><span>新出发京批字第直160029号</span></p>
+          </div>
+          <div className="footRight"></div>
+        </div>
       </div>
     )
   }
 }
 function getItem(data){
   if(data === 'article'){
-    // localStorage.removeItem('article');
-    // if(list.length){
-    //   return JSON.parse(localStorage.getItem('article'));
-    // }else{
       return JSON.parse(localStorage.getItem('article')) || [
         {
             标题:'为什么《圆桌派》的观众老骂蒋方舟？',
@@ -649,7 +663,7 @@ function getItem(data){
       return JSON.parse(localStorage.getItem('market')) || [{
         id:1,
         标题:'悦诗风吟',
-        封面:'https://img1.doubanio.com/view/dianpu_product_item/large/public/p1974318.jpg',
+        封面:market1,
         图片名称:'innisfree 悦诗风吟 绿茶籽精萃水分菁露 80ml/瓶',
         href:'https://market.douban.com/item/207844/?r=5&index=1&category=index',
         更新时间:'139.00',
@@ -660,7 +674,7 @@ function getItem(data){
       },{
         id:2,
         标题:'ERICD',
-        封面:'https://img3.doubanio.com/view/dianpu_product_item/large/public/p1964580.jpg',
+        封面:market2,
         图片名称:'ERICD2017新版型新面料爆款T恤99元3件装',
         更新时间:'99.00',
         href:'https://market.douban.com/item/204712/?r=5&index=2&category=index',
@@ -671,7 +685,7 @@ function getItem(data){
       },{
         id:3,
         标题:'hanalice',
-        封面:'https://img1.doubanio.com/view/dianpu_product_item/large/public/p1985219.jpg',
+        封面:market3,
         图片名称:'hanalice彩虹糖系列蝴蝶芭蕾平底鞋（十五色）',
         更新时间:'139.00',
         href:'https://market.douban.com/item/213750/?r=5&index=3&category=index',
@@ -682,10 +696,10 @@ function getItem(data){
       },{
         id:4,
         标题:'觅潮记',
-        封面:'https://img1.doubanio.com/view/dianpu_product_item/large/public/p1985709.jpg',
-        图片名称:'潮汕中秋月饼朥饼',
+        封面:market4,
+        图片名称:'粮赞低糖手工莲子火腿桂花板栗蟹黄绿茶月饼礼盒  中秋月饼礼盒',
         更新时间:'139.00',
-        href:'https://market.douban.com/item/213933/?r=5&index=4&category=index',
+        href:'https://market.douban.com/item/215268/?r=5&index=4&category=index',
         发布状态:'已发布',
         操作:'jj',
         动作:'审核',
@@ -693,10 +707,10 @@ function getItem(data){
       },{
         id:5,
         标题:'macbook',
-        封面:'https://img3.doubanio.com/view/dianpu_product_item/large/public/p1971660.jpg',
-        图片名称:'macbook支架',
+        封面:market5,
+        图片名称:'好柿来了 | 土楼红柿 4斤',
         更新时间:'149.00',
-        href:'https://market.douban.com/item/90190/?r=5&index=6&category=index',
+        href:'https://market.douban.com/item/31078/?r=5&index=5&category=index',
         发布状态:'已发布',
         操作:'jj',
         动作:'审核',
@@ -704,16 +718,15 @@ function getItem(data){
       },{
         id:6,
         标题:'小巨蛋',
-        封面:'https://img1.doubanio.com/view/dianpu_product_item/large/public/p449949.jpg',
-        图片名称:'小巨蛋T1便携式茶具礼品套装砂岩釉茶盒版（极客黑）',
+        封面:market6,
+        图片名称:'茯缘高山原叶手筑茯砖茶400g',
         更新时间:'139.00',
-        href:'https://market.douban.com/item/90190/?r=5&index=6&category=index',
+        href:'https://market.douban.com/item/109603/?r=5&index=6&category=index',
         发布状态:'已发布',
         操作:'jj',
         动作:'审核',
         checked:false
       }];
-    // }
   }
 }
 export default Homepage;

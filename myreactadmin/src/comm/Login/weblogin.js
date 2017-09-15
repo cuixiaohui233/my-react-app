@@ -9,7 +9,6 @@ import {
   Redirect,
 } from 'react-router-dom';
 import './Login.css';
-import Error from '../Consultation/error';
 import Add from '../add/add';
 import Webpage from '../web/homepage';
 // const FormItem = Form.Item;
@@ -71,7 +70,7 @@ class NormalLoginForm extends Component {
           // console.log(arr.password,this.state.val1);
           if(arr.password+'' === this.state.val1){
             if(arr.bool){
-              console.log(timer,arr.time)
+//            console.log(timer,arr.time)
               if(timer < arr.time){
                 this.props.changeRoute('true',arr.states);
                 for(var i=0;i<arr2.length;i++){

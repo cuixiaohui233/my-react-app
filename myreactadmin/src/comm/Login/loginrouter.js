@@ -8,9 +8,9 @@ import {
 } from 'react-router-dom';
 
 import './Login.css';
-import Error from '../Consultation/error';
 import Add from '../add/add';
 import Webpage from '../web/homepage';
+let uadmin = require('../web/webImage/images/timg.jpg')
 // const FormItem = Form.Item;
 
 
@@ -36,9 +36,10 @@ class NormalLoginForm extends Component {
             sex:'女',
             phone:'15931662302',
             address:'',
-            time:'2017-9-6',
+            time:'2217年8月1日',
             checked:false,
             userType:'admin',
+            img:uadmin,
             collect:[],
             score:[],
             comment:[]

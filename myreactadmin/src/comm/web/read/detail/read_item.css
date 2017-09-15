@@ -103,7 +103,7 @@
 }
 #actic_img{
   width:100%;
-  height:auto;
+  min-height: 430px;
   margin-top:30px;
   /*border:1px solid #000;*/
   /*display:flex;
@@ -142,4 +142,8 @@
   margin:0 auto;
   margin-top:10px;
   /*color:#000;*/
+}
+#layout{
+  width:305px;
+  height:208px;
 }

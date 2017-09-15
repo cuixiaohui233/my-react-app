@@ -92,7 +92,7 @@ class Consult extends Component{
         e.内容 = newData.内容
       }
     })
-    console.log(data1);
+    // console.log(data1);
     this.setState({
       data:data1
     })
@@ -144,7 +144,7 @@ class Consult extends Component{
   }
   //改变页码
   changepage = (newpage)=>{
-    console.log(newpage);
+    // console.log(newpage);
     this.setState({
       page:newpage
     })

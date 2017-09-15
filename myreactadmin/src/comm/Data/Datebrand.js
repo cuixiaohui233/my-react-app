@@ -41,7 +41,7 @@ class PickerSizesDemo2 extends Component {
   keyupchange = (ev)=>{
     if(ev.keyCode === 13){
       let data1 = Object.assign(this.props.data);
-      console.log(data1);
+//    console.log(data1);
       data1 = data1.filter((e,i)=>{
         if(e.id ==this.state.val){
           return e;
