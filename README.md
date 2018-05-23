@@ -2,9 +2,9 @@
 
 # 安装：
    
-   npm install 
+   `npm install`
    
-   npm run build
+   `npm run build`
    
 # 链接：
    
